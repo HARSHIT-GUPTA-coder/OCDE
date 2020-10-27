@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { FsIconComponent, MainComponent } from './dashboard/main/main.component';
+import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { FilelistComponent } from './filelist/filelist.component';
 
 @NgModule({
@@ -29,7 +30,6 @@ import { FilelistComponent } from './filelist/filelist.component';
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
-    HttpClientXsrfModule,
     NbListModule,
     NbCardModule,
     NbButtonModule,
@@ -37,7 +37,17 @@ import { FilelistComponent } from './filelist/filelist.component';
     NbIconModule,
     NbTreeGridModule,
     NbInputModule,
-    NbMenuModule.forRoot()
+    NbMenuModule.forRoot(),
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'email',
+
+          alwaysFail: true,
+          delay: 1000,
+        }),
+      ],
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
