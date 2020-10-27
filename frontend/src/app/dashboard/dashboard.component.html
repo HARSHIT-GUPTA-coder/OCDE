@@ -1,18 +1,20 @@
-<nb-layout>
+<nb-layout windowMode>
 
     <nb-layout-header fixed>
         <!-- Insert header here -->
     </nb-layout-header>
+
     <nb-sidebar tag="code" class="menu-sidebar">
-        <app-filelist style="width: 100%;"></app-filelist>
+        <app-filelist></app-filelist>
     </nb-sidebar>
 
-    <nb-layout-column>
+    <!-- <nb-layout-column class="colored-column-warning">Left column</nb-layout-column> -->
+    <!-- <nb-layout-column class="colored-column-danger">Right column</nb-layout-column> -->
+    <nb-layout-column style="overflow-y: scroll;">
         <router-outlet></router-outlet>
     </nb-layout-column>
 
     <nb-layout-footer fixed>
-        <!-- Insert footer here -->
     </nb-layout-footer>
 
 </nb-layout>

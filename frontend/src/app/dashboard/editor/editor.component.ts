@@ -16,7 +16,6 @@ export class EditorComponent implements AfterViewInit {
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
-      enableBasicAutocompletion: true
     });
 
 
@@ -30,7 +29,9 @@ export class EditorComponent implements AfterViewInit {
     this.editor.getEditor().commands.addCommand({
       name: "showOtherCompletions",
       bindKey: "Ctrl-.",
-      
+      exec: function (editor) {
+ 
+      }
     })
   }
 
