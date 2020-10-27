@@ -20,6 +20,6 @@ from authentication import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('authentication.urls')),
-    path('compile', include('compilation.urls')),
+    path('api/', include('compilation.urls')),
 ]
 
