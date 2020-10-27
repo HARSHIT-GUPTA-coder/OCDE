@@ -4,7 +4,9 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from rest_framework.decorators import api_view
+import os
 
+PARENT_DIR = "./files"
 
 def CurrentUser(request):
     if not request.user.is_authenticated:
@@ -20,29 +22,29 @@ def GetDetails(request):
         return Response({"success":True, "loggedin": True, **dict(UserSerializer(usr).data)})
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['POST'])
 def RegisterUser(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.data)
         if form.is_valid():
             form.save()
             uname = form.cleaned_data.get('username')
-            pwd = form.cleaned_data.get('password')
+            pwd = form.cleaned_data.get('password1')
             user = authenticate(username=uname, password=pwd)
             logout(request)
             login(request, user)
+            os.mkdir(PARENT_DIR + "/" + uname)      # Directory name is same as username
             serializer = UserSerializer(user)
             return Response({"success":True, **dict(serializer.data)})
-        return Response({"success":False, "message": "Invalid credentials."}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({"success":False, "message": "Invalid credentials."}, status=status.HTTP_406_NOT_ACCEPTABLE)
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def LoginUser(request):
     if request.method == 'POST':
         logout(request)
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.data.get('username', '')
+        password = request.data.get('password', '')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
