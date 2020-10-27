@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 
     'authentication',
     'compilation',
@@ -55,7 +56,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware'
+)
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [

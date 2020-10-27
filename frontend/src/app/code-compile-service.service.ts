@@ -9,7 +9,7 @@ import { API } from '../API';
   providedIn: 'root'
 })
 
-export class DataService {
+export class CodeService {
   private postUrl = API.ServerURL + API.compile;
   constructor(private http: HttpClient) { }
   
