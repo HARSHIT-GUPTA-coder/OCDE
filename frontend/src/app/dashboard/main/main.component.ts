@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-main-view',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
@@ -12,8 +13,8 @@ export class MainComponent implements OnInit {
   };
   pageSize = 10;
 
-  constructor() {
-    this.files.names.push(...['afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf',])
+  constructor(private sidebarService: NbSidebarService) {
+    this.files.names.push(...['afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf',]);
   }
 
   loadNext(cardData) {
@@ -32,7 +33,7 @@ export class MainComponent implements OnInit {
     console.log(s)
   }
   ngOnInit(): void {
-    
+    this.sidebarService.collapse('code')
   }
 
 }
