@@ -1,6 +1,7 @@
 export interface User {
     success? : string;
     message? : string;
+    errors? : any;
     username: string;
     first_name: string;
     last_name: string;
