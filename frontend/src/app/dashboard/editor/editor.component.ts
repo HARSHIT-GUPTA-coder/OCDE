@@ -20,7 +20,7 @@ export class EditorComponent implements AfterViewInit {
     });
 
 
-    this.editor.setTheme("eclipse");
+    this.editor.setTheme("dracula");
 
     this.editor.mode = 'javascript';
     this.editor.value = `function testThis() {

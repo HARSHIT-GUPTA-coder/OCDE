@@ -25,7 +25,7 @@ import { FilelistComponent } from './filelist/filelist.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'default' }),
+    NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
