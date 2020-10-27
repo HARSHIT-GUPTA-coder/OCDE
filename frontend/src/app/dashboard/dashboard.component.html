@@ -1,11 +1,13 @@
 <nb-layout>
 
     <nb-layout-header fixed>
-        OCD-E
+        <!-- Insert header here -->
     </nb-layout-header>
+    <nb-sidebar>
+        <app-main-view style="height:100%" responsive=true tag="code"></app-main-view>
+    </nb-sidebar>
 
     <nb-layout-column>
-
         <router-outlet></router-outlet>
     </nb-layout-column>
 
