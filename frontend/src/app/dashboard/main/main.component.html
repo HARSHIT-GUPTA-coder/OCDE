@@ -1,17 +1,35 @@
-<div class="infinite-cards row">
-    <div class="col-md-12 col-lg-6 col-xxxl-6">
-        <nb-card class="own-scroll">
-            <nb-card-header>Your Codes</nb-card-header>
-            <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext(files)">
-                <nb-list-item *ngFor="let file of files.names" (click)="onClick(file)" style="cursor: pointer;">
-                    {{file}}
-                </nb-list-item>
-            </nb-list>
-        </nb-card>
-    </div>
-    <!-- <ngx-float-button icon="add">
-        <ngx-float-item-button icon="person_add" content="float item 1"></ngx-float-item-button>
-        <ngx-float-item-button icon="gps_fixed" content="float item 2"></ngx-float-item-button>
-        <ngx-float-item-button icon="mode_edit" content="float item 3"></ngx-float-item-button>
-    </ngx-float-button> -->
-</div>
+<nb-card>
+    <nb-card-body>
+
+        <label class="search-label" for="search">Search:</label>
+        <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+        <button nbButton style="float: right; cursor:pointer" (click)="newFile()">
+            <nb-icon icon="plus-outline"></nb-icon>
+            New File
+        </button>
+        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+            <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+            <ng-container [nbTreeGridColumnDef]="customColumn">
+                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+                    {{customColumn}}
+                </th>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">
+                    <nb-fs-icon [kind]="row.data.kind" [expanded]="row.expanded"></nb-fs-icon>
+                    {{row.data[customColumn]}}
+                </td>
+            </ng-container>
+
+            <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column">
+                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+                    {{column}}
+                </th>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">{{row.data[column] || '-'}}</td>
+            </ng-container>
+
+        </table>
+
+    </nb-card-body>
+</nb-card>

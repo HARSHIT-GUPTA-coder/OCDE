@@ -1,39 +1,129 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { NbSidebarService } from '@nebular/theme';
+
+interface TreeNode<T> {
+  data: T;
+  children?: TreeNode<T>[];
+  expanded?: boolean;
+}
+
+interface FSEntry {
+  name: string;
+  size: string;
+  kind: string;
+  items?: number;
+}
 
 @Component({
   selector: 'app-main-view',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
-  files = {
-    names: [],
-    pageToLoadNext: 1,
-  };
-  pageSize = 10;
+export class MainComponent implements OnInit{
+  customColumn = 'name';
+  defaultColumns = [ 'size', 'kind', 'items' ];
+  allColumns = [ this.customColumn, ...this.defaultColumns ];
 
-  constructor(private sidebarService: NbSidebarService) {
-    this.files.names.push(...['afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf','afsafasfasf',]);
-  }
+  dataSource: NbTreeGridDataSource<FSEntry>;
 
-  loadNext(cardData) {
-    cardData.pageToLoadNext++;
-    // this.newsService.load(cardData.pageToLoadNext, this.pageSize)
-    //   .subscribe(nextNews => {
-    //     cardData.placeholders = [];
-    //     cardData.news.push(...nextNews);
-    //     cardData.loading = false;
-    //     cardData.pageToLoadNext++;
-    //   });
-    
-  }
+  sortColumn: string;
+  sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  onClick(s) {
-    console.log(s)
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private sidebarService: NbSidebarService) {
+    this.dataSource = this.dataSourceBuilder.create(this.data);
   }
   ngOnInit(): void {
     this.sidebarService.collapse('code')
   }
 
+  updateSort(sortRequest: NbSortRequest): void {
+    this.sortColumn = sortRequest.column;
+    this.sortDirection = sortRequest.direction;
+  }
+
+  getSortDirection(column: string): NbSortDirection {
+    if (this.sortColumn === column) {
+      return this.sortDirection;
+    }
+    return NbSortDirection.NONE;
+  }
+
+  newFile() {
+    console.log("SAfa")
+  }
+  onClick(s) {
+    console.log(s)
+  }
+  private data: TreeNode<FSEntry>[] = [
+    {
+      data: { name: 'Projects', size: '1.8 MB', items: 5, kind: 'dir' },
+      children: [
+        { data: { name: 'project-1.doc', kind: 'doc', size: '240 KB' } },
+        { data: { name: 'project-2.doc', kind: 'doc', size: '290 KB' } },
+        {
+          data: { name: 'project-3', kind: 'dir', size: '466 KB', items: 3 },
+          children: [
+            { data: { name: 'project-3A.doc', kind: 'doc', size: '200 KB' } },
+            { data: { name: 'project-3B.doc', kind: 'doc', size: '266 KB' } },
+            { data: { name: 'project-3C.doc', kind: 'doc', size: '0' } },
+          ],
+        },
+        { data: { name: 'project-4.docx', kind: 'docx', size: '900 KB' } },
+      ],
+    },
+    {
+      data: { name: 'Reports', kind: 'dir', size: '400 KB', items: 2 },
+      children: [
+        {
+          data: { name: 'Report 1', kind: 'dir', size: '100 KB', items: 1 },
+          children: [
+            { data: { name: 'report-1.doc', kind: 'doc', size: '100 KB' } },
+          ],
+        },
+        {
+          data: { name: 'Report 2', kind: 'dir', size: '300 KB', items: 2 },
+          children: [
+            { data: { name: 'report-2.doc', kind: 'doc', size: '290 KB' } },
+            { data: { name: 'report-2-note.txt', kind: 'txt', size: '10 KB' } },
+          ],
+        },
+      ],
+    },
+    {
+      data: { name: 'Other', kind: 'dir', size: '109 MB', items: 2 },
+      children: [
+        { data: { name: 'backup.bkp', kind: 'bkp', size: '107 MB' } },
+        { data: { name: 'secret-note.txt', kind: 'txt', size: '2 MB' } },
+      ],
+    },
+  ];
+
+  getShowOn(index: number) {
+      const minWithForMultipleColumns = 100;
+      const nextColumnStep = 100;
+      console.log(index)
+      return minWithForMultipleColumns + (nextColumnStep * index);
+  }
+
+}
+
+@Component({
+  selector: 'nb-fs-icon',
+  template: `
+    <nb-tree-grid-row-toggle [expanded]="expanded" *ngIf="isDir(); else fileIcon">
+    </nb-tree-grid-row-toggle>
+    <ng-template #fileIcon>
+      <nb-icon icon="file-text-outline"></nb-icon>
+    </ng-template>
+  `,
+})
+export class FsIconComponent {
+  @Input() kind: string;
+  @Input() expanded: boolean;
+
+  isDir(): boolean {
+    return this.kind === 'dir';
+  }
 }

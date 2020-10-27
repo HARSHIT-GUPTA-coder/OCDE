@@ -16,11 +16,10 @@ export class EditorComponent implements AfterViewInit {
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
-      enableBasicAutocompletion: true
     });
 
 
-    this.editor.setTheme("eclipse");
+    this.editor.setTheme("dracula");
 
     this.editor.mode = 'javascript';
     this.editor.value = `function testThis() {
@@ -31,7 +30,7 @@ export class EditorComponent implements AfterViewInit {
       name: "showOtherCompletions",
       bindKey: "Ctrl-.",
       exec: function (editor) {
-
+ 
       }
     })
   }
