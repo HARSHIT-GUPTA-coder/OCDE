@@ -1,9 +1,33 @@
-import { Component } from '@angular/core';
-import { NbRegisterComponent } from '@nebular/auth';
+import { Component, ChangeDetectorRef, Inject } from '@angular/core';
+import { NbRegisterComponent, NbAuthService, NB_AUTH_OPTIONS } from '@nebular/auth';
+import { SignUpForm, User } from '../../UserDetails';
+import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent extends NbRegisterComponent {
+  user: SignUpForm;
+  returndata: User;
+
+  constructor(private api: ApiService, public router: Router, service: NbAuthService,
+    @Inject(NB_AUTH_OPTIONS) options: {}, cd: ChangeDetectorRef, rt: Router) {
+      super(service, options, cd, router);
+  }
+
+  register() {
+    this.api.registerUser(this.user)
+      .subscribe(data => {
+        this.returndata = data;
+        console.log(data);
+        if (this.returndata.success) {
+          this.router.navigate(['dashboard']);
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

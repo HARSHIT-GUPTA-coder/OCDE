@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User, SignUpForm, LoginForm } from './UserDetails';
-import { HttpClient, HttpHeaders, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders, HttpClientXsrfModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/observable/of';
-import {API} from '../API';
+// import 'rxjs/add/observable/of';
+import { API } from '../API';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import {API} from '../API';
 export class ApiService {
 
   private _url: string = API.ServerURL;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

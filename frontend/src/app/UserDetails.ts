@@ -2,10 +2,10 @@ export interface User {
     success? : string;
     message? : string;
     errors? : any;
-    username: string;
-    first_name: string;
-    last_name: string;
-    email: string;
+    username?: string;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
 }
 export interface SignUpForm {
     username: string;
