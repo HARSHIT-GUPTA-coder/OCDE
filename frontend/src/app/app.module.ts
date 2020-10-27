@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { FsIconComponent, MainComponent } from './dashboard/main/main.component';
@@ -29,6 +29,7 @@ import { FilelistComponent } from './filelist/filelist.component';
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
+    HttpClientXsrfModule,
     NbListModule,
     NbCardModule,
     NbButtonModule,
