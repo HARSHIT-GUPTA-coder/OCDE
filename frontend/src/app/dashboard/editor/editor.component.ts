@@ -8,6 +8,7 @@ import {NbIconConfig, NbSidebarService } from '@nebular/theme';
 })
 export class EditorComponent implements AfterViewInit {
   input;
+  output;
   @ViewChild('editor') editor;
   constructor(private sidebarService: NbSidebarService){}
 

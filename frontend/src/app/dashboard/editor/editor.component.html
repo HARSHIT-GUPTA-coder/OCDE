@@ -12,4 +12,9 @@
 </nb-card>
 <label class="input-label" for="input">Input:</label>
 <!-- <input type="text" nbInput placeholder="Text field"> -->
-<input type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="input">
+<textarea type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="input"></textarea>
+
+<label class="input-label" for="input">Output:</label>
+<!-- <input type="text" nbInput placeholder="Text field"> -->
+<textarea readonly type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="output">
+</textarea>

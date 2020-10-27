@@ -3,5 +3,6 @@ export const API = {
     ServerURL: 'http://localhost:8000',
     Login: '/api/login',
     Logout: '/api/logout',
-    Register: '/api/register', 
+    Register: '/api/register',
+    compile: '/compile' 
 };

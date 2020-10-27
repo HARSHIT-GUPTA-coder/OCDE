@@ -1,7 +1,11 @@
 <!-- <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive> -->
-<button nbButton style="cursor:pointer" (click)="newFile()">
+<button nbButton style="cursor:pointer; margin-bottom:20px" (click)="newFile()">
     <nb-icon icon="plus-outline"></nb-icon>
     New File
+</button>
+<button nbButton style="cursor:pointer" (click)="newFile()">
+    <nb-icon icon="trash-2-outline"></nb-icon>
+    Delete File
 </button>
 <nb-menu [items]="items"></nb-menu>
 <!-- </nb-sidebar> -->
