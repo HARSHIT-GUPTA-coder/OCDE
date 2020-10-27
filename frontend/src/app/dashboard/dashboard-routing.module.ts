@@ -15,6 +15,11 @@ const routes: Routes = [{
     {
       path: 'editor',
       component: EditorComponent
+    },
+    { 
+      path: '**', 
+      redirectTo: '/dashboard/main', 
+      pathMatch: 'full'
     }
   ]},
 ];

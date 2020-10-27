@@ -1,4 +1,5 @@
 import { Component, ViewChild,AfterViewInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-editor',
@@ -8,9 +9,10 @@ import { Component, ViewChild,AfterViewInit } from '@angular/core';
 export class EditorComponent implements AfterViewInit {
   name = 'Angular 6';
   @ViewChild('editor') editor;
+  constructor(private sidebarService: NbSidebarService){}
 
   ngAfterViewInit() {
-
+    this.sidebarService.expand('code')
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
