@@ -1,35 +1,30 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
-// import { AuthComponent } from './auth.component';
-import { AuthRoutingModule } from './auth-routing.module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { AuthRoutingModule } from './auth-routing.module';
+import { NbAuthModule } from '@nebular/auth';
+import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbInputModule } from '@nebular/theme';
+
+import { LoginComponent } from './login/login.component';
+
+import { RegisterComponent } from './register/register.component';
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
+    NbAlertModule,
+    NbInputModule,
+    NbButtonModule,
+    NbCheckboxModule,
     AuthRoutingModule,
-    NbAuthModule.forRoot({
-      strategies: [
-        NbPasswordAuthStrategy.setup({
-          name: 'email',
-          // baseEndpoint: "",
-          // login: {
-          //   endpoint: "?",
-          // method: "?"
-          // },
-          // register: {
-          //   endpoint: "?",
-          // method: "?"
-          // }...
-        }),
-      ],
-      forms: {
-        register: {
-          terms: false,
-        }
-      },
-    }), 
-  ]
+
+    NbAuthModule,
+  ],
+  declarations: [
+    LoginComponent,
+    RegisterComponent
+  ],
 })
-export class AuthModule { }
+export class AuthModule {
+}

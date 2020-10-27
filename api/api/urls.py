@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/', include('authentication.urls')),
     path('api/', include('compilation.urls')),
     path('api/', include('fileHandling.urls')),
+    path('compile', include('compilation.urls')),
 ]
 
