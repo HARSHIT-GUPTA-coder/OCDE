@@ -137,3 +137,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
+CSRF_COOKIE_NAME = 'XSRF-TOKEN'
+CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
