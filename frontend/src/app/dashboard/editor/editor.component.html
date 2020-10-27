@@ -10,6 +10,5 @@
         </nb-actions>
     </nb-card-body>
 </nb-card>
-
-<!-- <button (click)='getValue()'>get value</button><br> -->
-<textarea nbInput fullWidth placeholder="Input" style="height: 150px; margin-top: 20px;" status="info" [(ngModel)]="input"></textarea>
+<label class="input-label" for="input">Input:</label>
+<textarea nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px" status="info" [(ngModel)]="input"></textarea>
