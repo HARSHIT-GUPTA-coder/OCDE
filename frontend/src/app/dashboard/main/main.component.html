@@ -3,7 +3,7 @@
         <nb-card class="own-scroll">
             <nb-card-header>Your Codes</nb-card-header>
             <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext(files)">
-                <nb-list-item *ngFor="let file of files.names" (click)="onClick(file)">
+                <nb-list-item *ngFor="let file of files.names" (click)="onClick(file)" style="cursor: pointer;">
                     {{file}}
                 </nb-list-item>
             </nb-list>

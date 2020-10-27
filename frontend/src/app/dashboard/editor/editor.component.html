@@ -1,3 +1,15 @@
 <ace-editor #editor style="height:50%;">
 </ace-editor>
-<button (click)='getValue()'>get value</button>
+<nb-card>
+    <nb-card-body>
+        <nb-actions size="small" fullWidth>
+            <nb-action icon="save-outline" (click)="save()">Save</nb-action>
+            <nb-action icon="arrow-right-outline" (click)="run()">
+                Run
+            </nb-action>
+        </nb-actions>
+    </nb-card-body>
+</nb-card>
+
+<!-- <button (click)='getValue()'>get value</button><br> -->
+<textarea nbInput fullWidth placeholder="Input" style="height: 150px; margin-top: 20px;" status="info" [(ngModel)]="input"></textarea>

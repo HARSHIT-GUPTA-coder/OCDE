@@ -1,5 +1,5 @@
 import { Component, ViewChild,AfterViewInit } from '@angular/core';
-import { NbSidebarService } from '@nebular/theme';
+import {NbIconConfig, NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-editor',
@@ -7,7 +7,7 @@ import { NbSidebarService } from '@nebular/theme';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements AfterViewInit {
-  name = 'Angular 6';
+  input;
   @ViewChild('editor') editor;
   constructor(private sidebarService: NbSidebarService){}
 
@@ -37,7 +37,18 @@ export class EditorComponent implements AfterViewInit {
   }
 
   getValue() {
+    // console.log("Asadsa")
     console.log(this.editor.value)
     console.log(eval(this.editor.value));
+    console.log(this.input)
+  }
+
+  save() {
+    console.log(this.input);
+    this.input = this.editor.value;
+  }
+
+  run() {
+    console.log(this.input);
   }
 }
