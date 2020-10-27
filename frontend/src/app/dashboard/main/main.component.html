@@ -1,0 +1,17 @@
+<div class="infinite-cards row">
+    <div class="col-md-12 col-lg-6 col-xxxl-6">
+        <nb-card class="own-scroll">
+            <nb-card-header>Your Codes</nb-card-header>
+            <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext(files)">
+                <nb-list-item *ngFor="let file of files.names" (click)="onClick(file)">
+                    {{file}}
+                </nb-list-item>
+            </nb-list>
+        </nb-card>
+    </div>
+    <!-- <ngx-float-button icon="add">
+        <ngx-float-item-button icon="person_add" content="float item 1"></ngx-float-item-button>
+        <ngx-float-item-button icon="gps_fixed" content="float item 2"></ngx-float-item-button>
+        <ngx-float-item-button icon="mode_edit" content="float item 3"></ngx-float-item-button>
+    </ngx-float-button> -->
+</div>

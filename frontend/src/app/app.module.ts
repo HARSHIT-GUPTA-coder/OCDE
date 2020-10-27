@@ -7,23 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
-    NbButtonModule,
     NbLayoutModule,
-    NbCardModule,
     NbEvaIconsModule,
     HttpClientModule,
+    NbListModule,
+NbCardModule, NbButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
