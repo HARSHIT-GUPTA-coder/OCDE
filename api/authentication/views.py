@@ -46,6 +46,7 @@ def GetDetails(request):
 
 @api_view(['POST'])
 def RegisterUser(request):
+    print("ok")
     if request.method == 'POST':
         form = SignUpForm(request.data)
         if form.is_valid():
