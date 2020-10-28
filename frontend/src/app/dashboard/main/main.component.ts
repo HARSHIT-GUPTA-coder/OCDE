@@ -2,19 +2,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { NbSidebarService } from '@nebular/theme';
-
-interface TreeNode<T> {
-  data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
-}
-
-interface FSEntry {
-  name: string;
-  size: string;
-  kind: string;
-  items?: number;
-}
+import { CodefetchService } from 'src/app/codefetch.service';
+import { fileInterface,TreeNode } from 'src/app/fileInterface';
 
 @Component({
   selector: 'app-main-view',
@@ -22,20 +11,45 @@ interface FSEntry {
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit{
-  customColumn = 'name';
-  defaultColumns = [ 'size', 'kind', 'items' ];
+  customColumn = 'id';
+  defaultColumns = ['name', 'size', 'type', 'items' ];
   allColumns = [ this.customColumn, ...this.defaultColumns ];
 
-  dataSource: NbTreeGridDataSource<FSEntry>;
+  dataSource: NbTreeGridDataSource<fileInterface>;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private sidebarService: NbSidebarService) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  private data: TreeNode<fileInterface>[] = [];
+
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>, private sidebarService: NbSidebarService, private _fileService: CodefetchService) {
   }
   ngOnInit(): void {
     this.sidebarService.collapse('code')
+    this._fileService.getFileList().subscribe(
+      _data => {
+        // for(var d of _data) {
+        //   if(!d.parent){
+        //     console.log(d)
+        //     this.data.push({
+        //       data: d
+        //     })
+        //   }
+        //   else {
+        //     for(var x of this.data) {
+        //       if(x.data.id==d.parent){
+        //         if(!x.children)
+        //           x.children = [{data: d}]
+        //         else
+        //           x.children.push({data: d})
+        //       }
+        //     }
+        //   }
+        // }
+        this.data = _data
+        this.dataSource = this.dataSourceBuilder.create(this.data);
+      }
+      );
   }
 
   updateSort(sortRequest: NbSortRequest): void {
@@ -51,58 +65,14 @@ export class MainComponent implements OnInit{
   }
 
   newFile() {
-    console.log("SAfa")
+    console.log(this.data)
   }
   onClick(s) {
     console.log(s)
   }
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: { name: 'Projects', size: '1.8 MB', items: 5, kind: 'dir' },
-      children: [
-        { data: { name: 'project-1.doc', kind: 'doc', size: '240 KB' } },
-        { data: { name: 'project-2.doc', kind: 'doc', size: '290 KB' } },
-        {
-          data: { name: 'project-3', kind: 'dir', size: '466 KB', items: 3 },
-          children: [
-            { data: { name: 'project-3A.doc', kind: 'doc', size: '200 KB' } },
-            { data: { name: 'project-3B.doc', kind: 'doc', size: '266 KB' } },
-            { data: { name: 'project-3C.doc', kind: 'doc', size: '0' } },
-          ],
-        },
-        { data: { name: 'project-4.docx', kind: 'docx', size: '900 KB' } },
-      ],
-    },
-    {
-      data: { name: 'Reports', kind: 'dir', size: '400 KB', items: 2 },
-      children: [
-        {
-          data: { name: 'Report 1', kind: 'dir', size: '100 KB', items: 1 },
-          children: [
-            { data: { name: 'report-1.doc', kind: 'doc', size: '100 KB' } },
-          ],
-        },
-        {
-          data: { name: 'Report 2', kind: 'dir', size: '300 KB', items: 2 },
-          children: [
-            { data: { name: 'report-2.doc', kind: 'doc', size: '290 KB' } },
-            { data: { name: 'report-2-note.txt', kind: 'txt', size: '10 KB' } },
-          ],
-        },
-      ],
-    },
-    {
-      data: { name: 'Other', kind: 'dir', size: '109 MB', items: 2 },
-      children: [
-        { data: { name: 'backup.bkp', kind: 'bkp', size: '107 MB' } },
-        { data: { name: 'secret-note.txt', kind: 'txt', size: '2 MB' } },
-      ],
-    },
-  ];
-
   getShowOn(index: number) {
-      const minWithForMultipleColumns = 100;
-      const nextColumnStep = 100;
+      const minWithForMultipleColumns = 125;
+      const nextColumnStep = 125;
       console.log(index)
       return minWithForMultipleColumns + (nextColumnStep * index);
   }
@@ -120,10 +90,10 @@ export class MainComponent implements OnInit{
   `,
 })
 export class FsIconComponent {
-  @Input() kind: string;
+  @Input() type: string;
   @Input() expanded: boolean;
 
   isDir(): boolean {
-    return this.kind === 'dir';
+    return this.type === 'dir';
   }
 }

@@ -1,0 +1,41 @@
+[{
+        "data": { "name": "Projects", "size": "1.8 MB", "items": 5, "type": "dir", "id": 1 },
+        "children": [
+            { "data": { "name": "project-1.doc", "type": "doc", "size": "240 KB", "id": 2 } },
+            { "data": { "name": "project-2.doc", "type": "doc", "size": "290 KB", "id": 3 } },
+            {
+                "data": { "name": "project-3", "type": "dir", "size": "466 KB", "items": 3, "id": 4 },
+                "children": [
+                    { "data": { "name": "project-3A.doc", "type": "doc", "size": "200 KB", "id": 5 } },
+                    { "data": { "name": "project-3B.doc", "type": "doc", "size": "266 KB", "id": 6 } },
+                    { "data": { "name": "project-3C.doc", "type": "doc", "size": "0", "id": 7 } }
+                ]
+            },
+            { "data": { "name": "project-4.docx", "type": "docx", "size": "900 KB", "id": 8 } }
+        ]
+    },
+    {
+        "data": { "name": "Reports", "type": "dir", "size": "400 KB", "items": 2, "id": 9 },
+        "children": [{
+                "data": { "name": "Report 1", "type": "dir", "size": "100 KB", "items": 1, "id": 10 },
+                "children": [
+                    { "data": { "name": "report-1.doc", "type": "doc", "size": "100 KB", "id": 11 } }
+                ]
+            },
+            {
+                "data": { "name": "Report 2", "type": "dir", "size": "300 KB", "items": 2, "id": 12 },
+                "children": [
+                    { "data": { "name": "report-2.doc", "type": "doc", "size": "290 KB", "id": 13 } },
+                    { "data": { "name": "report-2-note.txt", "type": "txt", "size": "10 KB", "id": 14 } }
+                ]
+            }
+        ]
+    },
+    {
+        "data": { "name": "Other", "type": "dir", "size": "109 MB", "items": 2, "id": 15 },
+        "children": [
+            { "data": { "name": "backup.bkp", "type": "bkp", "size": "107 MB", "id": 16 } },
+            { "data": { "name": "secret-note.txt", "type": "txt", "size": "2 MB", "id": 17 } }
+        ]
+    }
+]
