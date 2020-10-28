@@ -29,7 +29,6 @@ export class EditorComponent implements AfterViewInit {
 
 
     this.editor.mode = "python";
-    this.editor.value = 'print(5)';
 
     this.editor.getEditor().commands.addCommand({
       name: "showOtherCompletions",
