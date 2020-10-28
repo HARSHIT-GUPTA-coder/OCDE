@@ -1,32 +1,33 @@
 <ace-editor #editor style="height:50%;">
 </ace-editor>
 <nb-card>
-    <nb-card-body>
-        <nb-actions size="small" fullWidth>
-            <nb-action icon="save-outline" (click)="save()">Save</nb-action>
-            <nb-action icon="arrow-right-outline" (click)="run()">
-                Run
-            </nb-action>
-        </nb-actions>
+    <nb-card-body style="width: 100%;">
+        <div class="row" style="align-content: space-between;width: 100%;justify-content: flex-end; align-items: center;">
+            <div class="col-6">
+                <nb-actions>
+                    <nb-action icon="save-outline" (click)="save()">Save</nb-action>
+                    <nb-action icon="arrow-right-outline" (click)="run()">
+                        Run
+                    </nb-action>
+                </nb-actions>
+            </div>
+            <div class="col-6 text-right">
+                Select Language:
+                <nb-select placeholder="Select Language" [(selected)]="language" style="width: 200px;">
+                    <nb-option value="c">C </nb-option>
+                    <nb-option value="c++">C++</nb-option>
+                    <nb-option value="python">Python</nb-option>
+                    <nb-option value="python3">Python 3</nb-option>
+                    <nb-option value="haskell">Haskell</nb-option>
+                    <nb-option value="sh">Bash</nb-option>
+                </nb-select>
+            </div>
+        </div>
+
     </nb-card-body>
 </nb-card>
 
-<div class="row">
-    <div class="col-8">
-        <p>{{status}}</p>
-    </div>
-    <div class="col-4">
-        Select Language:
-        <nb-select placeholder="Select Language" [(selected)]="language">
-            <nb-option value="c">C </nb-option>
-            <nb-option value="c++">C++</nb-option>
-            <nb-option value="python">Python</nb-option>
-            <nb-option value="python3">Python 3</nb-option>
-            <nb-option value="haskell">Haskell</nb-option>
-            <nb-option value="sh">Bash</nb-option>
-        </nb-select>
-    </div>
-</div>
+<div>Status: {{status}}</div><br>
 <label class="input-label" for="input">Input:</label>
 <!-- <input type="text" nbInput placeholder="Text field"> -->
 <textarea type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="input"></textarea>

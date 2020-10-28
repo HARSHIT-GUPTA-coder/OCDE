@@ -34,7 +34,8 @@ export class EditorComponent implements AfterViewInit {
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
-      fontSize: 18
+      fontSize: 18,
+      enableBasicAutocompletion: true
     });
 
     this.editor.setTheme("dracula");
