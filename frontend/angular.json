@@ -36,6 +36,8 @@
                             "./node_modules/ace-builds/src-min/theme-eclipse.js",
                             "./node_modules/ace-builds/src-min/mode-sql.js",
                             "./node_modules/ace-builds/src-min/mode-html.js",
+                            "./node_modules/ace-builds/src-min/mode-python.js",
+                            "./node_modules/ace-builds/src-min/mode-c_cpp.js",
                             "./node_modules/ace-builds/src-min/mode-javascript.js",
                             "./node_modules/ace-builds/src-min/worker-javascript.js",
                             "./node_modules/ace-builds/src-min/theme-dracula.js"

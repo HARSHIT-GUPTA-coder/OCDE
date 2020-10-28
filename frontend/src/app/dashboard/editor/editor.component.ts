@@ -12,6 +12,7 @@ import { code_interface, output_interface} from '../../code_interface';
 export class EditorComponent implements AfterViewInit {
   input="";
   output="";
+  language="python";
   status:string= "Run after passing in input";
   code_data: code_interface;
   @ViewChild('editor') editor;
@@ -26,10 +27,9 @@ export class EditorComponent implements AfterViewInit {
 
     this.editor.setTheme("dracula");
 
-    this.editor.mode = 'javascript';
-    this.editor.value = `function testThis() {
-  console.log("it's working!")
-}`
+
+    this.editor.mode = 'python';
+    this.editor.value = 'print(5)';
 
     this.editor.getEditor().commands.addCommand({
       name: "showOtherCompletions",
@@ -52,7 +52,7 @@ export class EditorComponent implements AfterViewInit {
   }
 
   run() {
-    this.code_data = {type:"TEXT", code: this.editor.value, input_type:"TEXT", input: this.input, lang: "python", "args": ""};
+    this.code_data = {type:"TEXT", code: this.editor.value, input_type:"TEXT", input: this.input, lang: this.language,  "args": ""};
     
     this.status = "Running code on server.. ";
 

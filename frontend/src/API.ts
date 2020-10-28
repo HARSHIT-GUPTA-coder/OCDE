@@ -4,5 +4,5 @@ export const API = {
     Login: '/api/login/',
     Logout: '/api/logout/',
     Register: '/api/register/',
-    compile: '/api/compile/' 
+    compile: '/compile',
 };

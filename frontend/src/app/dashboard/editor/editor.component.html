@@ -11,8 +11,20 @@
     </nb-card-body>
 </nb-card>
 
-<p>{{status}}</p>
-
+<div class="row">
+	<div class="col-8">
+		<p>{{status}}</p>
+	</div>
+	<div class="col-4">
+		Select Language:
+			<nb-select placeholder="Select Language" [(selected)]="language">
+				  <nb-option value="c">C </nb-option>
+			      <nb-option value="c++">C++</nb-option>
+			      <nb-option value="python">Python</nb-option>
+			      <nb-option value="python3">Python 3</nb-option>
+			 </nb-select>
+	</div>
+</div>
 <label class="input-label" for="input">Input:</label>
 <!-- <input type="text" nbInput placeholder="Text field"> -->
 <textarea type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="input"></textarea>
