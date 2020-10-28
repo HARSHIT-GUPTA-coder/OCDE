@@ -4,9 +4,9 @@ import { NbMenuItem, NbMenuService } from '@nebular/theme';
 
 @Component({
   selector: 'app-filelist',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './filelist.component.html',
-  styleUrls: ['./filelist.component.scss']
+  styleUrls: ['./filelist.component.scss'],
 })
 export class FilelistComponent implements OnInit {
   items: NbMenuItem[] = [
