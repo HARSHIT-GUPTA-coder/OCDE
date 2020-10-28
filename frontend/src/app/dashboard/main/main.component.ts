@@ -1,5 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { NbSidebarService } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
@@ -22,7 +23,7 @@ export class MainComponent implements OnInit{
 
   private data: TreeNode<fileInterface>[] = [];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>, private sidebarService: NbSidebarService, private _fileService: CodefetchService) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>, private sidebarService: NbSidebarService, private _fileService: CodefetchService, private router: Router) {
   }
   ngOnInit(): void {
     this.sidebarService.collapse('code')
@@ -65,6 +66,7 @@ export class MainComponent implements OnInit{
   }
 
   newFile() {
+    this.router.navigate(["dashboard/editor"])
     console.log(this.data)
   }
   onClick(s) {

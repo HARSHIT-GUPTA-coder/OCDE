@@ -1,5 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { NbIconConfig, NbSidebarService } from '@nebular/theme';
+import { NbIconConfig, NbMenuItem, NbMenuService, NbSidebarService } from '@nebular/theme';
+import { CodefetchService } from 'src/app/codefetch.service';
+import { fileInterface, TreeNode } from 'src/app/fileInterface';
 import { CodeService } from '../../code-compile-service.service';
 import { code_interface, output_interface} from '../../code_interface';
 
@@ -16,18 +18,27 @@ export class EditorComponent implements AfterViewInit {
   status:string= "Run after passing in input";
   code_data: code_interface;
   @ViewChild('editor') editor;
-  constructor(private sidebarService: NbSidebarService, private _codeService: CodeService){}
+  constructor(private sidebarService: NbSidebarService, private _codeService: CodeService, private menuService: NbMenuService, private _fileservice: CodefetchService){}
 
   ngAfterViewInit() {
+    this._fileservice.getFileList().subscribe(
+      _data => {
+        for(var d of _data){
+          this.menuService.addItems([this.treeToMenu(d)],"filelist")
+        }
+        }
+      );
+
     this.sidebarService.expand('code')
+
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
+      fontSize: 18
     });
 
     this.editor.setTheme("dracula");
-
-
+   
     this.editor.mode = "python";
 
     this.editor.getEditor().commands.addCommand({
@@ -79,5 +90,17 @@ export class EditorComponent implements AfterViewInit {
       },
       error => {this.status = "Something went Wrong..."; console.log(error)}
       );
+  }
+
+
+  treeToMenu(tree: TreeNode<fileInterface>): NbMenuItem {
+    let n:NbMenuItem = {title: tree.data.name};
+    if(tree.children) {
+      n.children = [];
+      for(var t in tree.children){
+        n.children.push(this.treeToMenu(tree.children[t]))
+      }
+    }
+    return n;
   }
 }
