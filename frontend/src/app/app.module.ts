@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { FsIconComponent, MainComponent } from './dashboard/main/main.component';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { FilelistComponent } from './filelist/filelist.component';
+import { CodefetchService } from './codefetch.service';
+import { CodeService } from './code-compile-service.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { FilelistComponent } from './filelist/filelist.component';
       ],
     }),
   ],
-  providers: [],
+  providers: [CodefetchService, CodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

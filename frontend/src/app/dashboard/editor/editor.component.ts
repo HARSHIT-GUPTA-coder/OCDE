@@ -12,7 +12,7 @@ import { code_interface, output_interface} from '../../code_interface';
 export class EditorComponent implements AfterViewInit {
   input="";
   output="";
-  language="python";
+  lang = "python";
   status:string= "Run after passing in input";
   code_data: code_interface;
   @ViewChild('editor') editor;
@@ -28,7 +28,7 @@ export class EditorComponent implements AfterViewInit {
     this.editor.setTheme("dracula");
 
 
-    this.editor.mode = 'python';
+    this.editor.mode = "python";
     this.editor.value = 'print(5)';
 
     this.editor.getEditor().commands.addCommand({
@@ -39,7 +39,17 @@ export class EditorComponent implements AfterViewInit {
       }
     })
   }
+  get language(){
+    return this.lang;
+  }
 
+  set language(val){
+    if(val=='c' || val == 'c++')
+      this.editor.mode = "c_cpp";
+    else
+      this.editor.mode = val;
+    this.lang = val;
+  }
   getValue() {
     console.log(this.editor.value)
     console.log(eval(this.editor.value));
@@ -49,6 +59,7 @@ export class EditorComponent implements AfterViewInit {
   save() {
     console.log(this.input);
     this.input = this.editor.value;
+    this.output = this.lang;
   }
 
   run() {
@@ -66,7 +77,8 @@ export class EditorComponent implements AfterViewInit {
         else {
           this.status = "There is an error in your code. Check output panel for more details";
         }
-      }
+      },
+      error => {this.status = "Something went Wrong..."; console.log(error)}
       );
   }
 }

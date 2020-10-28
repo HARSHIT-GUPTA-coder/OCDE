@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CodeService } from './code-compile-service.service';
+import { CodefetchService } from './codefetch.service';
 
-describe('CodeCompileServiceService', () => {
-  let service: CodeService;
+describe('CodefetchService', () => {
+  let service: CodefetchService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CodeService);
+    service = TestBed.inject(CodefetchService);
   });
 
   it('should be created', () => {
