@@ -1,7 +1,7 @@
 from authentication.serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -48,6 +48,7 @@ def GetDetails(request):
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@permission_classes(())
 def RegisterUser(request):
     if request.method == 'POST':
         form = SignUpForm(request.data)
@@ -56,8 +57,7 @@ def RegisterUser(request):
             uname = form.cleaned_data.get('username')
             pwd = form.cleaned_data.get('password1')
             user = authenticate(username=uname, password=pwd)
-            # logout(request)
-            # login(request, user)
+
             try:
                 request.user.auth_token.delete()
             except:
@@ -73,6 +73,7 @@ def RegisterUser(request):
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@permission_classes(())
 def LoginUser(request):
     if request.method == 'POST':
         try:
@@ -83,7 +84,7 @@ def LoginUser(request):
         password = request.data.get('password', '')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            # login(request, user)
+
             token, _ = Token.objects.get_or_create(user=user)
             serializer = UserSerializer(user)
             return Response({"success":True, 'token': token.key, **dict(serializer.data)}, status=status.HTTP_200_OK)
@@ -91,12 +92,17 @@ def LoginUser(request):
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
+@permission_classes(())
 def LogoutUser(request):
     if request.method == 'GET':
-        try :
-            request.user.auth_token.delete()
-            # logout(request)
-            return Response({"success":True, "message": "Successfully logged out."}, status=status.HTTP_200_OK)
-        except:
-            return Response({"success":False, "message": "Some error occurred. Try again later."}, status=status.HTTP_400_BAD_REQUEST)
+        user = CurrentUser(request)
+        
+        if user is not None:
+            try :
+                request.user.auth_token.delete()
+            except:
+                return Response({"success":False, "message": "Some error occurred. Try again later."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response({"success":True, "message": "Successfully logged out."}, status=status.HTTP_200_OK)
+    
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)

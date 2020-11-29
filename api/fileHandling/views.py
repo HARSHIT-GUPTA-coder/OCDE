@@ -6,7 +6,6 @@ from rest_framework.permissions import IsAuthenticated
 import os
 from .models import File
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
 
 PARENT_DIR = "./files"
 
@@ -24,10 +23,9 @@ def UploadFile(request):
         if usr is None:
             return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
         
-        # print(dict(request.data))
         filetext = request.data.get('data', '')
         filename = request.data.get('filename', '')
-        # print(filename)
+
         if filename == '':
             return Response({"success":False, "message": "Invalid filename"}, status=status.HTTP_400_BAD_REQUEST)
         

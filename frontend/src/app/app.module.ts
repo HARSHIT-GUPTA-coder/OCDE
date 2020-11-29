@@ -14,6 +14,8 @@ import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { FilelistComponent } from './filelist/filelist.component';
 import { CodefetchService } from './codefetch.service';
 import { CodeService } from './code-compile-service.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,15 @@ import { CodeService } from './code-compile-service.service';
       ],
     }),
   ],
-  providers: [CodefetchService, CodeService],
+  providers: [
+    CodefetchService,
+    CodeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
