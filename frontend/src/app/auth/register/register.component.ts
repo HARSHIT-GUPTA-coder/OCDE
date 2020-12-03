@@ -21,7 +21,7 @@ export class RegisterComponent extends NbRegisterComponent {
     this.api.registerUser(this.user)
       .subscribe(data => {
         this.returndata = data;
-        // console.log(data);
+        console.log(data);
         if (this.returndata.success) {
           this.router.navigate(['dashboard']);
         }

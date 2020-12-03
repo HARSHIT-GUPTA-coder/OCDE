@@ -12,5 +12,3 @@ def compilation_view(request):
 	else:
 		output = get_output(request.data)
 		return Response({"success":True, "output": output})
-
-	
