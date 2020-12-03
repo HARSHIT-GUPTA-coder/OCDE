@@ -10,5 +10,5 @@ def compilation_view(request):
 	if request.method == "GET":
 		return Response({"success":False, "output": "Please do a POST request"})
 	else:
-		output = get_output(request.data)
-		return Response({"success":True, "output": output})
+		status, output = get_output(request.data)
+		return Response({"success":status, "output": output})

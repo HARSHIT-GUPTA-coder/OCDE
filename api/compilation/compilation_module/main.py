@@ -40,7 +40,7 @@ def get_output(config):
 		if len(compilation_output.stdout) > 0:
 			os.remove(temp_name_total)
 			os.remove(temp_input_file)
-			return compilation_output.stdout.decode("utf-8")
+			return False, compilation_output.stdout.decode("utf-8")
 		os.remove(temp_name_total)
 
 		temp_name_total = out_name 
@@ -56,4 +56,4 @@ def get_output(config):
 	os.remove(temp_input_file)
 	os.remove(temp_name_total)
 
-	return run_output.stdout.decode("utf-8")
+	return True, run_output.stdout.decode("utf-8")
