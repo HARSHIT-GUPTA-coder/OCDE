@@ -57,5 +57,3 @@ def get_output(config):
 	os.remove(temp_name_total)
 
 	return run_output.stdout.decode("utf-8")
-
-
