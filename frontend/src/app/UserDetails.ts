@@ -7,6 +7,7 @@ export interface User {
     last_name?: string;
     email?: string;
     token?: string;
+    loggedin?: boolean;
 }
 export interface SignUpForm {
     username: string;

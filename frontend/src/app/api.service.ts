@@ -18,6 +18,10 @@ export class ApiService {
   };
   constructor(private http: HttpClient) {}
 
+  getDetails() : Observable<User> {
+    return this.http.get<User>(this._url + API.GetDetails);
+  }
+
   registerUser(data: SignUpForm) : Observable<User> {
     return this.http.post<User>(this._url + API.Register, data, this.httpOptions)
             .pipe(tap(res => this.setSession(res)));

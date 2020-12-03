@@ -5,4 +5,5 @@ export const API = {
     Logout: '/api/logout/',
     Register: '/api/register/',
     compile: '/compile',
+    GetDetails: '/api/get-basic-details/'
 };

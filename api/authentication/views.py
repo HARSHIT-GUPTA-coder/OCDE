@@ -38,7 +38,7 @@ def CurrentUser(request):
     return request.user
 
 @api_view(['GET'])
-@permission_classes((IsAuthenticated, ))
+@permission_classes(())
 def GetDetails(request):
     if request.method == 'GET':
         usr = CurrentUser(request)
