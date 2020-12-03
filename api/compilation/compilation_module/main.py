@@ -36,7 +36,11 @@ def get_output(config):
 		f.write(input_data)
 
 	if config["lang"] in COMPILED:
-		compilation_output = subprocess.run(COMPILATION_COMMAND[config["lang"]].format(temp_name_total, out_name).split() + config["args"].split(), stdout=subprocess.PIPE)
+		compilation_output = subprocess.run(COMPILATION_COMMAND[config["lang"]].format(temp_name_total, out_name).split() + config["args"].split(), stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
+		if len(compilation_output.stdout) > 0:
+			os.remove(temp_name_total)
+			os.remove(temp_input_file)
+			return compilation_output.stdout.decode("utf-8")
 		os.remove(temp_name_total)
 
 		temp_name_total = out_name 
@@ -45,13 +49,12 @@ def get_output(config):
 	run_command = RUN_COMMAND[config["lang"]].format(temp_name_total).split() + (config["args"].split() if config["lang"] not in COMPILED else [])
 
 	input_file = open(temp_input_file, "r")
-	run_output = subprocess.run(run_command, stdin=input_file, stdout=subprocess.PIPE)
+	run_output = subprocess.run(run_command, stdin=input_file, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 
 
 	input_file.close()
 	os.remove(temp_input_file)
 	os.remove(temp_name_total)
-
 
 	return run_output.stdout.decode("utf-8")
 
