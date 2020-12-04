@@ -120,3 +120,79 @@ def GetStructure(request):
         return Response({"success":True, "structure": return_list}, status=status.HTTP_200_OK)
     
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
+
+# GET requests contains file_id
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def ReadFile(request):
+    if request.method == 'GET':
+        usr = CurrentUser(request)
+        if usr is None:
+            return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
+        
+        fid = request.data.get('file_id', -1)
+        try:
+            fid = int(fid)
+        except:
+            return Response({"success":False, "message": "file_id must be an integer"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        requested_file = File.objects.filter(owner = usr, file_id = fid)
+
+        if requested_file.exists():
+            requested_file = requested_file[0]
+            if not requested_file.is_file:
+                return Response({"success":False, "message": "Can't read a folder"}, status=status.HTTP_400_BAD_REQUEST)
+            
+            f = open(PARENT_DIR + "/" + usr.username + requested_file.relative_location + requested_file.filename, 'r')
+            data = f.read()
+            f.close()
+
+            return Response({"success":True, "data": data}, status=status.HTTP_200_OK)
+        else:
+            return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
+
+def RecursiveDelete(fid, rel_path):
+    try:
+        f = File.objects.get(file_id = fid)
+        if f.is_file:
+            os.remove(rel_path + f.relative_location + f.filename)
+            f.delete()
+        else:
+            for c in f.children:
+                RecursiveDelete(c, rel_path)
+            f.delete()
+            os.rmdir(rel_path + f.relative_location + f.filename)
+    except:
+        pass
+
+# POST requests contains file_id
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def DeleteFile(request):
+    if request.method == 'POST':
+        usr = CurrentUser(request)
+        if usr is None:
+            return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
+        
+        fid = request.data.get('file_id', -1)
+        try:
+            fid = int(fid)
+        except:
+            return Response({"success":False, "message": "file_id must be an integer"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        requested_file = File.objects.filter(owner = usr, file_id = fid)
+
+        if requested_file.exists():
+            pid = requested_file[0].parent
+            if pid != -1:
+                parent = File.objects.get(file_id = pid)
+                parent.children.remove(fid)
+                parent.save()
+            RecursiveDelete(fid, PARENT_DIR + "/" + usr.username)
+            return Response({"success":True, "message": "Deleted Successfully"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
