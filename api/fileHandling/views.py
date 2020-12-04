@@ -117,6 +117,6 @@ def GetStructure(request):
         for f in user_files:
             return_list += [ReturnDict(f.file_id)]
                 
-        return Response({"success":True, "structure": str(return_list)}, status=status.HTTP_200_OK)
+        return Response({"success":True, "structure": return_list}, status=status.HTTP_200_OK)
     
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
