@@ -28,6 +28,10 @@
 </nb-card>
 
 <div>Status: {{status}}</div><br>
+<label class="cli-arguments" for="cli">Command Line arguments:</label>
+<!-- <input type="text" nbInput placeholder="Text field"> -->
+<textarea type="text" nbInput fullWidth id="cli" placeholder="" style="height: 50px; margin-bottom: 10px;" status="info" [(ngModel)]="cli"></textarea>
+
 <label class="input-label" for="input">Input:</label>
 <!-- <input type="text" nbInput placeholder="Text field"> -->
 <textarea type="text" nbInput fullWidth id="input" placeholder="Add Input for your code" style="height: 150px; margin-bottom: 10px;" status="info" [(ngModel)]="input"></textarea>
