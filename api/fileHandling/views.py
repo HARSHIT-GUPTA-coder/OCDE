@@ -27,7 +27,7 @@ def CreateFile(request):
         filetext = request.data.get('data', '')
         filename = request.data.get('filename', '')
         parent = request.data.get('parent', -1)
-        is_file = request.data.get('is_file', 'true')
+        is_file = str(request.data.get('is_file', 'true'))
         is_file = is_file.lower()
         relative_path = '/'
 
@@ -66,6 +66,7 @@ def CreateFile(request):
         if os.path.exists(filepath):
             return Response({"success":False, "message": "File already exists."}, status=status.HTTP_400_BAD_REQUEST)
         
+        file_size = 0
         if is_file == 'true':
             f = open(filepath, "w+")
             f.write(filetext)
@@ -82,8 +83,7 @@ def CreateFile(request):
                 parent_file.children += [new_file.file_id]
                 parent_file.save()
 
-        
-        return Response({"success":True, "message": "Created Successfully", "file_id": new_file.file_id}, status=status.HTTP_200_OK)
+        return Response({"success":True, "message": "Created Successfully", "file_id": new_file.file_id, "size": file_size}, status=status.HTTP_200_OK)
     
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
