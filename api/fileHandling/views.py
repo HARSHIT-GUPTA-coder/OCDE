@@ -8,6 +8,7 @@ from .models import File
 from django.contrib.auth.models import User
 
 PARENT_DIR = "./files"
+BLACKLIST = ['/', '\\', ':', '*', '?', '"', '<', '>', '|', "'"]
 
 def CurrentUser(request):
     if not request.user.is_authenticated:
@@ -51,6 +52,9 @@ def CreateFile(request):
         if filename == '':
             return Response({"success":False, "message": "Invalid filename"}, status=status.HTTP_400_BAD_REQUEST)
         
+        if 1 in [c in filename for c in BLACKLIST]:
+            return Response({"success":False, "message": "Filename cannot contain special characters"}, status=status.HTTP_400_BAD_REQUEST)
+
         if is_file == '0': is_file = 'false'
         if is_file == '1': is_file = 'true'
 
@@ -192,6 +196,58 @@ def DeleteFile(request):
                 parent.save()
             RecursiveDelete(fid, PARENT_DIR + "/" + usr.username)
             return Response({"success":True, "message": "Deleted Successfully"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
+
+# POST requests contains file_id, filename, data
+# If filename or data is absent, they will not be updated, otherwise they will be overwritten
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def UpdateFile(request):
+    if request.method == 'POST':
+        usr = CurrentUser(request)
+        if usr is None:
+            return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
+        
+        fid = request.data.get('file_id', -1)
+        filename = request.data.get('filename', -1)
+        data = request.data.get('data', -1)
+
+        try:
+            fid = int(fid)
+        except:
+            return Response({"success":False, "message": "file_id must be an integer"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        requested_file = File.objects.filter(owner = usr, file_id = fid)
+
+        if requested_file.exists():
+            requested_file = requested_file[0]
+            file_size = requested_file.size
+
+            filepath = PARENT_DIR + "/" + usr.username + requested_file.relative_location
+
+            if filename != -1:
+                if requested_file.filename != filename and filename != '':
+                    if 1 in [c in filename for c in BLACKLIST]:
+                        return Response({"success":False, "message": "Filename cannot contain special characters"}, status=status.HTTP_400_BAD_REQUEST)
+
+                    if os.path.exists(filepath + filename):
+                        return Response({"success":False, "message": "File already exists in the same directory"}, status=status.HTTP_400_BAD_REQUEST)
+                    os.rename(filepath + requested_file.filename, filepath + filename)
+                    requested_file.filename = filename
+                    requested_file.save()
+
+            if data != -1:
+                filepath += requested_file.filename
+                with open(filepath, 'w') as f:
+                    f.write(data)
+                file_size = os.stat(filepath).st_size
+                requested_file.size = file_size
+                requested_file.save()
+
+            return Response({"success":True, "size": file_size, "message": "Updated Successfully"}, status=status.HTTP_200_OK)
         else:
             return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
     
