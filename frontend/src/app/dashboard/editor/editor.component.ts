@@ -14,6 +14,7 @@ import { code_interface, output_interface} from '../../code_interface';
 export class EditorComponent implements AfterViewInit {
   input="";
   output="";
+  cli="";
   lang = "python";
   status:string= "Run after passing in input";
   code_data: code_interface;
@@ -71,10 +72,11 @@ export class EditorComponent implements AfterViewInit {
     console.log(this.input);
     this.input = this.editor.value;
     this.output = this.lang;
+    
   }
 
   run() {
-    this.code_data = {type:"TEXT", code: this.editor.value, input_type:"TEXT", input: this.input, lang: this.language,  "args": ""};
+    this.code_data = {type:"TEXT", code: this.editor.value, input_type:"TEXT", input: this.input, lang: this.language,  "args": this.cli};
     
     this.status = "Running code on server.. ";
 
