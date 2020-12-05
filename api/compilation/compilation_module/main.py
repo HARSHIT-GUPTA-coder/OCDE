@@ -9,51 +9,36 @@ def get_random_string(length):
     return result_str
 
 def get_output(config):
-	if config["type"]=="TEXT":
-		code = config["code"] 
-	else:
-		with open(config["code"], "r") as f:
-			code = f.read()
 
-	if config["input_type"] == "TEXT":
-		input_data = config["input"] 
-	else:
-		with open(config["input"], "r") as f:
-			input_data = f.read()
+	input_data = config["input"] 
+	command_data = config["command"]
+	filename = config['filename']
+	user = config['username']
+	filepath = config['relative_path']
+	code_file = "." + filepath + filename
 
 	temp_length = 7
-	temp_name = get_random_string(temp_length)
-	temp_input_file = get_random_string(temp_length)
+	exec_file = get_random_string(temp_length)
+	input_file = get_random_string(temp_length)
 
+	exec_file = "." + filepath + exec_file + ".out"
 
-	temp_name_total = temp_name + EXTENSIONS[config["lang"]]
-	out_name = temp_name + ".out"
-
-	with open(temp_name_total, "w") as f:
-		f.write(code)
-
-	with open(temp_input_file, "w") as f:
+	with open(input_file, "w") as f:
 		f.write(input_data)
 
 	if config["lang"] in COMPILED:
-		compilation_output = subprocess.run(COMPILATION_COMMAND[config["lang"]].format(temp_name_total, out_name).split() + config["args"].split(), stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
+		compilation_output = subprocess.run(COMPILATION_COMMAND[config["lang"]].format(code_file, exec_file), stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 		if len(compilation_output.stdout) > 0:
-			os.remove(temp_name_total)
-			os.remove(temp_input_file)
+			os.remove(input_file)
 			return False, compilation_output.stdout.decode("utf-8")
-		os.remove(temp_name_total)
+ 
 
-		temp_name_total = out_name 
+	run_command = RUN_COMMAND[config["lang"]].format(exec_file) + command_data
 
+	with open(input_file, "r") as input:
+		run_output = subprocess.run(run_command, stdin=input_file, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 
-	run_command = RUN_COMMAND[config["lang"]].format(temp_name_total).split() + (config["args"].split() if config["lang"] not in COMPILED else [])
-
-	input_file = open(temp_input_file, "r")
-	run_output = subprocess.run(run_command, stdin=input_file, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
-
-
-	input_file.close()
-	os.remove(temp_input_file)
-	os.remove(temp_name_total)
+	os.remove(input_file)
+	os.remove(exec_file)
 
 	return True, run_output.stdout.decode("utf-8")

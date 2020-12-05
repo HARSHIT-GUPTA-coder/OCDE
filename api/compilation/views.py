@@ -21,7 +21,7 @@ def compilation_view(request):
 			data['relative_path'] = file.relative_location
 			data['filename'] = file.filename
 			data['username'] = file.owner.username
-			status, output = get_output(request.data)
+			status, output = get_output(data)
 			return Response({"success":status, "output": output})
 			
 		return Response({"success":False, "message": "File does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
