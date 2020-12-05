@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
                 } else{
                     resolve(true);
                 } 
-            });
+            }, error => {resolve(false);});
         });
     }
 }
@@ -45,7 +45,7 @@ export class AuthGuard2 implements CanActivate {
                     this.router.navigate(['dashboard','main']);
                     resolve(false);
                 } 
-            });
+            }, error => {resolve(true);});
         });
     }
 }
