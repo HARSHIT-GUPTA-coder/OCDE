@@ -5,5 +5,10 @@ export const API = {
     Logout: '/api/logout/',
     Register: '/api/register/',
     compile: '/compile',
-    GetDetails: '/api/get-basic-details/'
+    GetDetails: '/api/get-basic-details/',
+    GetStructure: '/api/get-structure/',
+    CreateFile: '/api/create-file/',
+    ReadFile: '/api/read-file/',
+    DeleteFile: '/api/delete-file/',
+    UpdateFile: '/api/update-file/'
 };

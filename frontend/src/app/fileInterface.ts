@@ -1,11 +1,10 @@
 import { StringifyOptions } from 'querystring';
 
 export interface fileInterface {
-	type: string,
 	name: string,
     size: string,
     id: number,
-    items?: number,
+    is_file: boolean
 }
 
 export interface TreeNode<T> {

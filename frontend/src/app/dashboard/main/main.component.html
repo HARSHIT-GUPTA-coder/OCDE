@@ -16,20 +16,30 @@
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
                     {{customColumn}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">
-                    <nb-fs-icon [type]="row.data.type" [expanded]="row.expanded"></nb-fs-icon>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row, dialog)">
+                    <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
                     {{row.data[customColumn]}}
                 </td>
             </ng-container>
 
-            <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column">
+            <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column" [showOn]="getShowOn(index)">
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
                     {{column}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">{{row.data[column] || '-'}}</td>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row, dialog)">{{row.data[column] || '-'}}</td>
             </ng-container>
-
         </table>
 
     </nb-card-body>
 </nb-card>
+
+<ng-template #dialog let-ref="dialogRef">
+    <nb-card>
+        <nb-card-header>Choose Action</nb-card-header>
+        <nb-card-body>
+            <button nbButton class="dialog" status="primary" (click)="ref.close(0)">Close Dialog</button> <br>
+            <button nbButton class="dialog" status="success" (click)="ref.close(1)">Open File</button> <br>
+            <button nbButton class="dialog" status="danger" (click)="ref.close(2)">Delete File</button> <br>
+        </nb-card-body>
+    </nb-card>
+</ng-template>

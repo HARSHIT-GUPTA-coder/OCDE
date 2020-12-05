@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule} from '@nebular/theme';
+import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule, NbDialogModule, NbCheckboxModule, NbContextMenuModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +16,7 @@ import { CodefetchService } from './codefetch.service';
 import { CodeService } from './code-compile-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
+import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component';
 
 @NgModule({
   declarations: [
@@ -24,19 +25,23 @@ import { TokenInterceptor } from './token.interceptor';
     DashboardComponent,
     MainComponent,
     FsIconComponent,
-    FilelistComponent
+    FilelistComponent,
+    NewfiledialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
+    NbDialogModule.forRoot(),
+    NbCheckboxModule,
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
     NbListModule,
     NbCardModule,
     NbButtonModule,
+    NbContextMenuModule,
     NbSidebarModule.forRoot(),
     NbIconModule,
     NbSelectModule,
