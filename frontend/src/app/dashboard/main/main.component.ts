@@ -31,9 +31,7 @@ export class MainComponent implements OnInit{
       _data => {
         console.log(_data);
         if(_data["success"]==false) {
-          console.error(
-            _data["message"]
-          );
+          this._fileService.handleError(_data["message"]);
         }
         else {
           console.log("success");
@@ -60,19 +58,22 @@ export class MainComponent implements OnInit{
 
   newFile() {
     console.log("newfile")
-    // var dir = this.data.filter((elem,index,arr) => {
-    //   return elem.data.is_file === false;
-    // })
-    const dialog = this._dialogService.open(NewfiledialogComponent).onClose.subscribe(
+    this._dialogService.open(NewfiledialogComponent).onClose.subscribe(
       data => {
         this._fileService.createFile(data[2],data[0],data[1]);
         console.log(data[2]);
       }
     )
   }
+
+  onSingleCick(s,dialog: TemplateRef<any>) {
+    if(s.data.is_file==false) return false;
+    this.onClick(s,dialog)
+  }
+
   onClick(s, dialog: TemplateRef<any>) {
     console.log(s)
-    if(s.data.is_file==false) return false;
+    // if(s.data.is_file==false) return false;
     this._dialogService.open(dialog).onClose.subscribe(
       data => {
         console.log(data)

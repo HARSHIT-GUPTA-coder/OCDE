@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
 import { CodestoreService } from './codestore.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,9 @@ export class CodefetchService {
   private codeURL = API.ServerURL + API.ReadFile;
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
-  constructor(private http: HttpClient, private _codestore: CodestoreService, private router: Router) { }
+  constructor(private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
   
-  private handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
@@ -35,21 +35,24 @@ export class CodefetchService {
     )
   }
 
-  readfile(id: string): any{
-    let params = new HttpParams().set("file_id",id);
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+  readfiledata(id: string): any {
     return this.http.post(this.codeURL,{file_id: id}).pipe(
       catchError(this.handleError)
-    ).subscribe(
+    )
+  }
+
+  readfile(id: string): any{
+    return this.readfiledata(id).subscribe(
       _data => {
         if(_data["success"]==false) {
           this.handleError(_data["message"])
         }
         else {
           this._codestore.setcode(id, _data["data"]);
-          this.router.navigateByUrl('/dashboard/editor')
-          console.log(_data)
+          console.log(id)
+          this.router.navigate(['/dashboard/editor', {id: id}])
+          // window.location.
+          // console.log(_data)
         }
       }
     )
@@ -65,7 +68,6 @@ export class CodefetchService {
           this.handleError(_data["message"])
         }
         else {
-        window.location.reload();
         console.log(_data)
         }
       }

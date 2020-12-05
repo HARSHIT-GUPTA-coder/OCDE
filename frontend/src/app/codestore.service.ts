@@ -9,7 +9,10 @@ export class CodestoreService {
   constructor() { }
 
   getcode() {
-    return this.code;
+    // this.id="";
+    let c = this.code;
+    // this.code="";
+    return c;
   }
 
   getid() {

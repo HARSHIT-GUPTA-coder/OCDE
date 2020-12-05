@@ -16,7 +16,7 @@
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
                     {{customColumn}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row, dialog)">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row, dialog)" (click)="onSingleCick(row,dialog)">
                     <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
                     {{row.data[customColumn]}}
                 </td>
@@ -26,7 +26,7 @@
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
                     {{column}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row, dialog)">{{row.data[column] || '-'}}</td>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row, dialog)" (click)="onSingleCick(row,dialog)">{{row.data[column] || '-'}}</td>
             </ng-container>
         </table>
 
