@@ -31,7 +31,7 @@ export class MainComponent implements OnInit{
       _data => {
         console.log(_data);
         if(_data["success"]==false) {
-          this._fileService.handleError(_data["message"]);
+          this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
           console.log("success");

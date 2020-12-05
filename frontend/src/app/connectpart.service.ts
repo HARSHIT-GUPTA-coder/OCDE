@@ -37,7 +37,7 @@ export class ConnectpartService {
     this._fileService.readfiledata(id).subscribe(
       _data => {
         if(_data["success"]==false) {
-          this._fileService.handleError(_data["message"])
+          this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
           this._codestore.setcode(id, _data["data"]);

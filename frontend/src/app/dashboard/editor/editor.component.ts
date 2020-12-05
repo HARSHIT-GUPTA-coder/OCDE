@@ -55,7 +55,7 @@ export class EditorComponent implements AfterViewInit {
       this._fileService.readfiledata(this.fileid).subscribe(
         _data => {
           if(_data["success"]==false) {
-            this._fileService.handleError(_data["message"])
+            this._fileService.handleError(_data["message"],this._fileService.toastrService);
           }
           else {
             console.log(_data)

@@ -18,7 +18,7 @@ export class CodefetchService {
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
   private updateURL = API.ServerURL + API.UpdateFile;
-  constructor(private toastrService: NbToastrService, private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
+  constructor(public toastrService: NbToastrService, private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
   
   handleError(error: HttpErrorResponse, tserve: NbToastrService) {
     let status: NbComponentStatus ="danger";
