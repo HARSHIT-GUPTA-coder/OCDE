@@ -6,6 +6,7 @@ import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
 import { CodestoreService } from './codestore.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,17 @@ export class CodefetchService {
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
   private updateURL = API.ServerURL + API.UpdateFile;
-  constructor(private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
+  constructor(private toastrService: NbToastrService, private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
   
-  handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse, tserve: NbToastrService) {
+    let status: NbComponentStatus ="danger";
+    console.log(tserve)
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
+      tserve.show(error.error.message, "Error", {status})
     } else {
-      console.error('An error occurred:',error);
+      console.error('An error occurred:',error.error.message);
+      tserve.show(error.error.message, "Error", {status})
     }
     return throwError(
       error.message || 'Something bad happened; please try again later.');
@@ -32,13 +37,13 @@ export class CodefetchService {
   getFileList(): any {
     return this.http.get(this.structURL)
     .pipe(
-      catchError(this.handleError)
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     )
   }
 
   readfiledata(id: string): any {
     return this.http.post(this.codeURL,{file_id: id}).pipe(
-      catchError(this.handleError)
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     )
   }
 
@@ -46,7 +51,7 @@ export class CodefetchService {
     return this.readfiledata(id).subscribe(
       _data => {
         if(_data["success"]==false) {
-          this.handleError(_data["message"])
+          this.handleError(_data["message"], this.toastrService)
         }
         else {
           this._codestore.setcode(id, _data["data"]);
@@ -61,11 +66,11 @@ export class CodefetchService {
 
   updatefile(id: string, data: string): any {
     return this.http.post(this.updateURL, {file_id: id, data: data}).pipe(
-      catchError(this.handleError)
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     ).subscribe(
       _data => {
         if(_data["success"]==false) {
-          this.handleError(_data["message"])
+          this.handleError(_data["message"], this.toastrService)
         }
         else {
         console.log(_data["message"])
@@ -74,13 +79,16 @@ export class CodefetchService {
     )
   }
   deletefile(id: string): any{
+    console.log(this.toastrService)
     console.log(id)
     return this.http.post(this.deleteUrl, {file_id: id}).pipe(
-      catchError(this.handleError)
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     ).subscribe(
       _data => {
         if(_data["success"]==false) {
-          this.handleError(_data["message"])
+          this.handleError(_data["message"], this.toastrService)
+          let status:NbComponentStatus = "danger";
+          this.toastrService.show(_data["message"], "Error", {status})
         }
         else {
         console.log(_data)
@@ -97,11 +105,11 @@ export class CodefetchService {
 
       }
       this.http.post(this.createURL,data).pipe(
-        catchError(this.handleError)
+        catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
       ).subscribe(
         _data => {
           if(_data["success"]==false) {
-            this.handleError(_data["message"])
+            this.handleError(_data["message"], this.toastrService)
           }
           else {
           window.location.reload();
@@ -114,7 +122,7 @@ export class CodefetchService {
   getFolder() {
     return this.http.get(this.folderURL)
     .pipe(
-      catchError(this.handleError)
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     )
   }
 }

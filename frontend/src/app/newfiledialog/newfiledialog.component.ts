@@ -45,7 +45,9 @@ export class NewfiledialogComponent implements OnInit{
         }
         else {
           console.log("success");
-          this.dirList = _data["data"];
+          this.dirList = [{file_id: -1, filename: "", relative_location: "/"}];
+          console.log(_data["data"])
+          this.dirList.push(..._data["data"]);
         }
       }
     );
