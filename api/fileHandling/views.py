@@ -252,3 +252,22 @@ def UpdateFile(request):
             return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
     
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def GetFolders(request):
+    if request.method == 'GET':
+        usr = CurrentUser(request)
+        if usr is None:
+            return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
+        
+        user_files = File.objects.filter(owner = usr, is_file = False)
+
+        return_list = []
+
+        for f in user_files:
+            return_list += [{"file_id": f.file_id, "filename": f.filename, "relative_location": f.relative_location}]
+                
+        return Response({"success":True, "data": return_list}, status=status.HTTP_200_OK)
+    
+    return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,4 +1,4 @@
-from .views import CreateFile, GetStructure, ReadFile, DeleteFile, UpdateFile
+from .views import *
 from django.urls import path
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('read-file/', ReadFile),
     path('delete-file/', DeleteFile),
     path('update-file/', UpdateFile),
+    path('get-folders/', GetFolders),
 ]
