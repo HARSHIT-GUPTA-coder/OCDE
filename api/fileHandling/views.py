@@ -126,10 +126,10 @@ def GetStructure(request):
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
 
 # GET requests contains file_id
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes((IsAuthenticated, ))
 def ReadFile(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         usr = CurrentUser(request)
         if usr is None:
             return Response({"success": False, "message": "User not logged in."}, status = status.HTTP_403_FORBIDDEN)
