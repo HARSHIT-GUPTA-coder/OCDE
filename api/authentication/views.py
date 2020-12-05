@@ -9,6 +9,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 import os
 
 PARENT_DIR = "./files"
@@ -38,8 +39,8 @@ def CurrentUser(request):
     return request.user
 
 @api_view(['GET'])
+@authentication_classes((TokenAuthentication, ))
 @permission_classes(())
-@authentication_classes(())
 def GetDetails(request):
     if request.method == 'GET':
         usr = CurrentUser(request)
@@ -49,8 +50,8 @@ def GetDetails(request):
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@authentication_classes((TokenAuthentication, ))
 @permission_classes(())
-@authentication_classes(())
 def RegisterUser(request):
     if request.method == 'POST':
         form = SignUpForm(request.data)
@@ -58,18 +59,14 @@ def RegisterUser(request):
             try:
                 uname = form.cleaned_data.get('username')
                 pwd = form.cleaned_data.get('password1')
-                print(uname)
                 os.mkdir(PARENT_DIR + "/" + uname)      # Directory name is same as username
-                print("b")
                 form.save()
                 user = authenticate(username=uname, password=pwd)
-                print("c")
                 try:
                     request.user.auth_token.delete()
                 except:
                     pass
                 token, _ = Token.objects.get_or_create(user=user)
-                print("d")
                 serializer = UserSerializer(user)
                 return Response({"success":True, 'token': token.key, **dict(serializer.data)})
             except:
@@ -78,8 +75,8 @@ def RegisterUser(request):
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@authentication_classes((TokenAuthentication, ))
 @permission_classes(())
-@authentication_classes(())
 def LoginUser(request):
     if request.method == 'POST':
         try:
@@ -98,8 +95,8 @@ def LoginUser(request):
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
+@authentication_classes((TokenAuthentication, ))
 @permission_classes(())
-@authentication_classes(())
 def LogoutUser(request):
     if request.method == 'GET':
         user = CurrentUser(request)
