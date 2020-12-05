@@ -58,8 +58,10 @@ export class EditorComponent implements AfterViewInit {
             this._fileService.handleError(_data["message"])
           }
           else {
+            console.log(_data)
             this._codestore.setcode(this.fileid, _data["data"]);
             this.code = _data["data"];
+            this.editor.value = this.code;
           }
         }
       )
@@ -90,8 +92,9 @@ export class EditorComponent implements AfterViewInit {
 
   save() {
     console.log(this.input);
-    this.input = this.editor.value;
-    this.output = this.lang;
+    // this.input = this.editor.value;
+    // this.output = this.lang;
+    this._fileService.updatefile(this.fileid, this.editor.value);
   }
 
   run() {

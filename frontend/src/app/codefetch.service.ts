@@ -16,6 +16,7 @@ export class CodefetchService {
   private codeURL = API.ServerURL + API.ReadFile;
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
+  private updateURL = API.ServerURL + API.UpdateFile;
   constructor(private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
   
   handleError(error: HttpErrorResponse) {
@@ -58,6 +59,20 @@ export class CodefetchService {
     )
   }
 
+  updatefile(id: string, data: string): any {
+    return this.http.post(this.updateURL, {file_id: id, data: data}).pipe(
+      catchError(this.handleError)
+    ).subscribe(
+      _data => {
+        if(_data["success"]==false) {
+          this.handleError(_data["message"])
+        }
+        else {
+        console.log(_data["message"])
+        }
+    }
+    )
+  }
   deletefile(id: string): any{
     console.log(id)
     return this.http.post(this.deleteUrl, {file_id: id}).pipe(
