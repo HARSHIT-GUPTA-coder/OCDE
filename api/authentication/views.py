@@ -10,9 +10,10 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-import os
+import os, subprocess
 
-PARENT_DIR = "./files"
+PARENT_DIR = "../files"
+MOUNTED_PARENT = "../files2"
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
@@ -59,7 +60,7 @@ def RegisterUser(request):
             try:
                 uname = form.cleaned_data.get('username')
                 pwd = form.cleaned_data.get('password1')
-                os.mkdir(PARENT_DIR + "/" + uname)      # Directory name is same as username
+                subprocess.run("../new_user.sh " + str(uname), shell = True)
                 form.save()
                 user = authenticate(username=uname, password=pwd)
                 try:

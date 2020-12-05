@@ -15,13 +15,13 @@ def get_output(config):
 	filename = config['filename']
 	user = config['username']
 	filepath = config['relative_path']
-	code_file = "." + filepath + filename
+	code_file = "../../files2" + filepath + filename
 
 	temp_length = 7
 	exec_file = get_random_string(temp_length)
 	input_file = get_random_string(temp_length)
 
-	exec_file = "." + filepath + exec_file + ".out"
+	exec_file = "../../files2" + filepath + exec_file + ".out"
 
 	with open(input_file, "w") as f:
 		f.write(input_data)
