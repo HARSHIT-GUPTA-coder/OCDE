@@ -91,6 +91,7 @@ export class CodefetchService {
           this.toastrService.show(_data["message"], "Error", {status})
         }
         else {
+          window.location.reload();
         console.log(_data)
         }
       }
