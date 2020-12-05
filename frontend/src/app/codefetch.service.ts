@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
+import { CodestoreService } from './codestore.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class CodefetchService {
   private createURL = API.ServerURL + API.CreateFile;
   private codeURL = API.ServerURL + API.ReadFile;
   private deleteUrl = API.ServerURL + API.DeleteFile;
-  constructor(private http: HttpClient) { }
+  private folderURL = API.ServerURL + API.GetFolders;
+  constructor(private http: HttpClient, private _codestore: CodestoreService, private router: Router) { }
   
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -26,7 +29,7 @@ export class CodefetchService {
   }
   
   getFileList(): any {
-    return this.http.get<TreeNode<fileInterface>[]>(this.structURL)
+    return this.http.get(this.structURL)
     .pipe(
       catchError(this.handleError)
     )
@@ -36,7 +39,7 @@ export class CodefetchService {
     let params = new HttpParams().set("file_id",id);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(this.codeURL,{headers: headers, params: params}).pipe(
+    return this.http.post(this.codeURL,{file_id: id}).pipe(
       catchError(this.handleError)
     ).subscribe(
       _data => {
@@ -44,8 +47,9 @@ export class CodefetchService {
           this.handleError(_data["message"])
         }
         else {
-        // window.location.reload();
-        console.log(_data)
+          this._codestore.setcode(id, _data["data"]);
+          this.router.navigateByUrl('/dashboard/editor')
+          console.log(_data)
         }
       }
     )
@@ -90,4 +94,10 @@ export class CodefetchService {
       )
   }
 
+  getFolder() {
+    return this.http.get(this.folderURL)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
 }

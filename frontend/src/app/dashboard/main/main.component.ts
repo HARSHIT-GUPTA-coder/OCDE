@@ -65,12 +65,14 @@ export class MainComponent implements OnInit{
     // })
     const dialog = this._dialogService.open(NewfiledialogComponent).onClose.subscribe(
       data => {
-        this._fileService.createFile("-1",data[0],data[1]);
+        this._fileService.createFile(data[2],data[0],data[1]);
         console.log(data[2]);
       }
     )
   }
   onClick(s, dialog: TemplateRef<any>) {
+    console.log(s)
+    if(s.data.is_file==false) return false;
     this._dialogService.open(dialog).onClose.subscribe(
       data => {
         console.log(data)
@@ -84,6 +86,7 @@ export class MainComponent implements OnInit{
         }
       }
     )
+    return false;
   }
   getShowOn(index: number) {
       const minWithForMultipleColumns = 125;
@@ -99,7 +102,8 @@ export class MainComponent implements OnInit{
 @Component({
   selector: 'nb-fs-icon',
   template: `
-    <nb-icon icon="folder-outline" *ngIf="isDir()"></nb-icon>
+    <nb-icon icon="folder-outline" *ngIf="isDir() && expanded===true"></nb-icon>
+    <nb-icon icon="folder" *ngIf="isDir() && expanded===false"></nb-icon>
     <nb-tree-grid-row-toggle [expanded]="expanded" *ngIf="isDir(); else fileIcon">
     </nb-tree-grid-row-toggle>
     <ng-template #fileIcon>

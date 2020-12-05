@@ -10,5 +10,6 @@ export const API = {
     CreateFile: '/api/create-file/',
     ReadFile: '/api/read-file/',
     DeleteFile: '/api/delete-file/',
-    UpdateFile: '/api/update-file/'
+    UpdateFile: '/api/update-file/',
+    GetFolders: '/api/get-folders/',
 };

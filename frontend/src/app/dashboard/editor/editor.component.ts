@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { NbIconConfig, NbMenuItem, NbMenuService, NbSidebarService } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
+import { CodestoreService } from 'src/app/codestore.service';
 import { fileInterface, TreeNode } from 'src/app/fileInterface';
 import { CodeService } from '../../code-compile-service.service';
 import { code_interface, output_interface} from '../../code_interface';
@@ -18,8 +19,10 @@ export class EditorComponent implements AfterViewInit {
   lang = "python";
   status:string= "Run after passing in input";
   code_data: code_interface;
+  code = this._codestore.getcode();
+
   @ViewChild('editor') editor;
-  constructor(private sidebarService: NbSidebarService, private _codeService: CodeService, private menuService: NbMenuService, private _fileservice: CodefetchService){}
+  constructor(private _codestore: CodestoreService,private sidebarService: NbSidebarService, private _codeService: CodeService, private menuService: NbMenuService, private _fileservice: CodefetchService){}
 
   ngAfterViewInit() {
     this._fileservice.getFileList().subscribe(
@@ -29,9 +32,8 @@ export class EditorComponent implements AfterViewInit {
         }
         }
       );
-
     this.sidebarService.expand('code')
-
+    
     this.editor.getEditor().setOptions({
       showLineNumbers: true,
       tabSize: 2,
@@ -50,6 +52,8 @@ export class EditorComponent implements AfterViewInit {
  
       }
     })
+
+    this.editor.value = this.code;
   }
   get language(){
     return this.lang;
@@ -62,6 +66,7 @@ export class EditorComponent implements AfterViewInit {
       this.editor.mode = val;
     this.lang = val;
   }
+
   getValue() {
     console.log(this.editor.value)
     console.log(eval(this.editor.value));
@@ -72,7 +77,6 @@ export class EditorComponent implements AfterViewInit {
     console.log(this.input);
     this.input = this.editor.value;
     this.output = this.lang;
-    
   }
 
   run() {
