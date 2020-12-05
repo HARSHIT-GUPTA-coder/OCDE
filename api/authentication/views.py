@@ -51,7 +51,7 @@ def GetDetails(request):
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@authentication_classes((TokenAuthentication, ))
+@authentication_classes(())
 @permission_classes(())
 def RegisterUser(request):
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def RegisterUser(request):
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@authentication_classes((TokenAuthentication, ))
+@authentication_classes(())
 @permission_classes(())
 def LoginUser(request):
     if request.method == 'POST':
