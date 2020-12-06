@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap');
 .cover {
     background-image: url("../../assets/coverback.jpg");
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .head {
@@ -37,4 +39,54 @@
 .particles {
     height: 100%;
     width: 100%;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+.section-head {
+    font-size: 53px;
+    font-family: Audiowide;
+    line-height: 60px;
+    margin: 40px;
+}
+
+nb-card-header {
+    font-size: 25px;
+    font-family: Roboto;
+}
+
+nb-card-body {
+    font-size: 17px;
+    font-family: JetBrainsMono;
+    line-height: 25px;
+}
+
+.card-row {
+    display: flex;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.card-col {
+    flex: 1 0 calc(50% - 1rem);
+    margin: 0 0.5rem;
+}
+
+.document {
+    text-align: justify;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }

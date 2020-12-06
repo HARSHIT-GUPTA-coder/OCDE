@@ -1,21 +1,109 @@
-<div class="cover">
-    <div id="particles-js" class="particles"></div>
-    <div class="head">
-        <div class="title">
-            OCDE
+<nb-layout windowMode>
+
+    <nb-layout-header fixed>
+        <div class="row" style="width:100%; vertical-align: middle;">
+            <h3 class="col-10" style="margin:0">
+                OCD-E
+            </h3>
+            <!-- <div class="col-2 float-right" style="position: relative;">
+                <div style="position: absolute; left: 50%;top: 50%; transform: translate(-50%,-50%);">
+                    <a style="display: inline; margin-right: 10px; text-decoration: none;" routerLink="/">
+                        <h6 style="display: inline;" class="ptr">Home</h6>
+                    </a>
+                    <h6 style="display: inline; margin-left: 10px;" (click)="logout()" class="ptr">Logout</h6>
+                </div>
+            </div> -->
         </div>
-        <br>
-        <div class="subtitle">
-            Online Coding and Development Environment
+
+    </nb-layout-header>
+    <nb-layout-column>
+        <div class="cover">
+            <div id="particles-js" class="particles"></div>
+            <div class="head">
+                <div class="title">
+                    OCDE
+                </div>
+                <br>
+                <div class="subtitle">
+                    Online Coding and Development Environment
+                </div>
+                <div class="flexbox">
+                    <button nbButton status="primary" style="margin: 20px 0px 10px 0px; width: 50%;">Register</button><br>
+                    <button nbButton status="success" style="margin: 10px 0px; width: 50%;">Log In</button><br>
+                    <button nbButton status="warning" style="margin: 10px 0px; width: 50%;">Go to Docs!</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles> -->
-</div>
-<nb-layout>
+        <div class="flexbox">
+            <div class="section-head">
+                What we provide...
+            </div>
+            <nb-card accent="primary">
+                <nb-card-header>Store Files</nb-card-header>
+                <nb-card-body>
+                    Server Storage of your files!! The storage is very similar to your personal device with no restrictions(except for the total size of files. We have a tiny server :(). We provide a very beautiful UI for you to access your files, manage them and work with
+                    them.
+                    <!-- add image -->
+                </nb-card-body>
+            </nb-card>
+            <nb-card accent="success">
+                <nb-card-header style="text-align: right;">Live Editor</nb-card-header>
+                <nb-card-body>
+                    Want to try out new languages but don't have a linux system? We have got you covered. We have an integrated editor which allows you to not only write code but also save, run and test it online. The editor has support for major languages like C++, Python,
+                    Bash and Haskell. The editor can perform basic syntax highlighting which greatly helps in writing code.
+                </nb-card-body>
+            </nb-card>
+            <nb-card accent="warning">
+                <nb-card-header>Complete Isolation</nb-card-header>
+                <nb-card-body>
+                    Our unique isolation algorithm prevents other systems and users to read the files of another users. This means the user has complete privacy and full rights. The system is robust against attacks related to changing files on the server. Though, we don't
+                    take any responsibilities of your files. You can do anything with your files including deleting them, modifying them etc.
+                </nb-card-body>
+            </nb-card>
+            <nb-card accent="danger">
+                <nb-card-header style="text-align: right;">Competing Environment</nb-card-header>
+                <nb-card-body>
+                    Try out your coding skills in our competing arena. There are a lot of challenging problems available which are updated timely. Write your code, test it on our system and submit. Try and reach the top of the leaderboard. What are you waiting for? Remember,
+                    the clock is ticking!
+                </nb-card-body>
+            </nb-card>
+            <div class="section-head">
+                Documentation
+            </div>
+        </div>
+        <div class="card-row">
+            <div class="card-col">
+                <nb-card class="document" size="small" status="primary">
+                    <nb-card-header>API Documentation</nb-card-header>
+                    <nb-card-body>
+                        <div class="center">
+                            Want to use our code compilation and storage API in you million dollar idea? Read this documentation to know more about our API.<br>
+                            <button nbButton status="primary" style="margin: 20px 0px;">API Documentation</button>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+
+            <div class="card-col">
+                <!-- Card status: basic, primary, info, success, warning, danger, control -->
+                <nb-card class="document" size="small" status="success">
+                    <nb-card-header>Front End Documentation</nb-card-header>
+                    <nb-card-body>
+                        <div class="center">
+                            The front end is built using AngularJs and Nebular along with tons of other libraries for different tasks. To know about the various component and services, refer to our front end Documentation.
+                            <button nbButton status="success" style="margin: 20px 0px;">Front End Documentation</button>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>
+<!-- <nb-layout>
     <nb-layout-column>
         <div style="text-align: center;">
             <h2>OCD-E</h2>
-            <!-- <img src="assets/editor.jpg" height="100vh"> -->
+             <img src="assets/editor.jpg" height="100vh"> 
             <p>OCD-E is a fully featured cloud based IDE supporting several popular languages along with your own server space for storage of your code.</p>
             <button nbButton status="primary" routerLink="/auth/register">Register!</button>
 
@@ -23,4 +111,4 @@
             <button nbButton status="primary">API Documentation</button>
         </div>
     </nb-layout-column>
-</nb-layout>
+</nb-layout> -->
