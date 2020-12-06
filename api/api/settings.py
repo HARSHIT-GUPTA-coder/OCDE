@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'authentication',
     'compilation',
     'fileHandling',
+    'competing',
 ]
 
 MIDDLEWARE = [
