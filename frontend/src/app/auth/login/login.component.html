@@ -1,19 +1,5 @@
 <h1 id="title" class="title">Sign In</h1>
 
-<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
-  <p class="alert-title"><b>Oh snap!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
-  </ul>
-</nb-alert>
-
-<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
-  <p class="alert-title"><b>Hooray!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
-  </ul>
-</nb-alert>
-
 <form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
 
   <div class="form-control-group">
@@ -29,7 +15,7 @@
            [status]="username.dirty ? (username.invalid  ? 'danger' : 'success') : 'basic'"
            [required]="getConfigValue('forms.validation.username.required')"
            [attr.aria-invalid]="username.invalid && username.touched ? true : null">
-    <ng-container *ngIf="username.invalid && username.touched">
+    <ng-container *ngIf="username.touched">
       <p class="caption status-danger" *ngIf="username.errors?.required">
         Username is required!
       </p>
@@ -56,7 +42,7 @@
         Password is required!
       </p>
       <p class="caption status-danger" *ngIf="(password.errors?.minlength || password.errors?.maxlength)">
-        Password should contains
+        Password should contain
         from {{ getConfigValue('forms.validation.password.minLength') }}
         to {{ getConfigValue('forms.validation.password.maxLength') }}
         characters

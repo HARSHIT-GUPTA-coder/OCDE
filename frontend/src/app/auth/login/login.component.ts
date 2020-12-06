@@ -3,6 +3,7 @@ import { NbLoginComponent, NbAuthService, NB_AUTH_OPTIONS } from '@nebular/auth'
 import { LoginForm, User } from '../../UserDetails';
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
+import { NbComponentStatus, NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class LoginComponent extends NbLoginComponent {
   returndata: User;
 
   constructor(private api: ApiService, public router: Router, service: NbAuthService,
-    @Inject(NB_AUTH_OPTIONS) options: {}, cd: ChangeDetectorRef, rt: Router) {
+    @Inject(NB_AUTH_OPTIONS) options: {}, cd: ChangeDetectorRef, rt: Router, private toastrService: NbToastrService) {
       super(service, options, cd, router);
   }
 
@@ -27,7 +28,11 @@ export class LoginComponent extends NbLoginComponent {
         }
       },
       error => {
-        console.log(error);
+        // console.log(error);
+        // this.errorMsg = error.error.message;
+        // this.errorOcc = true;
+        let status: NbComponentStatus = "danger";
+        this.toastrService.show(error.error.message, "Error", {status});
       });
   }
 }
