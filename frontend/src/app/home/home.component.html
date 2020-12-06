@@ -30,7 +30,7 @@
                 <div class="flexbox">
                     <button nbButton status="primary" style="margin: 20px 0px 10px 0px; width: 50%;">Register</button><br>
                     <button nbButton status="success" style="margin: 10px 0px; width: 50%;">Log In</button><br>
-                    <button nbButton status="warning" style="margin: 10px 0px; width: 50%;">Go to Docs!</button>
+                    <button nbButton status="warning" style="margin: 10px 0px; width: 50%;" (click)="scroll(documentation)">Go to Docs!</button>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                     the clock is ticking!
                 </nb-card-body>
             </nb-card>
-            <div class="section-head">
+            <div class="section-head" #documentation>
                 Documentation
             </div>
         </div>
