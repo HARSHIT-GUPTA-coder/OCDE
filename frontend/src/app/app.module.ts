@@ -1,3 +1,4 @@
+import { ProblemComponent } from './dashboard/problem/problem.component';
 import { CompetingComponent } from './dashboard/competing/competing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component'
     DashboardComponent,
     MainComponent,
     CompetingComponent,
+    ProblemComponent,
     FsIconComponent,
     FilelistComponent,
     NewfiledialogComponent

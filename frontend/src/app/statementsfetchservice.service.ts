@@ -10,7 +10,8 @@ import { API } from '../API';
 })
 export class statementsFetchService {
 
-  problemsURL = API.ServerURL + API.GetProblems;;
+  problemsURL = API.ServerURL + API.GetProblems;
+  problemURL = API.ServerURL + API.GetProblem;
 
   constructor(public toastrService: NbToastrService, private http: HttpClient) { }
 
@@ -35,7 +36,10 @@ export class statementsFetchService {
     )
   }
 
-  getProblemStatement(): any {
+  getProblemStatement(pid): any {
+    return this.http.post(this.problemURL, {id: pid}).pipe(
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
+    )
 
   }
 }
