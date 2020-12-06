@@ -18,6 +18,7 @@ import { CodeService } from './code-compile-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
 import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component';
+// import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component'
     NewfiledialogComponent
   ],
   imports: [
+    // ParticlesModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
