@@ -46,3 +46,12 @@ button[nbTreeGridRowToggle] {
     margin: 10px;
     text-align: center;
 }
+.selected {
+    background-color: rgb(237, 241, 247);
+    color: black;
+}
+.no-pad, .sh-context-menu--item, .sh-context-menu {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}

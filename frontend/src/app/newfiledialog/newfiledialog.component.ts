@@ -13,7 +13,7 @@ import { CodefetchService } from '../codefetch.service';
         <label class="name-label" for="name">Name:</label>
         <input class="input" #name nbInput id="name" placeholder="Name">
         <br>
-        <nb-checkbox (checkedChange)="toggle($event)">Is this a file?</nb-checkbox>
+        <nb-checkbox (checkedChange)="toggle($event)">This is a folder</nb-checkbox>
         <br>
         <nb-select #parent placeholder="Select Parent Directory" [(selected)]="dir" style="width: 200px;">
           <nb-option *ngFor="let folder of dirList" value="{{folder.file_id}}">{{folder.relative_location}}{{folder.filename}}</nb-option>
@@ -30,9 +30,10 @@ import { CodefetchService } from '../codefetch.service';
 export class NewfiledialogComponent implements OnInit{
 
   constructor(protected ref: NbDialogRef<NewfiledialogComponent>, private _fileService: CodefetchService) {}
-  dir = "";
+  par: string;
+  dir: string;
   dirList = [];
-  checked = false;
+  checked = true;
 
   ngOnInit(): void {
     this._fileService.getFolder().subscribe(
@@ -49,12 +50,14 @@ export class NewfiledialogComponent implements OnInit{
           console.log(_data["data"])
           this.dirList.push(..._data["data"]);
         }
+        this.dir = this.par;
+        console.log(this.dir);
       }
     );
   }
 
   toggle(checked: boolean) {
-    this.checked = checked;
+    this.checked = !checked;
   }
 
   cancel() {

@@ -2,6 +2,8 @@
 @import '~@nebular/auth/styles/all';
 @import '~@nebular/theme/styles/globals';
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "~@angular/cdk/overlay-prebuilt.css";
+
 @include nb-install() {
     @include nb-theme-global();
     @include nb-auth-global();
@@ -19,4 +21,13 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.sh-context-menu--item, .sh-context-menu {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+.sh-context-menu--item:hover, .sh-context-menu:hover {
+    background: none !important;
 }

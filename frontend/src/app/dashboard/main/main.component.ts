@@ -1,48 +1,77 @@
-
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
-import { NbSidebarService, NbDialogService } from '@nebular/theme';
+import { NbMenuService, NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { NbSidebarService, NbDialogService, NbMenuItem } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
 import { fileInterface,TreeNode } from 'src/app/fileInterface';
 import { NewfiledialogComponent } from 'src/app/newfiledialog/newfiledialog.component';
+import { RenamefileDialog } from 'src/app/renamefiledialog/renamefiledialog.component';
 @Component({
   selector: 'app-main-view',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit{
-  customColumn = 'id';
-  defaultColumns = ['name', 'size', 'items' ];
+  customColumn = 'name';
+  defaultColumns = ['size', 'items' ];
   allColumns = [ this.customColumn, ...this.defaultColumns ];
+  activeFileID = -1;
+  activeFileName = '';
+
+  // For right click menu
+  items: NbMenuItem[];
 
   dataSource: NbTreeGridDataSource<fileInterface>;
+
+  rightClickedRow: any;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
   private data: TreeNode<fileInterface>[] = [];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>, private sidebarService: NbSidebarService, private _fileService: CodefetchService, private router: Router, private _dialogService: NbDialogService) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>,
+              private sidebarService: NbSidebarService,
+              private _fileService: CodefetchService,
+              private router: Router,
+              private _dialogService: NbDialogService,
+              private menu: NbMenuService) {
+      
+        menu.onItemClick().subscribe(async x => {
+          var action = x.item.title.substring(0, 3);
+          if (action == 'Ope')
+            this._fileService.readfile(this.activeFileID.toString());
+          else if (action == 'Del') {
+            if(await this._fileService.deletefile(this.activeFileID.toString()))
+              this.refreshFileStructure();
+          }
+          else if (action == 'New') {
+            this.newFile(this.activeFileID);
+          }
+          else if (action == "Ren") {
+            this.renameFile(this.activeFileID);
+          }
+        });
   }
-  ngOnInit(): void {
-    this.sidebarService.collapse('code')
+  refreshFileStructure(): void {
+    this.sidebarService.collapse('code');
     this._fileService.getFileList().subscribe(
       _data => {
-        console.log(_data);
         if(_data["success"]==false) {
           this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
-          console.log("success");
-          console.log(_data["structure"] as TreeNode<fileInterface>[])
           this.data =  _data["structure"] as TreeNode<fileInterface>[];
-          console.log(this.data)
           this.dataSource = this.dataSourceBuilder.create(this.data);
         }
+      }, error => {
+        this._fileService.handleError(error,this._fileService.toastrService);
       }
     );
-    }
+  }
+  ngOnInit(): void {
+    this.refreshFileStructure();
+  }
 
   updateSort(sortRequest: NbSortRequest): void {
     this.sortColumn = sortRequest.column;
@@ -56,39 +85,81 @@ export class MainComponent implements OnInit{
     return NbSortDirection.NONE;
   }
 
-  newFile() {
-    console.log("newfile")
-    this._dialogService.open(NewfiledialogComponent).onClose.subscribe(
-      data => {
-        this._fileService.createFile(data[2],data[0],data[1]);
-        console.log(data[2]);
+  newFile(par: number) {
+    // console.log("newfile")
+    this._dialogService.open(NewfiledialogComponent, {context: {par: par.toString()}}).onClose.subscribe(
+      async data => {
+        if (data) {
+          if (await this._fileService.createFile(data[2],data[0],data[1]))
+            this.refreshFileStructure();
+        }
+        // console.log(data[2]);
+      }
+    )
+  }
+  renameFile(par: number) {
+    this._dialogService.open(RenamefileDialog, {context: {oldname: this.activeFileName}}).onClose.subscribe(
+      async data => {
+        if (data) {
+          if (await this._fileService.renamefile(par.toString(), data))
+            this.refreshFileStructure();
+        }
       }
     )
   }
 
-  onSingleCick(s,dialog: TemplateRef<any>) {
-    if(s.data.is_file==false) return false;
-    this.onClick(s,dialog)
+  onSingleCick(s) {
+    this.activeFileID = s.data.id;
+    this.activeFileName = s.data.name;
   }
 
-  onClick(s, dialog: TemplateRef<any>) {
-    console.log(s)
-    // if(s.data.is_file==false) return false;
-    this._dialogService.open(dialog).onClose.subscribe(
-      data => {
-        console.log(data)
-        if(data==1) {
-            //open file
-            this._fileService.readfile(s.data.id);
-        }
-        else if(data==2) {
-          //delete 
-          this._fileService.deletefile(s.data.id);
-        }
-      }
-    )
-    return false;
+  onRightClick(s) {
+    this.activeFileID = s.data.id;
+    this.activeFileName = s.data.name;
+    this.rightClickedRow = s.data;
+    if (s.data.is_file) {
+      this.items = [
+        {
+          title: 'Open File',
+          icon: { icon: 'file-text-outline', pack: 'eva' },
+        },
+        {
+          title: 'Rename File',
+          icon: { icon: 'edit-2-outline', pack: 'eva' },
+        },
+        {
+          title: 'Delete File',
+          icon: { icon: 'trash-2-outline', pack: 'eva' },
+        },
+      ];
+    }
+    else {
+      this.items = [
+        {
+          title: 'New File/Folder',
+          icon: { icon: 'file-add-outline', pack: 'eva' },
+        },
+        {
+          title: 'Rename Folder',
+          icon: { icon: 'edit-2-outline', pack: 'eva' },
+        },
+        {
+          title: 'Delete Folder',
+          icon: { icon: 'trash-2-outline', pack: 'eva' },
+        },
+      ];
+    }
   }
+
+  onClick(s) {
+    this.activeFileID = s.data.id;
+    this.activeFileName = s.data.name;
+    if (s.data.is_file)
+      this._fileService.readfile(s.data.id);
+    else
+      this.onRightClick(s);
+  }
+
   getShowOn(index: number) {
       const minWithForMultipleColumns = 125;
       const nextColumnStep = 125;
@@ -96,8 +167,18 @@ export class MainComponent implements OnInit{
       return minWithForMultipleColumns + (nextColumnStep * index);
   }
 
-  deleteFile() {
-    
+  displayValue(val: any, field: string, is_file: boolean) : any {
+    if (field == 'items') {
+      if (is_file) return '-';
+      return val;
+    }
+    if (field == 'size') {
+      val = parseInt(val);
+      if (val >= 1000000000) return (val/1000000000) + ' GB';
+      if (val >= 1000000) return (val/1000000) + ' MB';
+      if (val >= 1000) return (val/1000) + ' KB';
+      return val + ' B';
+    }
   }
 }
 @Component({

@@ -6,7 +6,9 @@ import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
 import { CodestoreService } from './codestore.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NbToastrService, NbComponentStatus } from '@nebular/theme';
+import { NbToastrService, NbComponentStatus, NbDialogService } from '@nebular/theme';
+import { map } from 'rxjs/internal/operators';
+import { ConfirmDialog } from './confirmdialog/confirmdialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,12 @@ export class CodefetchService {
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
   private updateURL = API.ServerURL + API.UpdateFile;
-  constructor(public toastrService: NbToastrService, private http: HttpClient, private _codestore: CodestoreService, private router: Router, private activerouter: ActivatedRoute) { }
+  constructor(public toastrService: NbToastrService,
+              private http: HttpClient,
+              private _codestore: CodestoreService,
+              private router: Router,
+              private activerouter: ActivatedRoute,
+              private _dialogService: NbDialogService) { }
   
   handleError(error: HttpErrorResponse, tserve: NbToastrService) {
     let status: NbComponentStatus ="danger";
@@ -55,10 +62,8 @@ export class CodefetchService {
         }
         else {
           this._codestore.setcode(id, _data["data"]);
-          console.log(id)
-          this.router.navigate(['/dashboard/editor', {id: id}])
-          // window.location.
-          // console.log(_data)
+          // console.log(id);
+          this.router.navigate(['/dashboard/editor', {id: id}]);
         }
       }
     )
@@ -70,54 +75,77 @@ export class CodefetchService {
     ).subscribe(
       _data => {
         if(_data["success"]==false) {
-          this.handleError(_data["message"], this.toastrService)
+          this.handleError(_data["message"], this.toastrService);
         }
         else {
-        console.log(_data["message"])
+        console.log(_data["message"]);
         }
     }
     )
   }
-  deletefile(id: string): any{
-    console.log(this.toastrService)
-    console.log(id)
-    return this.http.post(this.deleteUrl, {file_id: id}).pipe(
+  renamefile(id: string, name: string): Promise<any> {
+    return this.http.post(this.updateURL, {file_id: id, filename: name}).pipe(
       catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
-    ).subscribe(
+    ).pipe(map(
       _data => {
         if(_data["success"]==false) {
-          this.handleError(_data["message"], this.toastrService)
-          let status:NbComponentStatus = "danger";
-          this.toastrService.show(_data["message"], "Error", {status})
+          this.handleError(_data["message"], this.toastrService);
+          return false;
         }
         else {
-          window.location.reload();
-        console.log(_data)
+          // window.location.reload();
+          console.log(_data["message"]);
+          return true;
         }
+    }
+    )).toPromise();
+  }
+  deletefile(id: string): Promise<any> {
+    return this._dialogService.open(ConfirmDialog, {context: "d"}).onClose.pipe(map(res => {
+      if (res) {
+        return this.http.post(this.deleteUrl, {file_id: id}).pipe(
+          catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
+        ).pipe(map(_data => {
+            if(_data["success"]==false) {
+              this.handleError(_data["message"], this.toastrService);
+              let status:NbComponentStatus = "danger";
+              this.toastrService.show(_data["message"], "Error", {status});
+              return false;
+            }
+            else {
+              // window.location.reload();
+              console.log(_data);
+              return true;
+            }
+          }
+        )).toPromise();
       }
-    )
+      else {
+        return false;
+      }
+    })).toPromise();
   }
 
-  createFile(parent: string, name: string, isFile: boolean) {
+  createFile(parent: string, name: string, isFile: boolean): Promise<any> {
       var data = {
         'filename': name,
         'parent': parent,
         'is_file': isFile,
 
       }
-      this.http.post(this.createURL,data).pipe(
+      return this.http.post(this.createURL,data).pipe(
         catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
-      ).subscribe(
-        _data => {
-          if(_data["success"]==false) {
-            this.handleError(_data["message"], this.toastrService)
-          }
-          else {
-          window.location.reload();
-          console.log(_data)
-          }
+      ).pipe(map(_data => {
+        if(_data["success"]==false) {
+          this.handleError(_data["message"], this.toastrService);
+          return false;
         }
-      )
+        else {
+        // window.location.reload();
+          console.log(_data);
+          return true;
+        }
+      })).toPromise();
   }
 
   getFolder() {
@@ -127,3 +155,10 @@ export class CodefetchService {
     )
   }
 }
+// export interface FileAPI {
+//   success?: boolean;
+//   message?: string;
+//   size?: any;
+//   file_id?: any;
+//   data?: any;
+// }

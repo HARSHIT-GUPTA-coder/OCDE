@@ -17,6 +17,9 @@ import { CodeService } from './code-compile-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
 import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component';
+import { ShContextMenuModule } from 'ng2-right-click-menu'
+import { ConfirmDialog } from './confirmdialog/confirmdialog.component';
+import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component'
     MainComponent,
     FsIconComponent,
     FilelistComponent,
-    NewfiledialogComponent
+    NewfiledialogComponent,
+    ConfirmDialog,
+    RenamefileDialog
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component'
     NbIconModule,
     NbSelectModule,
     NbTreeGridModule,
+    ShContextMenuModule,
     NbInputModule,
     NbToastrModule.forRoot(),
     NbMenuModule.forRoot(),

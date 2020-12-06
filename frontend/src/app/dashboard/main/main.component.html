@@ -3,7 +3,7 @@
 
         <label class="search-label" for="search">Search:</label>
         <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
-        <button nbButton style="float: right; cursor:pointer" (click)="newFile()">
+        <button nbButton style="float: right; cursor:pointer" (click)="newFile(-1)">
             <nb-icon icon="plus-outline"></nb-icon>
             New File
         </button>
@@ -16,7 +16,12 @@
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
                     {{customColumn}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row, dialog)" (click)="onSingleCick(row,dialog)">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row"
+                    (dblclick)="onClick(row)"
+                    (click)="onSingleCick(row)"
+                    [ngClass]="{'selected': row.data.id == activeFileID}"
+                    (contextmenu) = "onRightClick(row)"
+                    [shAttachMenu]="menu">
                     <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
                     {{row.data[customColumn]}}
                 </td>
@@ -26,20 +31,28 @@
                 <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
                     {{column}}
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row, dialog)" (click)="onSingleCick(row,dialog)">{{row.data[column] || '-'}}</td>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row"
+                    (dblclick)="onClick(row)"
+                    (click)="onSingleCick(row)"
+                    (contextmenu) = "onRightClick(row)"
+                    [ngClass]="{'selected': row.data.id == activeFileID}"
+                    [shAttachMenu]="menu">
+                    {{displayValue(row.data[column], column, row.data.is_file)}}
+                </td>
             </ng-container>
         </table>
 
     </nb-card-body>
 </nb-card>
 
-<ng-template #dialog let-ref="dialogRef">
-    <nb-card>
-        <nb-card-header>Choose Action</nb-card-header>
-        <nb-card-body>
-            <!-- <button nbButton class="dialog" status="primary" (click)="ref.close(0)">Close Dialog</button> <br> -->
-            <button nbButton class="dialog" status="success" (click)="ref.close(1)">Open File</button> <br>
-            <button nbButton class="dialog" status="danger" (click)="ref.close(2)">Delete File</button> <br>
-        </nb-card-body>
-    </nb-card>
-</ng-template>
+<!-- Right click menu-->
+<sh-context-menu class = "no-pad" #menu>
+    <ng-template class = "no-pad" shContextMenuItem>
+      <!-- <div>
+        Menu Item - 1
+      </div> -->
+      <nb-card class = "no-pad">
+      <nb-menu [items]="items">
+        </nb-menu></nb-card>
+    </ng-template>
+  </sh-context-menu>
