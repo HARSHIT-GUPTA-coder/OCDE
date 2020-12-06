@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     particlesJS.load('particles-js', 'assets/particles.json', function() {
       console.log('callback - particles.js config loaded');
+      let el = document.querySelector(".particles-js-canvas-el"); 
+      // el.setAttribute("height", "100%");
     });
     this.myStyle = {
       'position': 'fixed',
