@@ -60,7 +60,7 @@ def RegisterUser(request):
             try:
                 uname = form.cleaned_data.get('username')
                 pwd = form.cleaned_data.get('password1')
-                subprocess.run("sudo ../new_user.sh " + str(uname), shell = True)
+                subprocess.run("sudo ./new_user.sh " + str(uname), shell = True)
                 form.save()
                 user = authenticate(username=uname, password=pwd)
                 try:
