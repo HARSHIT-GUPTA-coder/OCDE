@@ -201,6 +201,17 @@ def DeleteFile(request):
     
     return Response({"success":False, "message": "Make a POST request."}, status=status.HTTP_400_BAD_REQUEST)
 
+def RecursiveRename(fid, par_location):
+    try:
+        f = File.objects.get(file_id = fid)
+        f.relative_location = par_location
+        f.save()
+        if not f.is_file:
+            for c in f.children:
+                RecursiveRename(c, par_location + f.filename + '/')
+    except:
+        pass
+
 # POST requests contains file_id, filename, data
 # If filename or data is absent, they will not be updated, otherwise they will be overwritten
 @api_view(['POST'])
@@ -238,6 +249,9 @@ def UpdateFile(request):
                     os.rename(filepath + requested_file.filename, filepath + filename)
                     requested_file.filename = filename
                     requested_file.save()
+                    if not requested_file.is_file:
+                        for c in requested_file.children:
+                            RecursiveRename(c, requested_file.relative_location + requested_file.filename + '/')
 
             if data != -1:
                 filepath += requested_file.filename
