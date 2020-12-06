@@ -13,7 +13,8 @@ def compilation_view(request):
 	if request.method == "GET":
 		return Response({"success":False, "output": "Please do a POST request"})
 	else:
-		data = request.data.dict()
+		data = request.data
+		print (data)
 		fid = data['file_id']
 		file = File.objects.filter(file_id = fid, owner = request.user)
 		if file.exists():

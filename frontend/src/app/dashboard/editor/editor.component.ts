@@ -5,6 +5,8 @@ import { CodefetchService } from 'src/app/codefetch.service';
 import { CodestoreService } from 'src/app/codestore.service';
 import { ConnectpartService } from 'src/app/connectpart.service';
 import { fileInterface, TreeNode } from 'src/app/fileInterface';
+import { User } from 'src/app/UserDetails';
+import { ApiService } from '../../api.service';
 import { CodeService } from '../../code-compile-service.service';
 import { code_interface, output_interface} from '../../code_interface';
 // import { threadId } from 'worker_threads';
@@ -15,19 +17,23 @@ import { code_interface, output_interface} from '../../code_interface';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements AfterViewInit {
-  input="";
-  output="";
-  cli="";
-  lang = "python";
-  status:string= "Run after passing in input";
+  user: User;
+  input='';
+  output='';
+  cli='';
+  lang = 'python';
+  status:string= 'Run after passing in input';
   code_data: code_interface;
   code = this._codestore.getcode();
-  fileid = "";
+  fileid = '';
   @ViewChild('editor') editor;
-  constructor(private location: Router,private _fileService: CodefetchService ,private _codestore: CodestoreService,private sidebarService: NbSidebarService, private _codeService: CodeService, private _connect: ConnectpartService, private _route : ActivatedRoute){}
+  constructor(private location: Router,private api: ApiService, private _fileService: CodefetchService ,private _codestore: CodestoreService,private sidebarService: NbSidebarService, private _codeService: CodeService, private _connect: ConnectpartService, private _route : ActivatedRoute){}
 
   ngAfterViewInit() {
     // console.log(this._codestore.getid());
+    this.api.getDetails().subscribe(
+      user => this.user = user
+    );
     this.fileid = this._route.snapshot.paramMap.get('id');
     console.log(this.fileid);
     this.editor.getEditor().setOptions({
@@ -37,30 +43,30 @@ export class EditorComponent implements AfterViewInit {
       enableBasicAutocompletion: true
     });
 
-    this.editor.setTheme("dracula");
-   
-    this.editor.mode = "python";
+    this.editor.setTheme('dracula');
+
+    this.editor.mode = 'python';
 
     this.editor.getEditor().commands.addCommand({
-      name: "showOtherCompletions",
-      bindKey: "Ctrl-.",
+      name: 'showOtherCompletions',
+      bindKey: 'Ctrl-.',
       exec: function (editor) {
- 
+
       }
     })
-    
+
     // this.location.onUrlChange(this.changeFile);
     // this.location.events.subscribe(this.changeFile)
-    if(typeof this._codestore.getid() == "undefined"){
+    if(typeof this._codestore.getid() == 'undefined'){
       this._fileService.readfiledata(this.fileid).subscribe(
         _data => {
-          if(_data["success"]==false) {
-            this._fileService.handleError(_data["message"],this._fileService.toastrService);
+          if(_data['success']==false) {
+            this._fileService.handleError(_data['message'],this._fileService.toastrService);
           }
           else {
             console.log(_data)
-            this._codestore.setcode(this.fileid, _data["data"]);
-            this.code = _data["data"];
+            this._codestore.setcode(this.fileid, _data['data']);
+            this.code = _data['data'];
             this.editor.value = this.code;
           }
         }
@@ -69,7 +75,7 @@ export class EditorComponent implements AfterViewInit {
 
     this._connect.setactivefile(this.fileid);
     this._connect.buildTable();
-    this.sidebarService.expand('code')
+    this.sidebarService.expand('code');
     this.editor.value = this.code;
   }
   get language(){
@@ -78,7 +84,7 @@ export class EditorComponent implements AfterViewInit {
 
   set language(val){
     if(val=='c' || val == 'c++')
-      this.editor.mode = "c_cpp";
+      this.editor.mode = 'c_cpp';
     else
       this.editor.mode = val;
     this.lang = val;
@@ -98,22 +104,23 @@ export class EditorComponent implements AfterViewInit {
   }
 
   run() {
-    this.code_data = {type:"TEXT", code: this.editor.value, input_type:"TEXT", input: this.input, lang: this.language,  "args": this.cli};
-    
-    this.status = "Running code on server.. ";
+    this.save();
+    this.code_data = {input_type:'TEXT', input: this.input, lang: this.language, command: this.cli, file_id: this.fileid};
+
+    this.status = 'Running code on server.. ';
 
     console.log(this.code_data);
     this._codeService.postData(this.code_data).subscribe(
       output_data =>{
         this.output = output_data.output;
         if (output_data.success){
-          this.status = "Successfully executed";
+          this.status = 'Successfully executed';
         }
         else {
-          this.status = "There is an error in your code. Check output panel for more details";
+          this.status = 'There is an error in your code. Check output panel for more details';
         }
       },
-      error => {this.status = "Something went Wrong..."; console.log(error)}
+      error => {this.status = 'Something went Wrong...'; console.log(error)}
       );
   }
 

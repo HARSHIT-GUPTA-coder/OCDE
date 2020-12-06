@@ -15,7 +15,7 @@ def get_output(config):
 	filename = config['filename']
 	user = config['username']
 	filepath = config['relative_path']
-	code_file = filepath + filename
+	code_file = 'files/' + user + '/' +  filepath + filename
 
 	temp_length = 7
 	exec_file = get_random_string(temp_length)
@@ -27,13 +27,16 @@ def get_output(config):
 		f.write(input_data)
 
 	if config["lang"] in COMPILED:
-		compilation_output = subprocess.run(COMPILATION_COMMAND[config["lang"]].format(code_file, exec_file), stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
+		command = COMPILATION_COMMAND[config["lang"]].format(code_file, exec_file)
+		print (command)
+		compilation_output = subprocess.run(command, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 		if len(compilation_output.stdout) > 0:
 			os.remove(input_file)
 			return False, compilation_output.stdout.decode("utf-8")
 
 	run_command = RUN_COMMAND[config["lang"]].format(exec_file) + command_data
-	script = "sudo ./run.sh '" + run_command + "' " + str(user)
+	# script = "sudo ./compile.sh '" + run_command + "' " + str(user)
+	script = run_command + " " + str(user)
 
 	with open(input_file, "r") as input:
 		run_output = subprocess.run(script, stdin=input_file, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)

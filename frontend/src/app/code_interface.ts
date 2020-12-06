@@ -1,10 +1,9 @@
 export interface code_interface {
-	type: string,
-	code: string,
 	input_type: string,
 	input: string,
-	lang: string,
-	args: string
+  lang: string,
+  command: string,
+  file_id: string
 }
 
 export interface output_interface {
