@@ -3,6 +3,7 @@
 mkdir -p "./files/${1}"
 mkdir -p "./files2/${1}"
 mkdir -p "./files2/${1}/${1}"
+cp "./run.sh" "./files2/${1}/run.sh"
 mount --bind -o ro "./files/${1}" "./files2/${1}/${1}"
 
 for ch in "bin" "lib" "lib64" "usr"
