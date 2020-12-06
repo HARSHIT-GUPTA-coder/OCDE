@@ -22,8 +22,9 @@ def get_statements(request):
     return_list = []
 
     for obj in objects:
-        return_list.append({"id" : obj.problem_id, "name": obj.statement_name})
+        return_list.append({"id" : obj.problem_id, "Problem Name": obj.statement_name, "Time Limit": obj.time_limit, "Memory Limit": obj.memory_limit})
 
+    return_list = [{"data":x} for x in return_list]
     return Response({"success":True, "problems": return_list}, status=status.HTTP_200_OK) 
 
 @api_view(['POST'])

@@ -12,4 +12,6 @@ export const API = {
     DeleteFile: '/api/delete-file/',
     UpdateFile: '/api/update-file/',
     GetFolders: '/api/get-folders/',
+    GetProblems: '/api/get-problems/',
+    GetProblem: '/api/problem/'
 };

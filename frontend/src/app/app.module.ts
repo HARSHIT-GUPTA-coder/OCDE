@@ -1,3 +1,5 @@
+import { ProblemComponent } from './dashboard/problem/problem.component';
+import { CompetingComponent } from './dashboard/competing/competing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -27,6 +29,8 @@ import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component'
     HomeComponent,
     DashboardComponent,
     MainComponent,
+    CompetingComponent,
+    ProblemComponent,
     FsIconComponent,
     FilelistComponent,
     NewfiledialogComponent,
@@ -34,6 +38,7 @@ import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component'
     RenamefileDialog
   ],
   imports: [
+    // ParticlesModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

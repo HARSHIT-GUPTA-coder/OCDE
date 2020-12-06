@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-body>
+
+    <nb-card-header class="heading">Available Problems To Submit <br> </nb-card-header>
+      <table [nbTreeGrid]="dataSource" [nbSort]="dataSource">
+
+          <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+
+
+          <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column">
+              <th nbTreeGridHeaderCell  *nbTreeGridHeaderCellDef>
+                  {{column}}
+              </th>
+              <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">{{row.data[column] || '-'}}</td>
+          </ng-container>
+      </table>
+
+  </nb-card-body>
+</nb-card>
+
