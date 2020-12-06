@@ -10,6 +10,7 @@ def get_random_string(length):
 
 def get_output(config):
 
+	ISOLATION = True
 	input_data = config["input"] 
 	command_data = config["command"]
 	filename = config['filename']
@@ -42,7 +43,11 @@ def get_output(config):
 		exec_file2 = code_file2
 
 	run_command = RUN_COMMAND[config["lang"]].format(exec_file2) + " " + command_data
-	script = "bash ./compile.sh '" + run_command + "' " + str(user)
+	if ISOLATION:
+		script = "bash ./compile.sh '" + run_command + "' " + str(user)
+	else:
+		script = "bash ./compile1.sh '" + run_command + "' " + str(user)
+
 	subprocess.run(script, shell=True)
 
 	# os.remove(input_file1)

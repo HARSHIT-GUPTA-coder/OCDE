@@ -12,7 +12,7 @@ import { CompetingComponent } from './competing/competing.component';
 import { ProblemComponent } from './problem/problem.component';
 
 @NgModule({
-  declarations:  [EditorComponent, ProblemComponent],
+  declarations:  [EditorComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
