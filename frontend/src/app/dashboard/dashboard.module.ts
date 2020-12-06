@@ -8,9 +8,11 @@ import { EditorComponent } from './editor/editor.component';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { FormsModule } from '@angular/forms';
 import { NewfiledialogComponent } from '../newfiledialog/newfiledialog.component';
+import { CompetingComponent } from './competing/competing.component';
+import { ProblemComponent } from './problem/problem.component';
 
 @NgModule({
-  declarations:  [EditorComponent],
+  declarations:  [EditorComponent, ProblemComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

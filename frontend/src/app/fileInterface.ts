@@ -6,6 +6,12 @@ export interface fileInterface {
     id: number,
     is_file: boolean
 }
+export interface statementInterface {
+  id: number,
+	name: string,
+  tlimit: number,
+  mlimit: number
+}
 
 export interface TreeNode<T> {
   data: T;

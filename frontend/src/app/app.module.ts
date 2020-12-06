@@ -1,3 +1,4 @@
+import { CompetingComponent } from './dashboard/competing/competing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -24,6 +25,7 @@ import { NewfiledialogComponent } from './newfiledialog/newfiledialog.component'
     HomeComponent,
     DashboardComponent,
     MainComponent,
+    CompetingComponent,
     FsIconComponent,
     FilelistComponent,
     NewfiledialogComponent
