@@ -16,4 +16,8 @@ class Submissions(models.Model):
     submission_id = models.AutoField(primary_key=True)
     time = models.DateTimeField()
     
-
+class Scores(models.Model):
+    user =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    problem = models.ForeignKey(Statement, on_delete = models.CASCADE)
+    score_id = models.AutoField(primary_key=True)
+    score = models.IntegerField()

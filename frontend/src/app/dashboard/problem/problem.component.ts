@@ -1,3 +1,4 @@
+import { LeaderboardComponent } from './../../leaderboard/leaderboard.component';
 import { SubmissiontableComponent } from './../../submissiontable/submissiontable.component';
 import { statementInterface } from './../../fileInterface';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +18,7 @@ import { ViewChild } from '@angular/core';
 })
 export class ProblemComponent implements OnInit {
   @ViewChild(SubmissiontableComponent) child: SubmissiontableComponent ;
+  @ViewChild(LeaderboardComponent) child2: LeaderboardComponent ;
   problemId: string;
   name: string;
   statement: string;
@@ -82,6 +84,7 @@ export class ProblemComponent implements OnInit {
           this.status = "danger";
         }
         this.child.initialise();
+        this.child2.initialise();
       }
     );
 

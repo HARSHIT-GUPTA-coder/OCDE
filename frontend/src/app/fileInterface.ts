@@ -1,3 +1,4 @@
+
 import { StringifyOptions } from 'querystring';
 
 export interface fileInterface {
@@ -16,6 +17,10 @@ export interface submissionInterface {
   Passed: string,
 	Status: string,
   Time: string
+}
+export interface scoreInterface {
+  Score: number,
+  Name: string
 }
 
 export interface TreeNode<T> {

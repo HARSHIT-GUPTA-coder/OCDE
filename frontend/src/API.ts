@@ -16,5 +16,6 @@ export const API = {
     GetProblem: '/api/problem/',
     GetSubmissions: '/api/submissions/',
     SubmitProblem: '/api/submit/',
-    GetFiles: '/api/get-files/'
+    GetFiles: '/api/get-files/',
+    GetScores: '/api/scores/'
 };

@@ -14,6 +14,7 @@ export class statementsFetchService {
   problemURL = API.ServerURL + API.GetProblem;
   submitURL = API.ServerURL + API.SubmitProblem;
   submissionURL = API.ServerURL + API.GetSubmissions;
+   scoreURL = API.ServerURL + API.GetScores;
   constructor(public toastrService: NbToastrService, private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse, tserve: NbToastrService) {
@@ -50,6 +51,11 @@ export class statementsFetchService {
 
   getSubmissions(data): any {
     return this.http.post(this.submissionURL, data).pipe(
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
+    )
+  }
+  getScores(data): any {
+    return this.http.post(this.scoreURL, data).pipe(
       catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     )
   }

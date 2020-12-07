@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from fileHandling.models import File
 import os, subprocess
-from .models import Statement, Submissions
+from .models import Statement, Submissions, Scores
 from .tester import get_status
 import datetime
 
@@ -68,6 +68,18 @@ def submit_problem(request):
 
     status = get_status(data)
 
+    if status["passed"]:
+        score = 100
+    else:
+        score = -50 
+    
+    obj = Scores.objects.filter(problem=problem, user=usr)
+    if len(obj):
+        obj = obj[0]
+        obj.score += score 
+        obj.save()
+    else:
+        new_inst = Scores.objects.create(user=usr, problem=problem, score=score)
     new_submission = Submissions.objects.create(user = usr, problem=problem, passed = status["passed"], message = status["message"], time = datetime.datetime.now())
     return Response({"success":True, "status": status}) 
 
@@ -77,8 +89,18 @@ def get_submissions(request):
     usr = CurrentUser(request)
     problem_id = request.data.get('problem_id', -1) 
     problem = Statement.objects.filter(problem_id = problem_id)[0]
-
     submissions = Submissions.objects.filter(user=usr, problem=problem)
     result = [{"data":{"Passed": "Yes" if x.passed else "No", "Status": x.message, "Time": x.time.strftime("%m/%d/%Y, %H:%M:%S")}} for x in submissions]
     result.reverse()
-    return Response({"success": True, "submissions": result})
+    return Response({"success": True, "submissions": result}) 
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def get_scores(request):
+    problem_id = request.data.get('problem_id', -1) 
+    problem = Statement.objects.filter(problem_id = problem_id)[0]
+    
+    scores = Scores.objects.filter(problem=problem)
+    result = [{"data":{"Name": str(x.user), "Score":x.score}} for x in scores]
+    result.sort(reverse=True, key = lambda x: x["data"]["Score"])
+    return Response({"success": True, "scores": result})

@@ -25,6 +25,7 @@ import { ConfirmDialog } from './confirmdialog/confirmdialog.component';
 import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component';
 import { KatexModule } from 'ng-katex';
 import { SubmissiontableComponent } from './submissiontable/submissiontable.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SubmissiontableComponent } from './submissiontable/submissiontable.comp
     NewfiledialogComponent,
     ConfirmDialog,
     RenamefileDialog,
-    SubmissiontableComponent
+    SubmissiontableComponent,
+    LeaderboardComponent
   ],
   imports: [
     // ParticlesModule,
