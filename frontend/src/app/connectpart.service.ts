@@ -16,21 +16,22 @@ export class ConnectpartService {
   }
 
   buildTable(): any {
-    this._fileService.getFileList().subscribe(
-      _data => {
-        console.log(_data);
-        if(_data["success"]==false) {
-          console.error(
-            _data["message"]
-          );
-        }
-        else {
-          console.log("success");
-          if(this.callback != null)
-            this.callback(_data["structure"],this.active);
-        }
-      }
-    );
+    this.callback();
+    // this._fileService.getFileList().subscribe(
+    //   _data => {
+    //     console.log(_data);
+    //     if(_data["success"]==false) {
+    //       console.error(
+    //         _data["message"]
+    //       );
+    //     }
+    //     else {
+    //       console.log("success");
+    //       if(this.callback != null)
+    //         this.callback(_data["structure"],this.active);
+    //     }
+    //   }
+    // );
   }
 
   changeFile(id) {
