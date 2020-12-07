@@ -65,7 +65,9 @@ def get_status(config):
 
 			if correct == run_output:
 				passed += 1
-
+			print(f)
+			print(correct)
+			print(run_output)
 
 		except subprocess.TimeoutExpired:
 			timeout = True

@@ -14,7 +14,7 @@ import os, subprocess
 
 PARENT_DIR = "../files"
 MOUNTED_PARENT = "../files2"
-ISOLATION = False
+ISOLATION = True
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
@@ -60,8 +60,7 @@ def RegisterUser(request):
             try:
                 uname = form.cleaned_data.get('username')
                 pwd = form.cleaned_data.get('password1')
-                if ISOLATION:
-                    subprocess.run("sudo bash ./new_user.sh " + str(uname), shell = True)
+                subprocess.run("sudo bash ./new_user.sh " + str(uname), shell = True)
                 form.save()
                 user = authenticate(username=uname, password=pwd)
                 try:
