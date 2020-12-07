@@ -8,7 +8,7 @@ import { CodefetchService } from '../codefetch.service';
   selector: 'ngx-dialog-name-prompt',
   template: `
       <nb-card>
-      <nb-card-header>Enter your name</nb-card-header>
+      <nb-card-header>New file/folder</nb-card-header>
       <nb-card-body>
         <label class="name-label" for="name">Name:</label>
         <input class="input" #name nbInput id="name" placeholder="Name">
@@ -45,13 +45,13 @@ export class NewfiledialogComponent implements OnInit{
           );
         }
         else {
-          console.log("success");
+          // console.log("success");
           this.dirList = [{file_id: -1, filename: "", relative_location: "/"}];
-          console.log(_data["data"])
+          // console.log(_data["data"])
           this.dirList.push(..._data["data"]);
         }
         this.dir = this.par;
-        console.log(this.dir);
+        // console.log(this.dir);
       }
     );
   }
@@ -61,10 +61,12 @@ export class NewfiledialogComponent implements OnInit{
   }
 
   cancel() {
+    console.log("cancel")
     this.ref.close();
   }
 
   submit(name) {
+    console.log("submit")
     this.ref.close([name,this.checked,this.dir]);
   }
   }

@@ -150,7 +150,7 @@ export class CodefetchService {
         else {
         // window.location.reload();
           console.log(_data);
-          return true;
+          return _data["file_id"];
         }
       })).toPromise();
   }

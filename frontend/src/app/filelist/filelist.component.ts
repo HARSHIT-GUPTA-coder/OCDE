@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { NbMenuService, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { NbMenuService, NbTreeGridDataSource, NbTreeGridDataSourceBuilder,NbCardComponent } from '@nebular/theme';
 import { NbSidebarService, NbDialogService, NbMenuItem } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
 import { fileInterface,TreeNode } from 'src/app/fileInterface';
@@ -28,6 +28,7 @@ export class FilelistComponent implements OnInit {
     private sidebarService: NbSidebarService,
     private _fileService: CodefetchService,
     private _dialogService: NbDialogService,
+    private _connect: ConnectpartService,
     private menu: NbMenuService) {
 
         menu.onItemClick().subscribe(async x => {
@@ -45,9 +46,10 @@ export class FilelistComponent implements OnInit {
           this.renameFile(this.activeFileID);
         }
         });
+        _connect.setcallback(() => this.refreshFileStructure().bind(this))
 }
   
-  refreshFileStructure(): void {
+  refreshFileStructure(): any {
     // this.sidebarService.collapse('code');
     this._fileService.getFileList().subscribe(
       _data => {

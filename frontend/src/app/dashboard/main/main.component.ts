@@ -53,7 +53,6 @@ export class MainComponent implements OnInit{
         });
   }
   refreshFileStructure(): void {
-    this.sidebarService.collapse('code');
     this._fileService.getFileList().subscribe(
       _data => {
         if(_data["success"]==false) {
@@ -69,6 +68,7 @@ export class MainComponent implements OnInit{
     );
   }
   ngOnInit(): void {
+    this.sidebarService.collapse('code');
     this.refreshFileStructure();
   }
 
@@ -85,7 +85,8 @@ export class MainComponent implements OnInit{
   }
 
   newFile(par: number) {
-    // console.log("newfile")
+    console.log("newfile")
+    console.log(par)
     this._dialogService.open(NewfiledialogComponent, {context: {par: par.toString()}}).onClose.subscribe(
       async data => {
         if (data) {
@@ -97,6 +98,7 @@ export class MainComponent implements OnInit{
     )
   }
   renameFile(par: number) {
+    // console.log(this.activeFileName)
     this._dialogService.open(RenamefileDialog, {context: {oldname: this.activeFileName}}).onClose.subscribe(
       async data => {
         if (data) {
@@ -148,6 +150,7 @@ export class MainComponent implements OnInit{
         },
       ];
     }
+    return false;
   }
 
   onClick(s) {

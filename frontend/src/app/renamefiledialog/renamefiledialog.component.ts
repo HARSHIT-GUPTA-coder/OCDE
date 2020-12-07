@@ -27,7 +27,7 @@ export class RenamefileDialog implements OnInit{
   }
 
   cancel() {
-    this.ref.close(false);
+    this.ref.close();
   }
 
   submit(name) {
