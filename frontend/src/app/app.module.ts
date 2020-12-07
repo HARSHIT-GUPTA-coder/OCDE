@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule, NbDialogModule, NbCheckboxModule, NbContextMenuModule, NbToastrModule, NbAlertModule, NbTabsetModule} from '@nebular/theme';
+import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule, NbDialogModule, NbCheckboxModule, NbContextMenuModule, NbToastrModule, NbAlertModule, NbTabsetModule, NbActionsModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -65,6 +65,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     NbIconModule,
     NbSelectModule,
     NbTreeGridModule,
+    NbActionsModule,
     ShContextMenuModule,
     NbInputModule,
     NbToastrModule.forRoot(),

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService, NbActionComponent } from '@nebular/theme';
 
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -48,7 +48,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
   }
-
+  gotoLink(x) {
+    this.router.navigate(x);
+  }
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
