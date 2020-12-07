@@ -8,4 +8,5 @@ urlpatterns = [
     path('delete-file/', DeleteFile),
     path('update-file/', UpdateFile),
     path('get-folders/', GetFolders),
+    path('get-files/', GetFiles),
 ]

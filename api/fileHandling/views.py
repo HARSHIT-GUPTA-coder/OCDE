@@ -285,3 +285,14 @@ def GetFolders(request):
         return Response({"success":True, "data": return_list}, status=status.HTTP_200_OK)
     
     return Response({"success":False, "message": "Make a GET request."}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def GetFiles(request):
+    usr = CurrentUser(request)
+
+    user_files = File.objects.filter(owner=usr, is_file=True)
+
+    return_list = [{"file_id": x.file_id, "filename": x.filename} for x in user_files]
+
+    return Response({"success":True, "data": return_list}, status=status.HTTP_200_OK)
