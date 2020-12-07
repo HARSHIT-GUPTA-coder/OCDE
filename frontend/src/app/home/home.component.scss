@@ -9,7 +9,13 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
     margin-bottom: 20px;
+}
+nb-layout-column, .content, .columns, .cover{
+    padding: 0 !important;
 }
 
 .head {
@@ -63,8 +69,8 @@ nb-card-header {
 }
 
 nb-card-body {
-    font-size: 16px;
-    // font-family: JetBrainsMono;
+    font-size: 17px;
+    font-family: JetBrainsMono;
     line-height: 25px;
 }
 
