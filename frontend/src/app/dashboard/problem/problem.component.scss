@@ -12,3 +12,11 @@
   margin-bottom:5px;
   margin-top: 5px;
 }
+nb-dialog-container {
+  overflow: hidden scroll;
+  margin-right: -5px;
+}
+.holder {
+  max-height:40vh;
+  overflow: hidden scroll;
+}

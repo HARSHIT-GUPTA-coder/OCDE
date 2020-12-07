@@ -1,3 +1,4 @@
+import { SubmissiontableComponent } from './../../submissiontable/submissiontable.component';
 import { statementInterface } from './../../fileInterface';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
@@ -5,8 +6,9 @@ import { statementsFetchService } from 'src/app/statementsfetchservice.service';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbAlertModule } from '@nebular/theme';
 import { NbSidebarService, NbDialogService } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
-import { fileInterface,TreeNode } from 'src/app/fileInterface';
+import { fileInterface,TreeNode, submissionInterface } from 'src/app/fileInterface';
 import { TemplateRef } from '@angular/core';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-problem',
@@ -14,6 +16,7 @@ import { TemplateRef } from '@angular/core';
   styleUrls: ['./problem.component.scss']
 })
 export class ProblemComponent implements OnInit {
+  @ViewChild(SubmissiontableComponent) child: SubmissiontableComponent ;
   problemId: string;
   name: string;
   statement: string;
@@ -26,18 +29,8 @@ export class ProblemComponent implements OnInit {
   selected = "";
   selectedId:number;
   language = "python3";
-
-  defaultColumns = ['name' ];
-  allColumns = this.defaultColumns;
-
-  dataSource: NbTreeGridDataSource<fileInterface>;
-
-  sortColumn: string;
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
-
-  private data: TreeNode<fileInterface>[] = [];
-
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>,private _fileService: CodefetchService, private _dialogService: NbDialogService, private _route : ActivatedRoute, private stmtService: statementsFetchService,  private sidebarService: NbSidebarService) { }
+  data;
+  constructor(private _fileService: CodefetchService, private _dialogService: NbDialogService, private _route : ActivatedRoute, private stmtService: statementsFetchService,  private sidebarService: NbSidebarService) { }
 
 
   ngOnInit() {
@@ -55,26 +48,25 @@ export class ProblemComponent implements OnInit {
         this.time_limit = _data["problem"]["time_limit"];
       }
     );
-    this._fileService.getFileList().subscribe(
+    this._fileService.getFiles().subscribe(
       _data => {
-        console.log(_data);
         if(_data["success"]==false) {
           this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
-          console.log("success");
-          console.log(_data["structure"] as TreeNode<fileInterface>[])
-          this.data =  _data["structure"] as TreeNode<fileInterface>[];
-          console.log(this.data)
-          this.dataSource = this.dataSourceBuilder.create(this.data);
+          // this.data = _data["data"];
+          console.log(_data["data"]);
+          this.data = _data["data"];
+          console.log("mu");
         }
       }
     );
+
   }
 
   setId(row){
-    this.selected = row.data.name;
-    this.selectedId = row.data.id;
+    this.selected = row.filename;
+    this.selectedId = row.file_id;
 
   }
   submit(){
@@ -89,22 +81,23 @@ export class ProblemComponent implements OnInit {
         else {
           this.status = "danger";
         }
+        this.child.initialise();
       }
-    )
+    );
+
+
   }
   onClick(dialog: TemplateRef<any>) {
-    this._fileService.getFileList().subscribe(
+    this._fileService.getFiles().subscribe(
       _data => {
         console.log(_data);
         if(_data["success"]==false) {
           this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
-          console.log("success");
-          console.log(_data["structure"] as TreeNode<fileInterface>[])
-          this.data =  _data["structure"] as TreeNode<fileInterface>[];
-          console.log(this.data)
-          this.dataSource = this.dataSourceBuilder.create(this.data);
+          console.log(_data["data"]);
+          this.data = _data["data"];
+          console.log("mu");
         }
       }
     );

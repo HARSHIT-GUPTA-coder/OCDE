@@ -20,13 +20,14 @@ export class CodefetchService {
   private deleteUrl = API.ServerURL + API.DeleteFile;
   private folderURL = API.ServerURL + API.GetFolders;
   private updateURL = API.ServerURL + API.UpdateFile;
+  private filesURL = API.ServerURL + API.GetFiles;
   constructor(public toastrService: NbToastrService,
               private http: HttpClient,
               private _codestore: CodestoreService,
               private router: Router,
               private activerouter: ActivatedRoute,
               private _dialogService: NbDialogService) { }
-  
+
   handleError(error: HttpErrorResponse, tserve: NbToastrService) {
     let status: NbComponentStatus ="danger";
     console.log(tserve)
@@ -40,9 +41,15 @@ export class CodefetchService {
     return throwError(
       error.message || 'Something bad happened; please try again later.');
   }
-  
+
   getFileList(): any {
     return this.http.get(this.structURL)
+    .pipe(
+      catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
+    )
+  }
+  getFiles(): any {
+    return this.http.get(this.filesURL)
     .pipe(
       catchError((error):any => {this.handleError(error, this.toastrService)}).bind(this)
     )

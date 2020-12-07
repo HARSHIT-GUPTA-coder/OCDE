@@ -14,5 +14,7 @@ export const API = {
     GetFolders: '/api/get-folders/',
     GetProblems: '/api/get-problems/',
     GetProblem: '/api/problem/',
-    SubmitProblem: '/api/submit/'
+    GetSubmissions: '/api/submissions/',
+    SubmitProblem: '/api/submit/',
+    GetFiles: '/api/get-files/'
 };

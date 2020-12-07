@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule, NbDialogModule, NbCheckboxModule, NbContextMenuModule, NbToastrModule, NbAlertModule} from '@nebular/theme';
+import { NbSelectModule, NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbListModule, NbSidebarModule, NbIconModule, NbTreeGridModule, NbInputModule, NbMenuModule, NbDialogModule, NbCheckboxModule, NbContextMenuModule, NbToastrModule, NbAlertModule, NbTabsetModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,6 +24,7 @@ import { ShContextMenuModule } from 'ng2-right-click-menu'
 import { ConfirmDialog } from './confirmdialog/confirmdialog.component';
 import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component';
 import { KatexModule } from 'ng-katex';
+import { SubmissiontableComponent } from './submissiontable/submissiontable.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +38,14 @@ import { KatexModule } from 'ng-katex';
     FilelistComponent,
     NewfiledialogComponent,
     ConfirmDialog,
-    RenamefileDialog
+    RenamefileDialog,
+    SubmissiontableComponent
   ],
   imports: [
     // ParticlesModule,
     BrowserModule,
     AppRoutingModule,
+    NbTabsetModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbDialogModule.forRoot(),

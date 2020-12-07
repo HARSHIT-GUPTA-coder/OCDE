@@ -12,6 +12,11 @@ export interface statementInterface {
   tlimit: number,
   mlimit: number
 }
+export interface submissionInterface {
+  Passed: string,
+	Status: string,
+  Time: string
+}
 
 export interface TreeNode<T> {
   data: T;
