@@ -26,6 +26,7 @@ export class EditorComponent implements AfterViewInit {
   code_data: code_interface;
   code = "";
   fileid = '';
+  filename = 'New File';
   @ViewChild('editor') editor;
   constructor(private router: Router, private _dialogService: NbDialogService, private location: Location,private api: ApiService, private _fileService: CodefetchService,private sidebarService: NbSidebarService, private _codeService: CodeService, private _connect: ConnectpartService, private _route : ActivatedRoute){}
 
@@ -70,6 +71,7 @@ export class EditorComponent implements AfterViewInit {
               // this._codestore.setcode(this.fileid, _data['data']);
               this.code = _data['data'];
               this.editor.value = this.code;
+              this.filename = _data["filename"];
             }
           }
         )
