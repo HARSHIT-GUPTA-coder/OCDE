@@ -1,7 +1,8 @@
+import { statementInterface } from './../../fileInterface';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { statementsFetchService } from 'src/app/statementsfetchservice.service';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbAlertModule } from '@nebular/theme';
 import { NbSidebarService, NbDialogService } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
 import { fileInterface,TreeNode } from 'src/app/fileInterface';
@@ -19,10 +20,12 @@ export class ProblemComponent implements OnInit {
   memory_limit: string;
   time_limit: string;
   statusMessage: string;
+  submissionStatus: string;
 
+  status = "";
   selected = "";
   selectedId:number;
-  language = "python";
+  language = "python3";
 
   defaultColumns = ['name' ];
   allColumns = this.defaultColumns;
@@ -47,6 +50,7 @@ export class ProblemComponent implements OnInit {
         console.log(_data);
         this.name = _data["problem"]["name"];
         this.statement = _data["problem"]["statement"];
+        console.log(this.statement);
         this.memory_limit = _data["problem"]["memory_limit"];
         this.time_limit = _data["problem"]["time_limit"];
       }
@@ -71,11 +75,39 @@ export class ProblemComponent implements OnInit {
   setId(row){
     this.selected = row.data.name;
     this.selectedId = row.data.id;
-  }
-  submit(){
 
   }
+  submit(){
+    let data = {lang: this.language, file_id: this.selectedId, problem_id: this.problemId};
+    this.submissionStatus = "Submitting...";
+    this.stmtService.submitProblem(data).subscribe(
+      _data => {
+        this.submissionStatus = _data["status"]["message"];
+        if (_data["status"]["passed"]){
+          this.status = "success";
+        }
+        else {
+          this.status = "danger";
+        }
+      }
+    )
+  }
   onClick(dialog: TemplateRef<any>) {
+    this._fileService.getFileList().subscribe(
+      _data => {
+        console.log(_data);
+        if(_data["success"]==false) {
+          this._fileService.handleError(_data["message"],this._fileService.toastrService);
+        }
+        else {
+          console.log("success");
+          console.log(_data["structure"] as TreeNode<fileInterface>[])
+          this.data =  _data["structure"] as TreeNode<fileInterface>[];
+          console.log(this.data)
+          this.dataSource = this.dataSourceBuilder.create(this.data);
+        }
+      }
+    );
     this._dialogService.open(dialog).onClose.subscribe(
       data => {
         console.log(data);

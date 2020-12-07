@@ -30,7 +30,7 @@ def get_status(config):
 		command = COMPILATION_COMMAND[config["lang"]].format(code_file, exec_file).split()
 		
 		try:
-			compilation_output = subprocess.run(command, stderr = subprocess.STDOUT, stdout=subprocess.PIPE, timeout=time_limit)
+			compilation_output = subprocess.run(command, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 		except subprocess.TimeoutExpired:
 			compilation_error = 1 
 			compilation_message = "Timed out while compiling!"
@@ -44,7 +44,7 @@ def get_status(config):
 		output_name = code_file
 
 	if compilation_error:
-		return {"passed": False, message: compilation_message}
+		return {"passed": False, "message": compilation_message}
 	run_command = RUN_COMMAND[config["lang"]].format(output_name) 
 	# script = "sudo ./compile.sh '" + run_command + "' " + str(user)
 	script = run_command 
@@ -56,16 +56,13 @@ def get_status(config):
 	for f in total_list:
 		file_loc = open(testcase_dir + f + ".in", "r")
 
-		print(file_loc)
 		try:
 			run_output = subprocess.run(script.split(), stdin=file_loc, stderr = subprocess.STDOUT, stdout=subprocess.PIPE, timeout=time_limit)
 			run_output = run_output.stdout.decode("utf-8").strip()
 
 			with open(testcase_dir + f + ".out", "r") as cur_file:
 				correct = cur_file.read().strip()
-			print(correct)
-			print ("and ")
-			print(run_output)
+
 			if correct == run_output:
 				passed += 1
 

@@ -50,6 +50,8 @@ def get_problem(request):
 def submit_problem(request):
     data = request.data
     file_id = request.data.get('file_id')
+    problem = Statement.objects.filter(problem_id=request.data.get('problem_id', -1))[0]
+    data['time_limit'] = problem.time_limit
 
     file = File.objects.filter(file_id = file_id)
     if file.exists():

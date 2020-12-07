@@ -4,10 +4,16 @@
   <p class = "subheading">Memory Limit: {{memory_limit}}MB </p>
 </div>
 
-<p>{{statement}}</p>
+<ng-katex-html [html]="statement"></ng-katex-html>
 <br>
 <button nbButton status="primary"  (click)="onClick(dialog)">Submit Solution</button>
-
+<br> <br>
+<nb-alert [status]="status">
+  Submission Status: {{submissionStatus}}
+</nb-alert>
+<!-- <nb-alert status="success">
+  You have been successfully authenticated!
+</nb-alert> -->
 
 <ng-template #dialog let-ref="dialogRef">
   <nb-card>
