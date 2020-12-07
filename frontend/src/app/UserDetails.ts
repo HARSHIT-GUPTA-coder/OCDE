@@ -1,5 +1,5 @@
 export interface User {
-    success? : string;
+    success? : boolean;
     message? : string;
     errors? : any;
     username?: string;

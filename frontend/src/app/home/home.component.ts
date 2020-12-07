@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // import {ParticlesComponent} from 'angular-particle'
 declare var particlesJS: any;
 
@@ -8,7 +9,7 @@ declare var particlesJS: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor() { }
+  constructor(private rt: Router) { }
 
   ngOnInit(): void {
     particlesJS.load('particles-js', 'assets/particles.json', function() {
@@ -20,5 +21,8 @@ export class HomeComponent implements OnInit {
 
   scroll(el: HTMLElement) {
     el.scrollIntoView({behavior:"smooth"});
-}
+  }
+  gotoLink(x) {
+    this.rt.navigate(x);
+  }
 }

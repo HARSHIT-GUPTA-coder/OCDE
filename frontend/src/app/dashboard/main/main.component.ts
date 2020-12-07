@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { NbMenuService, NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { NbSidebarService, NbDialogService, NbMenuItem } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
 import { fileInterface,TreeNode } from 'src/app/fileInterface';
 import { NewfiledialogComponent } from 'src/app/newfiledialog/newfiledialog.component';
 import { RenamefileDialog } from 'src/app/renamefiledialog/renamefiledialog.component';
+
 @Component({
   selector: 'app-main-view',
   templateUrl: './main.component.html',
@@ -33,7 +33,6 @@ export class MainComponent implements OnInit{
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>,
               private sidebarService: NbSidebarService,
               private _fileService: CodefetchService,
-              private router: Router,
               private _dialogService: NbDialogService,
               private menu: NbMenuService) {
       

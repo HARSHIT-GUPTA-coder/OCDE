@@ -15,6 +15,8 @@ import {
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
+import { HeaderComponent } from './header/header.component';
+
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -30,9 +32,15 @@ const NB_MODULES = [
   NbEvaIconsModule,
 ];
 
+const COMPONENTS = [
+  HeaderComponent,
+];
+
 
 @NgModule({
   imports: [CommonModule, ...NB_MODULES],
+  exports: [CommonModule, ...COMPONENTS],
+  declarations: [...COMPONENTS],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders<ThemeModule> {

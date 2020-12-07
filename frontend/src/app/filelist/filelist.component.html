@@ -16,7 +16,7 @@
         <label class="search-label" for="search">Search:</label>
         <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input" />
         <br>
-        <button class="new-file-button" nbButton style="float: right; cursor:pointer" (click)="newFile()">
+        <button class="new-file-button" nbButton style="float: right; cursor:pointer" (click)="newFile(-1)">
             <nb-icon icon="plus-outline"></nb-icon>
             New File
         </button>
@@ -29,15 +29,14 @@
                 <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
                     Your Files
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row, dialog)" (click)="onSingleCick(row,dialog)">
-                    <div class="bar" *ngIf="row.data.id === activefile; else elseBlock">
-                        <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
-                        {{row.data[customColumn]}}
-                    </div>
-                    <ng-template #elseBlock>
-                        <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
-                        {{row.data[customColumn]}}
-                    </ng-template>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row"
+                    (dblclick)="onClick(row)"
+                    (click)="onSingleCick(row)"
+                    [ngClass]="{'bar': row.data.id == activeFileID}"
+                    (contextmenu) = "onRightClick(row)"
+                    [shAttachMenu]="menu">
+                    <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
+                    {{row.data[customColumn]}}
                 </td>
             </ng-container>
         </table>
@@ -45,13 +44,14 @@
     </nb-card-body>
 </nb-card>
 
-<ng-template #dialog let-ref="dialogRef">
-    <nb-card>
-        <nb-card-header>Choose Action</nb-card-header>
-        <nb-card-body>
-            <!-- <button nbButton class="dialog" status="primary" (click)="ref.close(0)">Close Dialog</button> <br> -->
-            <button nbButton class="dialog" status="success" (click)="ref.close(1)">Open File</button> <br>
-            <button nbButton class="dialog" status="danger" (click)="ref.close(2)">Delete File</button> <br>
-        </nb-card-body>
-    </nb-card>
-</ng-template>
+<!-- Right click menu-->
+<sh-context-menu class = "no-pad" #menu>
+    <ng-template class = "no-pad" shContextMenuItem>
+      <!-- <div>
+        Menu Item - 1
+      </div> -->
+      <nb-card class = "no-pad">
+      <nb-menu [items]="items">
+        </nb-menu></nb-card>
+    </ng-template>
+  </sh-context-menu>
