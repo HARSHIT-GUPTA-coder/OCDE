@@ -12,7 +12,7 @@ import { NbDialogRef } from '@nebular/theme';
       </nb-card-body>
       <nb-card-footer>
         <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
-        <button nbButton status="success" (click)="submit(name.value)">Submit</button>
+        <button nbButton status="success" (click)="submit(name.value)">Rename</button>
       </nb-card-footer>
     </nb-card>
   `,
@@ -24,10 +24,11 @@ export class RenamefileDialog implements OnInit{
   oldname: string;
 
   ngOnInit(): void { 
+    console.log("rename dialog comp " + this.oldname);
   }
 
   cancel() {
-    this.ref.close();
+    this.ref.close(false);
   }
 
   submit(name) {

@@ -34,7 +34,7 @@
                     (click)="onSingleCick(row)"
                     [ngClass]="{'bar': row.data.id == activeFileID}"
                     (contextmenu) = "onRightClick(row)"
-                    [shAttachMenu]="menu">
+                    [shAttachMenu]="menu2">
                     <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
                     {{row.data[customColumn]}}
                 </td>
@@ -45,13 +45,13 @@
 </nb-card>
 
 <!-- Right click menu-->
-<sh-context-menu class = "no-pad" #menu>
+<sh-context-menu class = "no-pad" #menu2>
     <ng-template class = "no-pad" shContextMenuItem>
       <!-- <div>
         Menu Item - 1
       </div> -->
       <nb-card class = "no-pad">
-      <nb-menu [items]="items">
+      <nb-menu tag = "menu2" [items]="items">
         </nb-menu></nb-card>
     </ng-template>
   </sh-context-menu>

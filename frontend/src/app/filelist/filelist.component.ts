@@ -29,22 +29,23 @@ export class FilelistComponent implements OnInit {
     private _fileService: CodefetchService,
     private _dialogService: NbDialogService,
     private _connect: ConnectpartService,
-    private menu: NbMenuService) {
+    private menu2: NbMenuService) {
 
-        menu.onItemClick().subscribe(async x => {
-        var action = x.item.title.substring(0, 3);
-        if (action == 'Ope')
-          this._fileService.readfile(this.activeFileID.toString());
-        else if (action == 'Del') {
-          if(await this._fileService.deletefile(this.activeFileID.toString()))
-            this.refreshFileStructure();
-        }
-        else if (action == 'New') {
-          this.newFile(this.activeFileID);
-        }
-        else if (action == "Ren") {
-          this.renameFile(this.activeFileID);
-        }
+        this.menu2.onItemClick().subscribe(async x => {
+          if (x.tag != "menu2") return;
+          var action = x.item.title.substring(0, 3);
+          if (action == 'Ope')
+            this._fileService.readfile(this.activeFileID.toString());
+          else if (action == 'Del') {
+            if(await this._fileService.deletefile(this.activeFileID.toString()))
+              this.refreshFileStructure();
+          }
+          else if (action == 'New') {
+            this.newFile(this.activeFileID);
+          }
+          else if (action == "Ren") {
+            this.renameFile(this.activeFileID);
+          }
         });
         _connect.setcallback(() => this.refreshFileStructure().bind(this))
 }
@@ -81,7 +82,8 @@ export class FilelistComponent implements OnInit {
       }
     )
   }
-  renameFile(par: number) {
+  private renameFile(par: number) {
+    // console.log("Rename called from filelist");
     this._dialogService.open(RenamefileDialog, {context: {oldname: this.activeFileName}}).onClose.subscribe(
       async data => {
         if (data) {

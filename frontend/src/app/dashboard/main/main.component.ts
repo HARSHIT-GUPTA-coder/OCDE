@@ -36,7 +36,8 @@ export class MainComponent implements OnInit{
               private _dialogService: NbDialogService,
               private menu: NbMenuService) {
       
-        menu.onItemClick().subscribe(async x => {
+        this.menu.onItemClick().subscribe(async x => {
+          if (x.tag != "menu1") return;
           var action = x.item.title.substring(0, 3);
           if (action == 'Ope')
             this._fileService.readfile(this.activeFileID.toString());
@@ -85,8 +86,6 @@ export class MainComponent implements OnInit{
   }
 
   newFile(par: number) {
-    console.log("newfile")
-    console.log(par)
     this._dialogService.open(NewfiledialogComponent, {context: {par: par.toString()}}).onClose.subscribe(
       async data => {
         if (data) {
@@ -98,7 +97,7 @@ export class MainComponent implements OnInit{
     )
   }
   renameFile(par: number) {
-    // console.log(this.activeFileName)
+    // console.log("Rename called from main");
     this._dialogService.open(RenamefileDialog, {context: {oldname: this.activeFileName}}).onClose.subscribe(
       async data => {
         if (data) {
