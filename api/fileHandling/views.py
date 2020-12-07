@@ -151,7 +151,7 @@ def ReadFile(request):
             data = f.read()
             f.close()
 
-            return Response({"success":True, "data": data}, status=status.HTTP_200_OK)
+            return Response({"success":True, "data": data, "filename": requested_file.filename}, status=status.HTTP_200_OK)
         else:
             return Response({"success":False, "message": "Requested file does not belong to user"}, status=status.HTTP_400_BAD_REQUEST)
     
