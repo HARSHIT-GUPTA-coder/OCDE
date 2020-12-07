@@ -28,23 +28,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private router: Router) {
   }
 
-  ngOnInit() {
-
+  refreshUserDetails() {
     this._sd.getDetails()
         .pipe(takeUntil(this.destroy$))
         .subscribe((userDetail: User) => {
           this.user = userDetail;
           this.userMenu = [ { title: this.user.first_name + ' ' + this.user.last_name }, { title: 'Log out' } ]
+    }, err => {
+      console.log("error occurred");
+      this.user = null;
     });
+  }
 
+  ngOnInit() {
+    this.refreshUserDetails();
 
     this.menuService.onItemClick().subscribe(( event ) => {
       if (event.item.title === 'Log out') {
           this._sd.logoutUser()
               .pipe(takeUntil(this.destroy$))
               .subscribe(() => {
+                this.refreshUserDetails();
                 this.router.navigate(['home']);
-          });
+          }, err => this.refreshUserDetails());
       }
     });
   }
