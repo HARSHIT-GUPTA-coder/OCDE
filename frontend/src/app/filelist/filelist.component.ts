@@ -20,7 +20,7 @@ export class FilelistComponent implements OnInit {
   activeFileID = -1;
   activeFileName = '';
   rightClickedRow: any;
-  items: NbMenuItem[];
+  items: any[];
 
   private data: TreeNode<fileInterface>[] = [];
 
@@ -28,28 +28,26 @@ export class FilelistComponent implements OnInit {
     private sidebarService: NbSidebarService,
     private _fileService: CodefetchService,
     private _dialogService: NbDialogService,
-    private _connect: ConnectpartService,
-    private menu2: NbMenuService) {
-
-        this.menu2.onItemClick().subscribe(async x => {
-          if (x.tag != "menu2") return;
-          var action = x.item.title.substring(0, 3);
-          if (action == 'Ope')
-            this._fileService.readfile(this.activeFileID.toString());
-          else if (action == 'Del') {
-            if(await this._fileService.deletefile(this.activeFileID.toString()))
-              this.refreshFileStructure();
-          }
-          else if (action == 'New') {
-            this.newFile(this.activeFileID);
-          }
-          else if (action == "Ren") {
-            this.renameFile(this.activeFileID);
-          }
-        });
+    private _connect: ConnectpartService) {
         _connect.setcallback(() => this.refreshFileStructure().bind(this))
 }
   
+  async itemClicked(action) {
+    action = action.substring(0, 3);
+    if (action == 'Ope')
+      this._fileService.readfile(this.activeFileID.toString());
+    else if (action == 'Del') {
+      if(await this._fileService.deletefile(this.activeFileID.toString()))
+        this.refreshFileStructure();
+    }
+    else if (action == 'New') {
+      this.newFile(this.activeFileID);
+    }
+    else if (action == "Ren") {
+      this.renameFile(this.activeFileID);
+    }
+  }
+
   refreshFileStructure(): any {
     // this.sidebarService.collapse('code');
     this._fileService.getFileList().subscribe(
@@ -107,15 +105,15 @@ export class FilelistComponent implements OnInit {
       this.items = [
         {
           title: 'Open File',
-          icon: { icon: 'file-text-outline', pack: 'eva' },
+          icon: 'file-text-outline',
         },
         {
           title: 'Rename File',
-          icon: { icon: 'edit-2-outline', pack: 'eva' },
+          icon: 'edit-2-outline',
         },
         {
           title: 'Delete File',
-          icon: { icon: 'trash-2-outline', pack: 'eva' },
+          icon: 'trash-2-outline',
         },
       ];
     }
@@ -123,15 +121,15 @@ export class FilelistComponent implements OnInit {
       this.items = [
         {
           title: 'New File/Folder',
-          icon: { icon: 'file-add-outline', pack: 'eva' },
+          icon: 'file-add-outline',
         },
         {
           title: 'Rename Folder',
-          icon: { icon: 'edit-2-outline', pack: 'eva' },
+          icon: 'edit-2-outline',
         },
         {
           title: 'Delete Folder',
-          icon: { icon: 'trash-2-outline', pack: 'eva' },
+          icon: 'trash-2-outline',
         },
       ];
     }

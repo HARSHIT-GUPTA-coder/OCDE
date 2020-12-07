@@ -33,25 +33,23 @@ export class MainComponent implements OnInit{
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>,
               private sidebarService: NbSidebarService,
               private _fileService: CodefetchService,
-              private _dialogService: NbDialogService,
-              private menu: NbMenuService) {
+              private _dialogService: NbDialogService) {
       
-        this.menu.onItemClick().subscribe(async x => {
-          if (x.tag != "menu1") return;
-          var action = x.item.title.substring(0, 3);
-          if (action == 'Ope')
-            this._fileService.readfile(this.activeFileID.toString());
-          else if (action == 'Del') {
-            if(await this._fileService.deletefile(this.activeFileID.toString()))
-              this.refreshFileStructure();
-          }
-          else if (action == 'New') {
-            this.newFile(this.activeFileID);
-          }
-          else if (action == "Ren") {
-            this.renameFile(this.activeFileID);
-          }
-        });
+  }
+  async itemClicked(action) {
+    action = action.substring(0, 3);
+    if (action == 'Ope')
+      this._fileService.readfile(this.activeFileID.toString());
+    else if (action == 'Del') {
+      if(await this._fileService.deletefile(this.activeFileID.toString()))
+        this.refreshFileStructure();
+    }
+    else if (action == 'New') {
+      this.newFile(this.activeFileID);
+    }
+    else if (action == "Ren") {
+      this.renameFile(this.activeFileID);
+    }
   }
   refreshFileStructure(): void {
     this._fileService.getFileList().subscribe(
@@ -121,15 +119,15 @@ export class MainComponent implements OnInit{
       this.items = [
         {
           title: 'Open File',
-          icon: { icon: 'file-text-outline', pack: 'eva' },
+          icon: 'file-text-outline',
         },
         {
           title: 'Rename File',
-          icon: { icon: 'edit-2-outline', pack: 'eva' },
+          icon: 'edit-2-outline',
         },
         {
           title: 'Delete File',
-          icon: { icon: 'trash-2-outline', pack: 'eva' },
+          icon: 'trash-2-outline',
         },
       ];
     }
@@ -137,19 +135,18 @@ export class MainComponent implements OnInit{
       this.items = [
         {
           title: 'New File/Folder',
-          icon: { icon: 'file-add-outline', pack: 'eva' },
+          icon: 'file-add-outline',
         },
         {
           title: 'Rename Folder',
-          icon: { icon: 'edit-2-outline', pack: 'eva' },
+          icon: 'edit-2-outline',
         },
         {
           title: 'Delete Folder',
-          icon: { icon: 'trash-2-outline', pack: 'eva' },
+          icon: 'trash-2-outline',
         },
       ];
     }
-    return false;
   }
 
   onClick(s) {

@@ -50,8 +50,15 @@
       <!-- <div>
         Menu Item - 1
       </div> -->
-      <nb-card class = "no-pad">
-      <nb-menu tag = "menu2" [items]="items">
-        </nb-menu></nb-card>
+      <nb-card class = "no-pad" style="border-radius: 10px;">
+        <nb-list style="border-radius: 10px;">
+            <nb-list-item *ngFor="let item of items" class = "menuItem" (click) = "itemClicked(item.title)">
+                <table class = "no-pad"><tr class = "no-pad">
+                <td class = "some-pad"><nb-icon [icon]="item.icon"></nb-icon></td>
+                <td class = "some-pad">{{ item.title }}</td>
+                </tr></table>
+            </nb-list-item>
+        </nb-list>
+      </nb-card>
     </ng-template>
   </sh-context-menu>

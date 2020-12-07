@@ -59,3 +59,15 @@ button[nbTreeGridRowToggle] {
     background-color: rgb(237, 241, 247);
     color: black;
 }
+.menuItem:hover {
+    color: rgb(86, 142, 247);
+}
+.no-pad {
+    padding: 0;
+    margin: 0;
+}
+.some-pad {
+    padding: 2px;
+    margin: 0;
+    text-align: center;
+}
