@@ -26,6 +26,10 @@ import { RenamefileDialog } from './renamefiledialog/renamefiledialog.component'
 import { KatexModule } from 'ng-katex';
 import { SubmissiontableComponent } from './submissiontable/submissiontable.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ProblemlistComponent } from './problemlist/problemlist.component';
+import { ContestlistComponent } from './contestlist/contestlist.component';
+import { CountdownModule } from 'ngx-countdown';
+import { ContestsComponent } from './dashboard/contests/contests.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,10 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     ConfirmDialog,
     RenamefileDialog,
     SubmissiontableComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    ProblemlistComponent,
+    ContestsComponent,
+    ContestlistComponent
   ],
   imports: [
     // ParticlesModule,
@@ -54,6 +61,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     NbCheckboxModule,
     NbLayoutModule,
     NbEvaIconsModule,
+    CountdownModule ,
     KatexModule,
     HttpClientModule,
     NbListModule,

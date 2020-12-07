@@ -2,21 +2,26 @@
   <nb-card-body>
 
     <nb-card-header class="heading">Available Problems To Submit <br> </nb-card-header>
-      <table [nbTreeGrid]="dataSource" [nbSort]="dataSource">
 
-          <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+        <app-problemlist contestId=0></app-problemlist>
+  </nb-card-body>
+</nb-card>
 
+<nb-card>
+  <nb-card-body>
 
+    <nb-card-header class="heading">Running Contests <br> </nb-card-header>
 
-          <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column">
-              <th nbTreeGridHeaderCell  *nbTreeGridHeaderCellDef>
-                  {{column}}
-              </th>
-              <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="onClick(row)">{{row.data[column] || '-'}}</td>
-          </ng-container>
-      </table>
+        <app-contestlist state="current"></app-contestlist>
+  </nb-card-body>
+</nb-card>
 
+<nb-card>
+  <nb-card-body>
+
+    <nb-card-header class="heading">Upcoming Contests <br> </nb-card-header>
+
+    <app-contestlist state="past"></app-contestlist>
   </nb-card-body>
 </nb-card>
 

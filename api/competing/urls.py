@@ -7,5 +7,8 @@ urlpatterns = [
     path('problem/', get_problem),
     path('submit/', submit_problem),
     path('submissions/', get_submissions),
-    path('scores/', get_scores)
+    path('get-contests/', get_contests),
+    path('get-contest/', get_contest),
+    path('scores/', get_scores),
+    path('contest-scores/', get_contest_scores)
 ]

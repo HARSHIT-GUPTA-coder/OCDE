@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NewfiledialogComponent } from '../newfiledialog/newfiledialog.component';
 import { CompetingComponent } from './competing/competing.component';
 import { ProblemComponent } from './problem/problem.component';
+import { ContestsComponent } from './contests/contests.component';
 
 @NgModule({
   declarations:  [EditorComponent],

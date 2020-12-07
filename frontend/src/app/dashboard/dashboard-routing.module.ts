@@ -1,3 +1,4 @@
+import { ContestsComponent } from './contests/contests.component';
 import { ProblemComponent } from './problem/problem.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,10 @@ const routes: Routes = [{
     {
       path:'problem',
       component: ProblemComponent
+    },
+    {
+      path:'contest',
+      component: ContestsComponent
     },
     {
       path: '**',

@@ -1,0 +1,13 @@
+<table [nbTreeGrid]="submissionSource" [nbSort]="submissionSource">
+
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="submissionsColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: submissionsColumns"></tr>
+
+  <ng-container *ngFor="let column of submissionsColumns; let index = index" [nbTreeGridColumnDef]="column">
+      <th nbTreeGridHeaderCell  *nbTreeGridHeaderCellDef>
+          {{column}}
+      </th>
+      <td nbTreeGridCell class="element" *nbTreeGridCellDef="let row" (click)="onClick(row)">{{row.data[column] || '-'}}</td>
+  </ng-container>
+</table>
+

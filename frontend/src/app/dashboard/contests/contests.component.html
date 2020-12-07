@@ -1,0 +1,30 @@
+<div class="heading">
+  <h2>{{name}}</h2>
+  <p class = "subheading">{{text}} <countdown #cd *ngIf="count" [config]="config" ></countdown></p>
+</div>
+
+  <nb-tabset>
+    <nb-tab tabTitle="Problems">
+
+        <nb-card>
+          <nb-card-body>
+            <app-problemlist [contestId]="id"></app-problemlist>
+
+          </nb-card-body>
+        </nb-card>
+
+    </nb-tab>
+
+    <nb-tab tabTitle="Leaderboard">
+
+      <nb-card>
+        <nb-card-body>
+
+          <app-leaderboard  [problemId] = "id" type="contest"></app-leaderboard>
+        </nb-card-body>
+      </nb-card>
+
+  </nb-tab>
+  </nb-tabset>
+
+

@@ -13,9 +13,12 @@ export const API = {
     UpdateFile: '/api/update-file/',
     GetFolders: '/api/get-folders/',
     GetProblems: '/api/get-problems/',
+    GetContests: '/api/get-contests/',
     GetProblem: '/api/problem/',
     GetSubmissions: '/api/submissions/',
     SubmitProblem: '/api/submit/',
     GetFiles: '/api/get-files/',
-    GetScores: '/api/scores/'
+    GetScores: '/api/scores/',
+    GetContestScores: '/api/contest-scores/',
+    GetContest: '/api/get-contest/'
 };
