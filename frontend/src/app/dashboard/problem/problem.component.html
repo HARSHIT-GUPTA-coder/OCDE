@@ -1,39 +1,39 @@
 <div class="heading">
-  <h2>{{name}}</h2>
-  <p class = "subheading">Time Limit: {{time_limit}}s</p>
-  <p class = "subheading">Memory Limit: {{memory_limit}}MB </p>
+    <h2>{{name}}</h2>
+    <p class="subheading">Time Limit: {{time_limit}}s</p>
+    <p class="subheading">Memory Limit: {{memory_limit}}MB </p>
 </div>
 
 <ng-katex-html [html]="statement"></ng-katex-html>
 <br>
-<button nbButton status="primary"  (click)="onClick(dialog)">Submit Solution</button>
+<button nbButton status="primary" (click)="onClick(dialog)">Submit Solution</button>
 <br> <br>
 <nb-alert [status]="status">
-  Submission Status: {{submissionStatus}}
+    Submission Status: {{submissionStatus}}
 </nb-alert>
 
 <nb-tabset>
-  <nb-tab tabTitle="Past Submissions">
-    <app-submissiontable #child [problemId] = "problemId"></app-submissiontable>
-  </nb-tab>
-  <nb-tab tabTitle="Leaderboard">
-    <app-leaderboard  [problemId] = "problemId" type="problem"></app-leaderboard>
-  </nb-tab>
- </nb-tabset>
+    <nb-tab tabTitle="Past Submissions">
+        <app-submissiontable #child [problemId]="problemId"></app-submissiontable>
+    </nb-tab>
+    <nb-tab tabTitle="Leaderboard">
+        <app-leaderboard [problemId]="problemId" type="problem"></app-leaderboard>
+    </nb-tab>
+</nb-tabset>
 
-<ng-template #dialog let-ref="dialogRef" >
-  <nb-card>
-      <nb-card-header>Choose File To Submit</nb-card-header>
-      <nb-card-body>
-        <div class="holder">
-        <nb-list >
-          <nb-list-item class="element" *ngFor="let row of data" (click) = "setId(row)">
-            {{ row.filename }}
-          </nb-list-item>
-        </nb-list>
-        </div>
+<ng-template #dialog let-ref="dialogRef">
+    <nb-card>
+        <nb-card-header>Choose File To Submit</nb-card-header>
+        <nb-card-body>
+            <div class="holder">
+                <nb-list>
+                    <nb-list-item class="element" *ngFor="let row of data" (click)="setId(row)">
+                        .{{row.path}}{{ row.filename }}
+                    </nb-list-item>
+                </nb-list>
+            </div>
 
-        <!-- <table [nbTreeGrid]="dataSource" [nbSort]="dataSource">
+            <!-- <table [nbTreeGrid]="dataSource" [nbSort]="dataSource">
 
           <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
           <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
@@ -45,23 +45,23 @@
               <td class="element" nbTreeGridCell *nbTreeGridCellDef="let row" (click) = "setId(row)">{{row.data[column] || '-'}}</td>
           </ng-container>
       </table> -->
-          <!-- <button nbButton class="dialog" status="primary" (click)="ref.close(0)">Close Dialog</button> <br> -->
-          <br>
-          <p>{{statusMessage}}</p>
-          <p>Selected File: {{selected}}</p>
-          <p> Selected Language:
-            <nb-select placeholder="Select Language" [(selected)]="language" style="width: 200px;">
-              <nb-option value="c">C </nb-option>
-              <nb-option value="c++">C++</nb-option>
-              <nb-option value="python">Python</nb-option>
-              <nb-option value="python3">Python 3</nb-option>
-              <nb-option value="haskell">Haskell</nb-option>
-              <nb-option value="sh">Bash</nb-option>
-          </nb-select>
-        </p>
-          <br>
-          <button nbButton class="dialog" status="success" (click)="ref.close(1)">Submit File</button> <br>
+            <!-- <button nbButton class="dialog" status="primary" (click)="ref.close(0)">Close Dialog</button> <br> -->
+            <br>
+            <p>{{statusMessage}}</p>
+            <p>Selected File: {{selected}}</p>
+            <p> Selected Language:
+                <nb-select placeholder="Select Language" [(selected)]="language" style="width: 200px;">
+                    <nb-option value="c">C </nb-option>
+                    <nb-option value="c++">C++</nb-option>
+                    <nb-option value="python">Python</nb-option>
+                    <nb-option value="python3">Python 3</nb-option>
+                    <nb-option value="haskell">Haskell</nb-option>
+                    <nb-option value="sh">Bash</nb-option>
+                </nb-select>
+            </p>
+            <br>
+            <button nbButton class="dialog" status="success" (click)="ref.close(1)">Submit File</button> <br>
 
-      </nb-card-body>
-  </nb-card>
+        </nb-card-body>
+    </nb-card>
 </ng-template>

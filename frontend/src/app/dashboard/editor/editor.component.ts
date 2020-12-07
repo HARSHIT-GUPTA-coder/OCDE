@@ -2,7 +2,6 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbDialogService, NbIconConfig, NbMenuItem, NbMenuService, NbSidebarService } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
-import { CodestoreService } from 'src/app/codestore.service';
 import { ConnectpartService } from 'src/app/connectpart.service';
 import { fileInterface, TreeNode } from 'src/app/fileInterface';
 import { NewfiledialogComponent } from 'src/app/newfiledialog/newfiledialog.component';
@@ -25,10 +24,10 @@ export class EditorComponent implements AfterViewInit {
   lang = 'python';
   status:string= 'Run after passing in input';
   code_data: code_interface;
-  code = this._codestore.getcode();
+  code = "";
   fileid = '';
   @ViewChild('editor') editor;
-  constructor(private router: Router, private _dialogService: NbDialogService, private location: Location,private api: ApiService, private _fileService: CodefetchService ,private _codestore: CodestoreService,private sidebarService: NbSidebarService, private _codeService: CodeService, private _connect: ConnectpartService, private _route : ActivatedRoute){}
+  constructor(private router: Router, private _dialogService: NbDialogService, private location: Location,private api: ApiService, private _fileService: CodefetchService,private sidebarService: NbSidebarService, private _codeService: CodeService, private _connect: ConnectpartService, private _route : ActivatedRoute){}
 
   ngAfterViewInit() {
     // console.log(this._codestore.getid());
@@ -61,7 +60,6 @@ export class EditorComponent implements AfterViewInit {
     // this.location.onUrlChange(this.changeFile);
     // this.location.events.subscribe(this.changeFile)
     if(this.fileid != "-1") {
-      if(typeof this._codestore.getid() == 'undefined'){
         this._fileService.readfiledata(this.fileid).subscribe(
           _data => {
             if(_data['success']==false) {
@@ -69,13 +67,12 @@ export class EditorComponent implements AfterViewInit {
             }
             else {
               console.log(_data)
-              this._codestore.setcode(this.fileid, _data['data']);
+              // this._codestore.setcode(this.fileid, _data['data']);
               this.code = _data['data'];
               this.editor.value = this.code;
             }
           }
         )
-      }
     }
 
     this._connect.setactivefile(this.fileid);

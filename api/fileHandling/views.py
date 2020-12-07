@@ -293,6 +293,6 @@ def GetFiles(request):
 
     user_files = File.objects.filter(owner=usr, is_file=True)
 
-    return_list = [{"file_id": x.file_id, "filename": x.filename} for x in user_files]
+    return_list = [{"file_id": x.file_id, "filename": x.filename, "path": x.relative_location} for x in user_files]
 
     return Response({"success":True, "data": return_list}, status=status.HTTP_200_OK)

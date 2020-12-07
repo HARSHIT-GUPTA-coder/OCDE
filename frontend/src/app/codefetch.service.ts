@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
-import { CodestoreService } from './codestore.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService, NbComponentStatus, NbDialogService } from '@nebular/theme';
 import { map } from 'rxjs/internal/operators';
@@ -23,7 +22,6 @@ export class CodefetchService {
   private filesURL = API.ServerURL + API.GetFiles;
   constructor(public toastrService: NbToastrService,
               private http: HttpClient,
-              private _codestore: CodestoreService,
               private router: Router,
               private activerouter: ActivatedRoute,
               private _dialogService: NbDialogService) { }
@@ -62,18 +60,18 @@ export class CodefetchService {
   }
 
   readfile(id: string): any{
-    return this.readfiledata(id).subscribe(
-      _data => {
-        if(_data["success"]==false) {
-          this.handleError(_data["message"], this.toastrService)
-        }
-        else {
-          this._codestore.setcode(id, _data["data"]);
-          // console.log(id);
-          this.router.navigate(['/dashboard/editor', {id: id}]);
-        }
-      }
-    )
+    this.router.navigate(['/dashboard/editor', {id: id}]);
+    // return this.readfiledata(id).subscribe(
+    //   _data => {
+    //     if(_data["success"]==false) {
+    //       this.handleError(_data["message"], this.toastrService)
+    //     }
+    //     else {
+    //       this._codestore.setcode(id, _data["data"]);
+    //       // console.log(id);
+    //     }
+    //   }
+    // )
   }
 
   updatefile(id: string, data: string): any {

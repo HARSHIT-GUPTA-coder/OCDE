@@ -59,7 +59,7 @@ export class ProblemComponent implements OnInit {
           // this.data = _data["data"];
           console.log(_data["data"]);
           this.data = _data["data"];
-          console.log("mu");
+          console.log(this.data);
         }
       }
     );
