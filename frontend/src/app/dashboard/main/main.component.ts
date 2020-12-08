@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbMenuService, NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { NbSidebarService, NbDialogService, NbMenuItem } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
@@ -33,7 +34,8 @@ export class MainComponent implements OnInit{
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<fileInterface>,
               private sidebarService: NbSidebarService,
               private _fileService: CodefetchService,
-              private _dialogService: NbDialogService) {
+              private _dialogService: NbDialogService,
+              private router: Router) {
       
   }
   async itemClicked(action) {
@@ -152,10 +154,11 @@ export class MainComponent implements OnInit{
   onClick(s) {
     this.activeFileID = s.data.id;
     this.activeFileName = s.data.name;
-    if (s.data.is_file)
+    if (s.data.is_file) {
       this._fileService.readfile(s.data.id);
-    else
-      this.onRightClick(s);
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+      this.router.navigate(['dashboard', 'editor']);
+    }
   }
 
   getShowOn(index: number) {

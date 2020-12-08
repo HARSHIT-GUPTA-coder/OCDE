@@ -2,10 +2,10 @@
 import { StringifyOptions } from 'querystring';
 
 export interface fileInterface {
-	name: string,
-    size: string,
-    id: number,
-    is_file: boolean
+	name?: string,
+    size?: string,
+    id?: number,
+    is_file?: boolean
 }
 export interface statementInterface {
   id: number,

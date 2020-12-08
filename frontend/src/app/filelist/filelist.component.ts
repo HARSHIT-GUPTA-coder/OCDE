@@ -30,15 +30,18 @@ export class FilelistComponent implements OnInit {
     private _dialogService: NbDialogService,
     private _connect: ConnectpartService) {
         _connect.setcallback(() => this.refreshFileStructure().bind(this))
-}
+  }
   
   async itemClicked(action) {
     action = action.substring(0, 3);
     if (action == 'Ope')
       this._fileService.readfile(this.activeFileID.toString());
     else if (action == 'Del') {
-      if(await this._fileService.deletefile(this.activeFileID.toString()))
+      if(await this._fileService.deletefile(this.activeFileID.toString())) {
         this.refreshFileStructure();
+        this._fileService.changeOpenedFile({name: 'Choose File', id: -1});
+        this._fileService.readfile('-1');
+      }
     }
     else if (action == 'New') {
       this.newFile(this.activeFileID);
@@ -66,6 +69,8 @@ export class FilelistComponent implements OnInit {
   }
   ngOnInit(): void {
     this.refreshFileStructure();
+    this.activeFileName = this._fileService.openedFile.name;
+    this.activeFileID = this._fileService.openedFile.id;
   }
 
   newFile(par: number) {
@@ -85,16 +90,23 @@ export class FilelistComponent implements OnInit {
     this._dialogService.open(RenamefileDialog, {context: {oldname: this.activeFileName}}).onClose.subscribe(
       async data => {
         if (data) {
-          if (await this._fileService.renamefile(par.toString(), data))
+          if (await this._fileService.renamefile(par.toString(), data)) {
             this.refreshFileStructure();
+            this.activeFileName = data;
+            this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+          }
         }
       }
     )
   }
 
   onSingleCick(s) {
-    this.activeFileID = s.data.id;
-    this.activeFileName = s.data.name;
+    if (s.data.is_file) {
+      this.activeFileID = s.data.id;
+      this.activeFileName = s.data.name;
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+      this._fileService.readfile(s.data.id);
+    }
   }
 
   onRightClick(s) {
@@ -136,12 +148,7 @@ export class FilelistComponent implements OnInit {
   }
 
   onClick(s) {
-    this.activeFileID = s.data.id;
-    this.activeFileName = s.data.name;
-    if (s.data.is_file)
-      this._fileService.readfile(s.data.id);
-    else
-      this.onRightClick(s);
+    this.onSingleCick(s);
   }
   getShowOn(index: number) {
       const minWithForMultipleColumns = 125;

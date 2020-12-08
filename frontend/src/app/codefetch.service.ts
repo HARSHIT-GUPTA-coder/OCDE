@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { fileInterface, TreeNode } from './fileInterface';
 import { API } from '../API';
@@ -20,11 +20,28 @@ export class CodefetchService {
   private folderURL = API.ServerURL + API.GetFolders;
   private updateURL = API.ServerURL + API.UpdateFile;
   private filesURL = API.ServerURL + API.GetFiles;
+
+  openedFile: fileInterface = {name: 'Choose File', id: -1};
+  openedFileData: string = '';
+  openedFileChange: Subject<fileInterface> = new Subject<fileInterface>()
+  openedFileDataChange: Subject<string> = new Subject<string>();
+
   constructor(public toastrService: NbToastrService,
               private http: HttpClient,
               private router: Router,
               private activerouter: ActivatedRoute,
-              private _dialogService: NbDialogService) { }
+              private _dialogService: NbDialogService) {
+        this.openedFileChange.subscribe((value) => {
+          this.openedFile = value;
+        });
+        this.openedFileDataChange.subscribe((value) => {
+          this.openedFileData = value;
+        });
+  }
+
+  changeOpenedFile(f: fileInterface) {
+    this.openedFileChange.next(f);
+  }
 
   handleError(error: HttpErrorResponse, tserve: NbToastrService) {
     let status: NbComponentStatus ="danger";
@@ -60,18 +77,23 @@ export class CodefetchService {
   }
 
   readfile(id: string): any{
-    this.router.navigate(['/dashboard/editor', {id: id}]);
-    // return this.readfiledata(id).subscribe(
-    //   _data => {
-    //     if(_data["success"]==false) {
-    //       this.handleError(_data["message"], this.toastrService)
-    //     }
-    //     else {
-    //       this._codestore.setcode(id, _data["data"]);
-    //       // console.log(id);
-    //     }
-    //   }
-    // )
+    // this.router.navigate(['/dashboard/editor', {id: id}]);
+    if (id == '-1') {
+      this.openedFileDataChange.next("");
+      return;
+    }
+    return this.readfiledata(id).subscribe(
+      _data => {
+        if(_data["success"]==false) {
+          this.handleError(_data["message"], this.toastrService)
+        }
+        else {
+          this.openedFileDataChange.next(_data["data"]);
+          // this._codestore.setcode(id, _data["data"]);
+          // console.log(id);
+        }
+      }
+    )
   }
 
   updatefile(id: string, data: string): any {
