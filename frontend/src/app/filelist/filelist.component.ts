@@ -35,8 +35,10 @@ export class FilelistComponent implements OnInit {
   
   async itemClicked(action) {
     action = action.substring(0, 3);
-    if (action == 'Ope')
+    if (action == 'Ope'){
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path: this.activeFilePath});
       this._fileService.readfile(this.activeFileID.toString());
+    }
     else if (action == 'Del') {
       if(await this._fileService.deletefile(this.activeFileID.toString())) {
         this.refreshFileStructure();
