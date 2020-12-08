@@ -143,8 +143,10 @@ def submit_problem(request):
     problem.save()
     
     obj = Scores.objects.filter(problem=problem, user=usr)
+    previous = 0
     if len(obj) and not finished:
         obj = obj[0]
+        previous = obj.score
         obj.score = max(obj.score, score)
         score = obj.score
         obj.save()
@@ -158,7 +160,7 @@ def submit_problem(request):
         inst = ContestScore.objects.filter(contest = problem.contest, user=usr)
         if len(inst):
             inst = inst[0]
-            inst.score += score 
+            inst.score += score - previous
             inst.save()
         else:
             new_score_inst = ContestScore.objects.create(contest = problem.contest, user=usr, score=score)
