@@ -22,13 +22,13 @@ def get_status(config):
 	temp_length = 7
 	exec_file = get_random_string(temp_length)
 
-	exec_file = 'temp' + filepath + exec_file + ".out"
+	exec_file = 'temp/' + exec_file + ".out"
 
 	compilation_error = False 
 	compilation_message = ""
 	if config["lang"] in COMPILED:
 		command = COMPILATION_COMMAND[config["lang"]].format(code_file, exec_file).split()
-		
+
 		try:
 			compilation_output = subprocess.run(command, stderr = subprocess.STDOUT, stdout=subprocess.PIPE)
 		except subprocess.TimeoutExpired:
@@ -36,6 +36,7 @@ def get_status(config):
 			compilation_message = "Timed out while compiling!"
 
 		if len(compilation_output.stdout) > 0:
+			print(compilation_output.stdout)
 			compilation_message = "Compilation error!"
 			compilation_error = 1
 		

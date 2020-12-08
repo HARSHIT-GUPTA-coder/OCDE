@@ -31,7 +31,7 @@ export class EditorComponent implements AfterViewInit {
   get openedFileData(): string {
     return this._fileService.openedFileData;
   }
-    
+
   ngAfterViewInit() {
 
     this.editor.getEditor().setOptions({
@@ -61,6 +61,9 @@ export class EditorComponent implements AfterViewInit {
   set language(val){
     if(val=='c' || val == 'c++')
       this.editor.mode = 'c_cpp';
+    else if (val == 'python3'){
+      this.editor.mode = 'python';
+    }
     else
       this.editor.mode = val;
     this.lang = val;
