@@ -90,11 +90,11 @@ def CreateFile(request):
 def ReturnDict(fid):
     root_obj = File.objects.get(file_id = fid)
     if root_obj.is_file:
-        return {"data": { "name": root_obj.filename, "size": root_obj.size, "is_file": True, "id": fid }}
+        return {"data": { "name": root_obj.filename, "size": root_obj.size, "is_file": True, "id": fid, "path": root_obj.relative_location }}
     
     num_children = 0
     total_size = 0
-    return_dict = {"data": { "name": root_obj.filename, "size": 0, "items": 0, "is_file": False, "id": fid }, "children": []}
+    return_dict = {"data": { "name": root_obj.filename, "size": 0, "items": 0, "is_file": False, "id": fid, "path": root_obj.relative_location }, "children": []}
     for cid in root_obj.children:
         child = ReturnDict(cid)
         return_dict["children"] += [child]

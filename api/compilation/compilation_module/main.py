@@ -60,6 +60,6 @@ def get_output(config):
 	with open(output_file, "r") as f:
 		data = f.read()
 		
-	# os.remove(output_file)
+	os.remove(output_file)
 
 	return True, data

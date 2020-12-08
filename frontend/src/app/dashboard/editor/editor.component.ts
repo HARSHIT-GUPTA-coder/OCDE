@@ -89,6 +89,7 @@ export class EditorComponent implements AfterViewInit {
 
   run() {
     if (!this.save()) return;
+    this.output = ""
     this.code_data = {input_type:'TEXT', input: this.input, lang: this.language, command: this.cli, file_id: this.openedFile.id.toString()};
 
     this.status = 'Running code on server.. ';
