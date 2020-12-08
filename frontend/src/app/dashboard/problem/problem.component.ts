@@ -30,7 +30,7 @@ export class ProblemComponent implements OnInit {
   status = "";
   selected = "";
   selectedId:number;
-  language = "python3";
+  language = "c++";
   data;
   constructor(private _fileService: CodefetchService, private _dialogService: NbDialogService, private _route : ActivatedRoute, private stmtService: statementsFetchService,  private sidebarService: NbSidebarService) { }
 
