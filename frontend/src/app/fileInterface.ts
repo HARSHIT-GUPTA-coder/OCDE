@@ -5,7 +5,8 @@ export interface fileInterface {
 	name?: string,
     size?: string,
     id?: number,
-    is_file?: boolean
+    is_file?: boolean,
+    path?: string
 }
 export interface statementInterface {
   id: number,

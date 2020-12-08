@@ -26,7 +26,7 @@ export class LoginComponent extends NbLoginComponent {
         // console.log(data);
         if (this.returndata.success) {
           this._fileService.openedFileDataChange.next("")
-          this._fileService.changeOpenedFile({name: 'Choose File', id: -1});
+          this._fileService.changeOpenedFile({name: 'Choose File', id: -1, path: ''});
           this.router.navigate(['dashboard']);
         }
       },

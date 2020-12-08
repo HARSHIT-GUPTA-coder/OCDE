@@ -21,7 +21,7 @@ export class CodefetchService {
   private updateURL = API.ServerURL + API.UpdateFile;
   private filesURL = API.ServerURL + API.GetFiles;
 
-  openedFile: fileInterface = {name: 'Choose File', id: -1};
+  openedFile: fileInterface = {name: 'Choose File', id: -1, path: ''};
   openedFileData: string = ' ';
   openedFileChange: Subject<fileInterface> = new Subject<fileInterface>()
   openedFileDataChange: Subject<string> = new Subject<string>();
