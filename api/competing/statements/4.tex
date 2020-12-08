@@ -1,0 +1,18 @@
+You are given a multiset $S$. Over all pairs of subsets $A$ and $B$, such that: <br>
+<br>
+<ul>
+<li> $B⊂A$ </li>
+<li> $|B|=|A|−1$ </li>
+<li> $\text{greatest common divisor of all elements in A is equal to one}$</li>
+</ul>
+<br>
+
+Find the sum of $\sum_{x \in A} x \sum_{x \in B} x$, modulo $998244353$. <br>
+<br>
+<h5>Input</h5>
+The first line contains one integer $m (1 \leq m \leq 10^5)$: the number of different values in the multiset $S$. <br> 
+Each of the next m lines contains two integers $a_i$, $freq_i (1 \leq a_i \leq 10^5 1 \leq freq_i \leq 10^9)$. Element $a_i$ appears in the multiset $S$ $freq_i$ times. All $a_i$ are different.
+<br>
+<br>
+<h5>Output</h5>
+Print the required sum, modulo $998244353$.<br><br>
