@@ -19,6 +19,7 @@ export class FilelistComponent implements OnInit {
   dataSource: NbTreeGridDataSource<fileInterface>;
   activeFileID = -1;
   activeFileName = '';
+  activeFilePath = '';
   rightClickedRow: any;
   items: any[];
 
@@ -39,7 +40,7 @@ export class FilelistComponent implements OnInit {
     else if (action == 'Del') {
       if(await this._fileService.deletefile(this.activeFileID.toString())) {
         this.refreshFileStructure();
-        this._fileService.changeOpenedFile({name: 'Choose File', id: -1});
+        this._fileService.changeOpenedFile({name: 'Choose File', id: -1, path: ''});
         this._fileService.readfile('-1');
       }
     }
@@ -71,6 +72,7 @@ export class FilelistComponent implements OnInit {
     this.refreshFileStructure();
     this.activeFileName = this._fileService.openedFile.name;
     this.activeFileID = this._fileService.openedFile.id;
+    this.activeFilePath = this._fileService.openedFile.path;
   }
 
   newFile(par: number) {
@@ -93,7 +95,7 @@ export class FilelistComponent implements OnInit {
           if (await this._fileService.renamefile(par.toString(), data)) {
             this.refreshFileStructure();
             this.activeFileName = data;
-            this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+            this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path: this.activeFilePath});
           }
         }
       }
@@ -107,7 +109,8 @@ export class FilelistComponent implements OnInit {
       if (s.data.is_file) {
         this.activeFileID = s.data.id;
         this.activeFileName = s.data.name;
-        this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+        this.activeFilePath = s.data.path;
+        this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path: this.activeFilePath});
         this._fileService.readfile(s.data.id);
       } 
     }
@@ -116,6 +119,7 @@ export class FilelistComponent implements OnInit {
   onRightClick(s) {
     this.activeFileID = s.data.id;
     this.activeFileName = s.data.name;
+    this.activeFilePath = s.data.path;
     this.rightClickedRow = s.data;
     if (s.data.is_file) {
       this.items = [
@@ -159,7 +163,8 @@ export class FilelistComponent implements OnInit {
             if (s.data.is_file) {
               this.activeFileID = s.data.id;
               this.activeFileName = s.data.name;
-              this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+              this.activeFilePath = s.data.path;
+              this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path: this.activeFilePath});
               this._fileService.readfile(s.data.id);
             }     
           }

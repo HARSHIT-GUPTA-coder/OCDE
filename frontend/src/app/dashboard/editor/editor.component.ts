@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { NbSidebarService } from '@nebular/theme';
+import { NbSidebarService, NbTabsetComponent } from '@nebular/theme';
 import { CodefetchService } from 'src/app/codefetch.service';
 import { fileInterface } from 'src/app/fileInterface';
 import { CodeService } from '../../code-compile-service.service';

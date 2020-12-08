@@ -1,11 +1,11 @@
 <nb-tabset>
-    <nb-tab [tabTitle] = "openedFile.name">
+    <nb-tab [tabTitle]="openedFile.path+openedFile.name">
     </nb-tab>
 </nb-tabset>
 <!-- <nb-card>
     {{filename}}
 </nb-card> -->
-<ace-editor #editor style="height:50%;" [value] = "openedFileData">
+<ace-editor #editor style="height:50%;" [value]="openedFileData">
 </ace-editor>
 <nb-card>
     <nb-card-body style="width: 100%;">

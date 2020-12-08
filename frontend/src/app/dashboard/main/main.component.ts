@@ -18,7 +18,7 @@ export class MainComponent implements OnInit{
   allColumns = [ this.customColumn, ...this.defaultColumns ];
   activeFileID = -1;
   activeFileName = '';
-
+  activeFilePath = '';
   // For right click menu
   items: NbMenuItem[];
 
@@ -42,7 +42,7 @@ export class MainComponent implements OnInit{
     action = action.substring(0, 3);
     if (action == 'Ope'){
       this._fileService.readfile(this.activeFileID.toString());
-      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path:this.activeFilePath});
       this.router.navigate(['dashboard', 'editor']);
     }
     else if (action == 'Del') {
@@ -63,8 +63,10 @@ export class MainComponent implements OnInit{
           this._fileService.handleError(_data["message"],this._fileService.toastrService);
         }
         else {
+          console.log(_data["structure"])
           this.data =  _data["structure"] as TreeNode<fileInterface>[];
           this.dataSource = this.dataSourceBuilder.create(this.data);
+          console.log(this.data)
         }
       }, error => {
         this._fileService.handleError(error,this._fileService.toastrService);
@@ -114,11 +116,13 @@ export class MainComponent implements OnInit{
   onSingleCick(s) {
     this.activeFileID = s.data.id;
     this.activeFileName = s.data.name;
+    this.activeFilePath = s.data.path;
   }
 
   onRightClick(s) {
     this.activeFileID = s.data.id;
     this.activeFileName = s.data.name;
+    this.activeFilePath = s.data.path;
     this.rightClickedRow = s.data;
     if (s.data.is_file) {
       this.items = [
@@ -157,9 +161,10 @@ export class MainComponent implements OnInit{
   onClick(s) {
     this.activeFileID = s.data.id;
     this.activeFileName = s.data.name;
+    this.activeFilePath = s.data.path;
     if (s.data.is_file) {
       this._fileService.readfile(s.data.id);
-      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID, path: this.activeFilePath});
       this.router.navigate(['dashboard', 'editor']);
     }
   }
