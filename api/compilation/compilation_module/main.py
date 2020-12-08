@@ -48,7 +48,7 @@ def get_output(config):
 	else:
 		script = "bash ./compile1.sh '" + run_command + "' " + str(user)
 
-	subprocess.run(script, shell=True)
+	subprocess.run(script, shell=True, timeout=10)
 
 	# os.remove(input_file1)
 	if config["lang"] in COMPILED:
