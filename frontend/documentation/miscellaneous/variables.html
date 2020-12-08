@@ -1,0 +1,1830 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocde documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ocde documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#API" title="src/API.ts"><b>API</b>&nbsp;&nbsp;&nbsp;(src/.../API.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#baseThemeVariables" title="src/app/@theme/styles/theme.default.ts"><b>baseThemeVariables</b>&nbsp;&nbsp;&nbsp;(src/.../theme.default.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#baseThemeVariables" title="src/app/@theme/styles/theme.cosmic.ts"><b>baseThemeVariables</b>&nbsp;&nbsp;&nbsp;(src/.../theme.cosmic.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#baseThemeVariables" title="src/app/@theme/styles/theme.dark.ts"><b>baseThemeVariables</b>&nbsp;&nbsp;&nbsp;(src/.../theme.dark.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#baseThemeVariables" title="src/app/@theme/styles/theme.corporate.ts"><b>baseThemeVariables</b>&nbsp;&nbsp;&nbsp;(src/.../theme.corporate.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/@theme/theme.module.ts"><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../theme.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#context" title="src/test.ts"><b>context</b>&nbsp;&nbsp;&nbsp;(src/.../test.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CORPORATE_THEME" title="src/app/@theme/styles/theme.corporate.ts"><b>CORPORATE_THEME</b>&nbsp;&nbsp;&nbsp;(src/.../theme.corporate.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COSMIC_THEME" title="src/app/@theme/styles/theme.cosmic.ts"><b>COSMIC_THEME</b>&nbsp;&nbsp;&nbsp;(src/.../theme.cosmic.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DARK_THEME" title="src/app/@theme/styles/theme.dark.ts"><b>DARK_THEME</b>&nbsp;&nbsp;&nbsp;(src/.../theme.dark.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_THEME" title="src/app/@theme/styles/theme.default.ts"><b>DEFAULT_THEME</b>&nbsp;&nbsp;&nbsp;(src/.../theme.default.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.prod.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NB_MODULES" title="src/app/@theme/theme.module.ts"><b>NB_MODULES</b>&nbsp;&nbsp;&nbsp;(src/.../theme.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#particlesJS" title="src/app/home/home.component.ts"><b>particlesJS</b>&nbsp;&nbsp;&nbsp;(src/.../home.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#require" title="src/test.ts"><b>require</b>&nbsp;&nbsp;&nbsp;(src/.../test.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/API.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="API"></a>
+                        <span class="name">
+                            <b>
+                            API</b>
+                            <a href="#API"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    // Change to base href in which app will be deployed
+    ServerURL: &#x27;http://127.0.0.1:8000&#x27;,
+    Login: &#x27;/api/login/&#x27;,
+    Logout: &#x27;/api/logout/&#x27;,
+    Register: &#x27;/api/register/&#x27;,
+    compile: &#x27;/compile&#x27;,
+    GetDetails: &#x27;/api/get-basic-details/&#x27;,
+    GetStructure: &#x27;/api/get-structure/&#x27;,
+    CreateFile: &#x27;/api/create-file/&#x27;,
+    ReadFile: &#x27;/api/read-file/&#x27;,
+    DeleteFile: &#x27;/api/delete-file/&#x27;,
+    UpdateFile: &#x27;/api/update-file/&#x27;,
+    GetFolders: &#x27;/api/get-folders/&#x27;,
+    GetProblems: &#x27;/api/get-problems/&#x27;,
+    GetContests: &#x27;/api/get-contests/&#x27;,
+    GetProblem: &#x27;/api/problem/&#x27;,
+    GetSubmissions: &#x27;/api/submissions/&#x27;,
+    SubmitProblem: &#x27;/api/submit/&#x27;,
+    GetFiles: &#x27;/api/get-files/&#x27;,
+    GetScores: &#x27;/api/scores/&#x27;,
+    GetContestScores: &#x27;/api/contest-scores/&#x27;,
+    GetContest: &#x27;/api/get-contest/&#x27;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/@theme/styles/theme.default.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="baseThemeVariables"></a>
+                        <span class="name">
+                            <b>
+                            baseThemeVariables</b>
+                            <a href="#baseThemeVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>baseTheme.variables</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DEFAULT_THEME"></a>
+                        <span class="name">
+                            <b>
+                            DEFAULT_THEME</b>
+                            <a href="#DEFAULT_THEME"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  name: &#x27;default&#x27;,
+  base: &#x27;default&#x27;,
+  variables: {
+    temperature: {
+      arcFill: [
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+      ],
+      arcEmpty: baseThemeVariables.bg2,
+      thumbBg: baseThemeVariables.bg2,
+      thumbBorder: baseThemeVariables.primary,
+    },
+
+    solar: {
+      gradientLeft: baseThemeVariables.primary,
+      gradientRight: baseThemeVariables.primary,
+      shadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondSeriesFill: baseThemeVariables.bg2,
+      radius: [&#x27;80%&#x27;, &#x27;90%&#x27;],
+    },
+
+    traffic: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      lineBg: baseThemeVariables.border4,
+      lineShadowBlur: &#x27;1&#x27;,
+      itemColor: baseThemeVariables.border4,
+      itemBorderColor: baseThemeVariables.border4,
+      itemEmphasisBorderColor: baseThemeVariables.primary,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      shadowLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      gradFrom: baseThemeVariables.bg2,
+      gradTo: baseThemeVariables.bg2,
+    },
+
+    electricity: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: baseThemeVariables.fgText,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      axisLineColor: baseThemeVariables.border3,
+      xAxisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+      lineGradFrom: baseThemeVariables.primary,
+      lineGradTo: baseThemeVariables.primary,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.bg2,
+      areaGradTo: baseThemeVariables.bg2,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    bubbleMap: {
+      titleColor: baseThemeVariables.fgText,
+      areaColor: baseThemeVariables.bg4,
+      areaHoverColor: baseThemeVariables.fgHighlight,
+      areaBorderColor: baseThemeVariables.border5,
+    },
+
+    profitBarAnimationEchart: {
+      textColor: baseThemeVariables.fgText,
+
+      firstAnimationBarColor: baseThemeVariables.primary,
+      secondAnimationBarColor: baseThemeVariables.success,
+
+      splitLineStyleOpacity: &#x27;1&#x27;,
+      splitLineStyleWidth: &#x27;1&#x27;,
+      splitLineStyleColor: baseThemeVariables.separator,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+
+    trafficBarEchart: {
+      gradientFrom: baseThemeVariables.warningLight,
+      gradientTo: baseThemeVariables.warning,
+      shadow: baseThemeVariables.warningLight,
+      shadowBlur: &#x27;0&#x27;,
+
+      axisTextColor: baseThemeVariables.fgText,
+      axisFontSize: &#x27;12&#x27;,
+
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+    },
+
+    countryOrders: {
+      countryBorderColor: baseThemeVariables.border4,
+      countryFillColor: baseThemeVariables.bg3,
+      countryBorderWidth: &#x27;1&#x27;,
+      hoveredCountryBorderColor: baseThemeVariables.primary,
+      hoveredCountryFillColor: baseThemeVariables.primaryLight,
+      hoveredCountryBorderWidth: &#x27;1&#x27;,
+
+      chartAxisLineColor: baseThemeVariables.border4,
+      chartAxisTextColor: baseThemeVariables.fg,
+      chartAxisFontSize: &#x27;16&#x27;,
+      chartGradientTo: baseThemeVariables.primary,
+      chartGradientFrom: baseThemeVariables.primaryLight,
+      chartAxisSplitLine: baseThemeVariables.separator,
+      chartShadowLineColor: baseThemeVariables.primaryLight,
+
+      chartLineBottomShadowColor: baseThemeVariables.primary,
+
+      chartInnerLineColor: baseThemeVariables.bg2,
+    },
+
+    echarts: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.fgText,
+      splitLineColor: baseThemeVariables.separator,
+      itemHoverShadowColor: &#x27;rgba(0, 0, 0, 0.5)&#x27;,
+      tooltipBackgroundColor: baseThemeVariables.primary,
+      areaOpacity: &#x27;0.7&#x27;,
+    },
+
+    chartjs: {
+      axisLineColor: baseThemeVariables.separator,
+      textColor: baseThemeVariables.fgText,
+    },
+
+    orders: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+
+      // first line
+      firstAreaGradFrom: baseThemeVariables.bg3,
+      firstAreaGradTo: baseThemeVariables.bg3,
+      firstShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second line
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+
+      secondAreaGradFrom: &#x27;rgba(51, 102, 255, 0.2)&#x27;,
+      secondAreaGradTo: &#x27;rgba(51, 102, 255, 0)&#x27;,
+      secondShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third line
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+
+      thirdAreaGradFrom: &#x27;rgba(0, 214, 143, 0.2)&#x27;,
+      thirdAreaGradTo: &#x27;rgba(0, 214, 143, 0)&#x27;,
+      thirdShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    profit: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.border4,
+      splitLineColor: baseThemeVariables.separator,
+      areaOpacity: &#x27;1&#x27;,
+
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+
+      // first bar
+      firstLineGradFrom: baseThemeVariables.bg3,
+      firstLineGradTo: baseThemeVariables.bg3,
+      firstLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second bar
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+      secondLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third bar
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+      thirdLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    orderProfitLegend: {
+      firstItem: baseThemeVariables.success,
+      secondItem: baseThemeVariables.primary,
+      thirdItem: baseThemeVariables.bg3,
+    },
+
+    visitors: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;1&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;dotted&#x27;,
+      lineWidth: &#x27;6&#x27;,
+      lineGradFrom: &#x27;#ffffff&#x27;,
+      lineGradTo: &#x27;#ffffff&#x27;,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.primary,
+      areaGradTo: baseThemeVariables.primaryLight,
+
+      innerLineStyle: &#x27;solid&#x27;,
+      innerLineWidth: &#x27;1&#x27;,
+
+      innerAreaGradFrom: baseThemeVariables.success,
+      innerAreaGradTo: baseThemeVariables.success,
+    },
+
+    visitorsLegend: {
+      firstIcon: baseThemeVariables.success,
+      secondIcon: baseThemeVariables.primary,
+    },
+
+    visitorsPie: {
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      firstPieRadius: [&#x27;70%&#x27;, &#x27;90%&#x27;],
+
+      secondPieGradientLeft: baseThemeVariables.warning,
+      secondPieGradientRight: baseThemeVariables.warningLight,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondPieRadius: [&#x27;60%&#x27;, &#x27;97%&#x27;],
+      shadowOffsetX: &#x27;0&#x27;,
+      shadowOffsetY: &#x27;0&#x27;,
+    },
+
+    visitorsPieLegend: {
+      firstSection: baseThemeVariables.warning,
+      secondSection: baseThemeVariables.success,
+    },
+
+    earningPie: {
+      radius: [&#x27;65%&#x27;, &#x27;100%&#x27;],
+      center: [&#x27;50%&#x27;, &#x27;50%&#x27;],
+
+      fontSize: &#x27;22&#x27;,
+
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      secondPieGradientLeft: baseThemeVariables.primary,
+      secondPieGradientRight: baseThemeVariables.primary,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      thirdPieGradientLeft: baseThemeVariables.warning,
+      thirdPieGradientRight: baseThemeVariables.warning,
+      thirdPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    earningLine: {
+      gradFrom: baseThemeVariables.primary,
+      gradTo: baseThemeVariables.primary,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+  },
+} as NbJSThemeOptions</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/@theme/styles/theme.cosmic.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="baseThemeVariables"></a>
+                        <span class="name">
+                            <b>
+                            baseThemeVariables</b>
+                            <a href="#baseThemeVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>baseTheme.variables</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="COSMIC_THEME"></a>
+                        <span class="name">
+                            <b>
+                            COSMIC_THEME</b>
+                            <a href="#COSMIC_THEME"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  name: &#x27;cosmic&#x27;,
+  base: &#x27;cosmic&#x27;,
+  variables: {
+    temperature: {
+      arcFill: [ &#x27;#2ec7fe&#x27;, &#x27;#31ffad&#x27;, &#x27;#7bff24&#x27;, &#x27;#fff024&#x27;, &#x27;#f7bd59&#x27; ],
+      arcEmpty: baseThemeVariables.bg2,
+      thumbBg: &#x27;#ffffff&#x27;,
+      thumbBorder: &#x27;#ffffff&#x27;,
+    },
+
+    solar: {
+      gradientLeft: baseThemeVariables.primary,
+      gradientRight: baseThemeVariables.primary,
+      shadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondSeriesFill: baseThemeVariables.bg2,
+      radius: [&#x27;70%&#x27;, &#x27;90%&#x27;],
+    },
+
+    traffic: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;box-shadow: 0px 2px 46px 0 rgba(50, 50, 89); border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      lineBg: baseThemeVariables.border2,
+      lineShadowBlur: &#x27;14&#x27;,
+      itemColor: baseThemeVariables.border2,
+      itemBorderColor: baseThemeVariables.border2,
+      itemEmphasisBorderColor: baseThemeVariables.primary,
+      shadowLineDarkBg: baseThemeVariables.border3,
+      shadowLineShadow: baseThemeVariables.border3,
+      gradFrom: baseThemeVariables.bg,
+      gradTo: baseThemeVariables.bg2,
+    },
+
+    electricity: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: baseThemeVariables.fgText,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;box-shadow: 0px 2px 46px 0 rgba(0, 255, 170, 0.35); border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      axisLineColor: baseThemeVariables.border3,
+      xAxisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.border2,
+      lineStyle: &#x27;dotted&#x27;,
+      lineWidth: &#x27;6&#x27;,
+      lineGradFrom: baseThemeVariables.success,
+      lineGradTo: baseThemeVariables.warning,
+      lineShadow: baseThemeVariables.bg4,
+
+      areaGradFrom: baseThemeVariables.bg2,
+      areaGradTo: baseThemeVariables.bg3,
+      shadowLineDarkBg: baseThemeVariables.bg3,
+    },
+
+    bubbleMap: {
+      titleColor: baseThemeVariables.fgText,
+      areaColor: baseThemeVariables.bg4,
+      areaHoverColor: baseThemeVariables.fgHighlight,
+      areaBorderColor: baseThemeVariables.border5,
+    },
+
+    profitBarAnimationEchart: {
+      textColor: baseThemeVariables.fgText,
+
+      firstAnimationBarColor: baseThemeVariables.primary,
+      secondAnimationBarColor: baseThemeVariables.success,
+
+      splitLineStyleOpacity: &#x27;1&#x27;,
+      splitLineStyleWidth: &#x27;1&#x27;,
+      splitLineStyleColor: baseThemeVariables.border2,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+
+    trafficBarEchart: {
+      gradientFrom: baseThemeVariables.warningLight,
+      gradientTo: baseThemeVariables.warning,
+      shadow: baseThemeVariables.warningLight,
+      shadowBlur: &#x27;5&#x27;,
+
+      axisTextColor: baseThemeVariables.fgText,
+      axisFontSize: &#x27;12&#x27;,
+
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+    },
+
+    countryOrders: {
+      countryBorderColor: baseThemeVariables.border4,
+      countryFillColor: baseThemeVariables.bg3,
+      countryBorderWidth: &#x27;1&#x27;,
+      hoveredCountryBorderColor: baseThemeVariables.primary,
+      hoveredCountryFillColor: baseThemeVariables.primaryLight,
+      hoveredCountryBorderWidth: &#x27;1&#x27;,
+
+      chartAxisLineColor: baseThemeVariables.border4,
+      chartAxisTextColor: baseThemeVariables.fg,
+      chartAxisFontSize: &#x27;16&#x27;,
+      chartGradientTo: baseThemeVariables.primary,
+      chartGradientFrom: baseThemeVariables.primaryLight,
+      chartAxisSplitLine: baseThemeVariables.separator,
+      chartShadowLineColor: baseThemeVariables.primaryLight,
+
+      chartLineBottomShadowColor: baseThemeVariables.primary,
+
+      chartInnerLineColor: baseThemeVariables.bg2,
+    },
+
+    echarts: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.fgText,
+      splitLineColor: baseThemeVariables.separator,
+      itemHoverShadowColor: &#x27;rgba(0, 0, 0, 0.5)&#x27;,
+      tooltipBackgroundColor: baseThemeVariables.primary,
+      areaOpacity: &#x27;1&#x27;,
+    },
+
+    chartjs: {
+      axisLineColor: baseThemeVariables.separator,
+      textColor: baseThemeVariables.fgText,
+    },
+
+    orders: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+
+      // first line
+      firstAreaGradFrom: baseThemeVariables.bg2,
+      firstAreaGradTo: baseThemeVariables.bg2,
+      firstShadowLineDarkBg: baseThemeVariables.bg2,
+
+      // second line
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+
+      secondAreaGradFrom: &#x27;rgba(161, 110, 255, 0.8)&#x27;,
+      secondAreaGradTo: &#x27;rgba(161, 110, 255, 0.5)&#x27;,
+      secondShadowLineDarkBg: baseThemeVariables.primary,
+
+      // third line
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+
+      thirdAreaGradFrom: &#x27;rgba(0, 214, 143, 0.7)&#x27;,
+      thirdAreaGradTo: &#x27;rgba(0, 214, 143, 0.4)&#x27;,
+      thirdShadowLineDarkBg: baseThemeVariables.success,
+    },
+
+    profit: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.border4,
+      splitLineColor: baseThemeVariables.separator,
+      areaOpacity: &#x27;1&#x27;,
+
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+
+      // first bar
+      firstLineGradFrom: baseThemeVariables.bg2,
+      firstLineGradTo: baseThemeVariables.bg2,
+      firstLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second bar
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+      secondLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third bar
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+      thirdLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    orderProfitLegend: {
+      firstItem: baseThemeVariables.success,
+      secondItem: baseThemeVariables.primary,
+      thirdItem: baseThemeVariables.bg2,
+    },
+
+    visitors: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;1&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;dotted&#x27;,
+      lineWidth: &#x27;6&#x27;,
+      lineGradFrom: &#x27;#ffffff&#x27;,
+      lineGradTo: &#x27;#ffffff&#x27;,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.primary,
+      areaGradTo: baseThemeVariables.primaryLight,
+
+      innerLineStyle: &#x27;solid&#x27;,
+      innerLineWidth: &#x27;1&#x27;,
+
+      innerAreaGradFrom: baseThemeVariables.success,
+      innerAreaGradTo: baseThemeVariables.success,
+    },
+
+    visitorsLegend: {
+      firstIcon: baseThemeVariables.success,
+      secondIcon: baseThemeVariables.primary,
+    },
+
+    visitorsPie: {
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.successLight,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      firstPieRadius: [&#x27;70%&#x27;, &#x27;90%&#x27;],
+
+      secondPieGradientLeft: baseThemeVariables.warning,
+      secondPieGradientRight: baseThemeVariables.warningLight,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondPieRadius: [&#x27;60%&#x27;, &#x27;95%&#x27;],
+      shadowOffsetX: &#x27;0&#x27;,
+      shadowOffsetY: &#x27;3&#x27;,
+    },
+
+    visitorsPieLegend: {
+      firstSection: baseThemeVariables.warning,
+      secondSection: baseThemeVariables.success,
+    },
+
+    earningPie: {
+      radius: [&#x27;65%&#x27;, &#x27;100%&#x27;],
+      center: [&#x27;50%&#x27;, &#x27;50%&#x27;],
+
+      fontSize: &#x27;22&#x27;,
+
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      secondPieGradientLeft: baseThemeVariables.primary,
+      secondPieGradientRight: baseThemeVariables.primary,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      thirdPieGradientLeft: baseThemeVariables.warning,
+      thirdPieGradientRight: baseThemeVariables.warning,
+      thirdPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    earningLine: {
+      gradFrom: baseThemeVariables.primary,
+      gradTo: baseThemeVariables.primary,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+  },
+} as NbJSThemeOptions</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/@theme/styles/theme.dark.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="baseThemeVariables"></a>
+                        <span class="name">
+                            <b>
+                            baseThemeVariables</b>
+                            <a href="#baseThemeVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>baseTheme.variables</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DARK_THEME"></a>
+                        <span class="name">
+                            <b>
+                            DARK_THEME</b>
+                            <a href="#DARK_THEME"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  name: &#x27;dark&#x27;,
+  base: &#x27;dark&#x27;,
+  variables: {
+    temperature: {
+      arcFill: [
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+        baseThemeVariables.primary,
+      ],
+      arcEmpty: baseThemeVariables.bg2,
+      thumbBg: baseThemeVariables.bg2,
+      thumbBorder: baseThemeVariables.primary,
+    },
+
+    solar: {
+      gradientLeft: baseThemeVariables.primary,
+      gradientRight: baseThemeVariables.primary,
+      shadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondSeriesFill: baseThemeVariables.bg2,
+      radius: [&#x27;80%&#x27;, &#x27;90%&#x27;],
+    },
+
+    traffic: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      lineBg: baseThemeVariables.border4,
+      lineShadowBlur: &#x27;1&#x27;,
+      itemColor: baseThemeVariables.border4,
+      itemBorderColor: baseThemeVariables.border4,
+      itemEmphasisBorderColor: baseThemeVariables.primary,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      shadowLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      gradFrom: baseThemeVariables.bg2,
+      gradTo: baseThemeVariables.bg2,
+    },
+
+    electricity: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: baseThemeVariables.fgText,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      axisLineColor: baseThemeVariables.border3,
+      xAxisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+      lineGradFrom: baseThemeVariables.primary,
+      lineGradTo: baseThemeVariables.primary,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.bg2,
+      areaGradTo: baseThemeVariables.bg2,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    bubbleMap: {
+      titleColor: baseThemeVariables.fgText,
+      areaColor: baseThemeVariables.bg4,
+      areaHoverColor: baseThemeVariables.fgHighlight,
+      areaBorderColor: baseThemeVariables.border5,
+    },
+
+    profitBarAnimationEchart: {
+      textColor: baseThemeVariables.fgText,
+
+      firstAnimationBarColor: baseThemeVariables.primary,
+      secondAnimationBarColor: baseThemeVariables.success,
+
+      splitLineStyleOpacity: &#x27;1&#x27;,
+      splitLineStyleWidth: &#x27;1&#x27;,
+      splitLineStyleColor: baseThemeVariables.separator,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+
+    trafficBarEchart: {
+      gradientFrom: baseThemeVariables.warningLight,
+      gradientTo: baseThemeVariables.warning,
+      shadow: baseThemeVariables.warningLight,
+      shadowBlur: &#x27;0&#x27;,
+
+      axisTextColor: baseThemeVariables.fgText,
+      axisFontSize: &#x27;12&#x27;,
+
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+    },
+
+    countryOrders: {
+      countryBorderColor: baseThemeVariables.border4,
+      countryFillColor: baseThemeVariables.bg3,
+      countryBorderWidth: &#x27;1&#x27;,
+      hoveredCountryBorderColor: baseThemeVariables.primary,
+      hoveredCountryFillColor: baseThemeVariables.primaryLight,
+      hoveredCountryBorderWidth: &#x27;1&#x27;,
+
+      chartAxisLineColor: baseThemeVariables.border4,
+      chartAxisTextColor: baseThemeVariables.fg,
+      chartAxisFontSize: &#x27;16&#x27;,
+      chartGradientTo: baseThemeVariables.primary,
+      chartGradientFrom: baseThemeVariables.primaryLight,
+      chartAxisSplitLine: baseThemeVariables.separator,
+      chartShadowLineColor: baseThemeVariables.primaryLight,
+
+      chartLineBottomShadowColor: baseThemeVariables.primary,
+
+      chartInnerLineColor: baseThemeVariables.bg2,
+    },
+
+    echarts: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.fgText,
+      splitLineColor: baseThemeVariables.separator,
+      itemHoverShadowColor: &#x27;rgba(0, 0, 0, 0.5)&#x27;,
+      tooltipBackgroundColor: baseThemeVariables.primary,
+      areaOpacity: &#x27;0.7&#x27;,
+    },
+
+    chartjs: {
+      axisLineColor: baseThemeVariables.separator,
+      textColor: baseThemeVariables.fgText,
+    },
+
+    orders: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+
+      // first line
+      firstAreaGradFrom: baseThemeVariables.bg3,
+      firstAreaGradTo: baseThemeVariables.bg3,
+      firstShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second line
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+
+      secondAreaGradFrom: &#x27;rgba(51, 102, 255, 0.2)&#x27;,
+      secondAreaGradTo: &#x27;rgba(51, 102, 255, 0)&#x27;,
+      secondShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third line
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+
+      thirdAreaGradFrom: &#x27;rgba(0, 214, 143, 0.2)&#x27;,
+      thirdAreaGradTo: &#x27;rgba(0, 214, 143, 0)&#x27;,
+      thirdShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    profit: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.border4,
+      splitLineColor: baseThemeVariables.separator,
+      areaOpacity: &#x27;1&#x27;,
+
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+
+      // first bar
+      firstLineGradFrom: baseThemeVariables.bg3,
+      firstLineGradTo: baseThemeVariables.bg3,
+      firstLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second bar
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+      secondLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third bar
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+      thirdLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    orderProfitLegend: {
+      firstItem: baseThemeVariables.success,
+      secondItem: baseThemeVariables.primary,
+      thirdItem: baseThemeVariables.bg3,
+    },
+
+    visitors: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;dotted&#x27;,
+      lineWidth: &#x27;6&#x27;,
+      lineGradFrom: &#x27;#ffffff&#x27;,
+      lineGradTo: &#x27;#ffffff&#x27;,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.primary,
+      areaGradTo: baseThemeVariables.primaryLight,
+
+      innerLineStyle: &#x27;solid&#x27;,
+      innerLineWidth: &#x27;1&#x27;,
+
+      innerAreaGradFrom: baseThemeVariables.success,
+      innerAreaGradTo: baseThemeVariables.success,
+    },
+
+    visitorsLegend: {
+      firstIcon: baseThemeVariables.success,
+      secondIcon: baseThemeVariables.primary,
+    },
+
+    visitorsPie: {
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      firstPieRadius: [&#x27;70%&#x27;, &#x27;90%&#x27;],
+
+      secondPieGradientLeft: baseThemeVariables.warning,
+      secondPieGradientRight: baseThemeVariables.warningLight,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondPieRadius: [&#x27;60%&#x27;, &#x27;97%&#x27;],
+      shadowOffsetX: &#x27;0&#x27;,
+      shadowOffsetY: &#x27;0&#x27;,
+    },
+
+    visitorsPieLegend: {
+      firstSection: baseThemeVariables.warning,
+      secondSection: baseThemeVariables.success,
+    },
+
+    earningPie: {
+      radius: [&#x27;65%&#x27;, &#x27;100%&#x27;],
+      center: [&#x27;50%&#x27;, &#x27;50%&#x27;],
+
+      fontSize: &#x27;22&#x27;,
+
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      secondPieGradientLeft: baseThemeVariables.primary,
+      secondPieGradientRight: baseThemeVariables.primary,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      thirdPieGradientLeft: baseThemeVariables.warning,
+      thirdPieGradientRight: baseThemeVariables.warning,
+      thirdPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    earningLine: {
+      gradFrom: baseThemeVariables.primary,
+      gradTo: baseThemeVariables.primary,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+  },
+} as NbJSThemeOptions</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/@theme/styles/theme.corporate.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="baseThemeVariables"></a>
+                        <span class="name">
+                            <b>
+                            baseThemeVariables</b>
+                            <a href="#baseThemeVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>baseTheme.variables</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="CORPORATE_THEME"></a>
+                        <span class="name">
+                            <b>
+                            CORPORATE_THEME</b>
+                            <a href="#CORPORATE_THEME"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  name: &#x27;corporate&#x27;,
+  base: &#x27;corporate&#x27;,
+  variables: {
+    temperature: {
+      arcFill: [ &#x27;#ffa36b&#x27;, &#x27;#ffa36b&#x27;, &#x27;#ff9e7a&#x27;, &#x27;#ff9888&#x27;, &#x27;#ff8ea0&#x27; ],
+      arcEmpty: baseThemeVariables.bg2,
+      thumbBg: baseThemeVariables.bg2,
+      thumbBorder: &#x27;#ffa36b&#x27;,
+    },
+
+    solar: {
+      gradientLeft: baseThemeVariables.primary,
+      gradientRight: baseThemeVariables.primary,
+      shadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondSeriesFill: baseThemeVariables.bg2,
+      radius: [&#x27;80%&#x27;, &#x27;90%&#x27;],
+    },
+
+    traffic: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      yAxisSplitLine: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      lineBg: baseThemeVariables.primary,
+      lineShadowBlur: &#x27;0&#x27;,
+      itemColor: baseThemeVariables.border4,
+      itemBorderColor: baseThemeVariables.border4,
+      itemEmphasisBorderColor: baseThemeVariables.primaryLight,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      shadowLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      gradFrom: baseThemeVariables.bg,
+      gradTo: baseThemeVariables.bg,
+    },
+
+    electricity: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: baseThemeVariables.fgText,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+
+      axisLineColor: baseThemeVariables.border3,
+      xAxisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+      lineGradFrom: baseThemeVariables.primary,
+      lineGradTo: baseThemeVariables.primary,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      areaGradTo: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      shadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    bubbleMap: {
+      titleColor: baseThemeVariables.fgText,
+      areaColor: baseThemeVariables.bg4,
+      areaHoverColor: baseThemeVariables.fgHighlight,
+      areaBorderColor: baseThemeVariables.border5,
+    },
+
+    profitBarAnimationEchart: {
+      textColor: baseThemeVariables.fgText,
+
+      firstAnimationBarColor: baseThemeVariables.primary,
+      secondAnimationBarColor: baseThemeVariables.success,
+
+      splitLineStyleOpacity: &#x27;1&#x27;,
+      splitLineStyleWidth: &#x27;1&#x27;,
+      splitLineStyleColor: baseThemeVariables.separator,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+
+    trafficBarEchart: {
+      gradientFrom: baseThemeVariables.warningLight,
+      gradientTo: baseThemeVariables.warning,
+      shadow: baseThemeVariables.warningLight,
+      shadowBlur: &#x27;0&#x27;,
+
+      axisTextColor: baseThemeVariables.fgText,
+      axisFontSize: &#x27;12&#x27;,
+
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+    },
+
+    countryOrders: {
+      countryBorderColor: baseThemeVariables.border4,
+      countryFillColor: baseThemeVariables.bg4,
+      countryBorderWidth: &#x27;1&#x27;,
+      hoveredCountryBorderColor: baseThemeVariables.primary,
+      hoveredCountryFillColor: baseThemeVariables.primaryLight,
+      hoveredCountryBorderWidth: &#x27;1&#x27;,
+
+      chartAxisLineColor: baseThemeVariables.border4,
+      chartAxisTextColor: baseThemeVariables.fg,
+      chartAxisFontSize: &#x27;16&#x27;,
+      chartGradientTo: baseThemeVariables.primary,
+      chartGradientFrom: baseThemeVariables.primaryLight,
+      chartAxisSplitLine: baseThemeVariables.separator,
+      chartShadowLineColor: baseThemeVariables.primaryLight,
+
+      chartLineBottomShadowColor: baseThemeVariables.primary,
+
+      chartInnerLineColor: baseThemeVariables.bg2,
+    },
+
+    echarts: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.fgText,
+      splitLineColor: baseThemeVariables.separator,
+      itemHoverShadowColor: &#x27;rgba(0, 0, 0, 0.5)&#x27;,
+      tooltipBackgroundColor: baseThemeVariables.primary,
+      areaOpacity: &#x27;0.7&#x27;,
+    },
+
+    chartjs: {
+      axisLineColor: baseThemeVariables.separator,
+      textColor: baseThemeVariables.fgText,
+    },
+
+    orders: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;0&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;solid&#x27;,
+      lineWidth: &#x27;4&#x27;,
+
+      // first line
+      firstAreaGradFrom: baseThemeVariables.bg3,
+      firstAreaGradTo: baseThemeVariables.bg3,
+      firstShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second line
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+
+      secondAreaGradFrom: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondAreaGradTo: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third line
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.successLight,
+
+      thirdAreaGradFrom: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      thirdAreaGradTo: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      thirdShadowLineDarkBg: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    profit: {
+      bg: baseThemeVariables.bg,
+      textColor: baseThemeVariables.fgText,
+      axisLineColor: baseThemeVariables.border4,
+      splitLineColor: baseThemeVariables.separator,
+      areaOpacity: &#x27;1&#x27;,
+
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+
+      // first bar
+      firstLineGradFrom: baseThemeVariables.bg3,
+      firstLineGradTo: baseThemeVariables.bg3,
+      firstLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // second bar
+      secondLineGradFrom: baseThemeVariables.primary,
+      secondLineGradTo: baseThemeVariables.primary,
+      secondLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      // third bar
+      thirdLineGradFrom: baseThemeVariables.success,
+      thirdLineGradTo: baseThemeVariables.success,
+      thirdLineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    orderProfitLegend: {
+      firstItem: baseThemeVariables.success,
+      secondItem: baseThemeVariables.primary,
+      thirdItem: baseThemeVariables.bg3,
+    },
+
+    visitors: {
+      tooltipBg: baseThemeVariables.bg,
+      tooltipLineColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      tooltipLineWidth: &#x27;1&#x27;,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 8px 24px;&#x27;,
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;20&#x27;,
+
+      axisLineColor: baseThemeVariables.border4,
+      axisFontSize: &#x27;16&#x27;,
+      axisTextColor: baseThemeVariables.fg,
+      yAxisSplitLine: baseThemeVariables.separator,
+
+      itemBorderColor: baseThemeVariables.primary,
+      lineStyle: &#x27;dotted&#x27;,
+      lineWidth: &#x27;6&#x27;,
+      lineGradFrom: &#x27;#ffffff&#x27;,
+      lineGradTo: &#x27;#ffffff&#x27;,
+      lineShadow: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      areaGradFrom: baseThemeVariables.primary,
+      areaGradTo: baseThemeVariables.primaryLight,
+
+      innerLineStyle: &#x27;solid&#x27;,
+      innerLineWidth: &#x27;1&#x27;,
+
+      innerAreaGradFrom: baseThemeVariables.success,
+      innerAreaGradTo: baseThemeVariables.success,
+    },
+
+    visitorsLegend: {
+      firstIcon: baseThemeVariables.success,
+      secondIcon: baseThemeVariables.primary,
+    },
+
+    visitorsPie: {
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      firstPieRadius: [&#x27;65%&#x27;, &#x27;90%&#x27;],
+
+      secondPieGradientLeft: baseThemeVariables.warning,
+      secondPieGradientRight: baseThemeVariables.warningLight,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+      secondPieRadius: [&#x27;63%&#x27;, &#x27;92%&#x27;],
+      shadowOffsetX: &#x27;-4&#x27;,
+      shadowOffsetY: &#x27;-4&#x27;,
+    },
+
+    visitorsPieLegend: {
+      firstSection: baseThemeVariables.warning,
+      secondSection: baseThemeVariables.success,
+    },
+
+    earningPie: {
+      radius: [&#x27;65%&#x27;, &#x27;100%&#x27;],
+      center: [&#x27;50%&#x27;, &#x27;50%&#x27;],
+
+      fontSize: &#x27;22&#x27;,
+
+      firstPieGradientLeft: baseThemeVariables.success,
+      firstPieGradientRight: baseThemeVariables.success,
+      firstPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      secondPieGradientLeft: baseThemeVariables.primary,
+      secondPieGradientRight: baseThemeVariables.primary,
+      secondPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+
+      thirdPieGradientLeft: baseThemeVariables.warning,
+      thirdPieGradientRight: baseThemeVariables.warning,
+      thirdPieShadowColor: &#x27;rgba(0, 0, 0, 0)&#x27;,
+    },
+
+    earningLine: {
+      gradFrom: baseThemeVariables.primary,
+      gradTo: baseThemeVariables.primary,
+
+      tooltipTextColor: baseThemeVariables.fgText,
+      tooltipFontWeight: &#x27;normal&#x27;,
+      tooltipFontSize: &#x27;16&#x27;,
+      tooltipBg: baseThemeVariables.bg,
+      tooltipBorderColor: baseThemeVariables.border2,
+      tooltipBorderWidth: &#x27;1&#x27;,
+      tooltipExtraCss: &#x27;border-radius: 10px; padding: 4px 16px;&#x27;,
+    },
+  },
+} as NbJSThemeOptions</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/@theme/theme.module.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="COMPONENTS"></a>
+                        <span class="name">
+                            <b>
+                            COMPONENTS</b>
+                            <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+  HeaderComponent,
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="NB_MODULES"></a>
+                        <span class="name">
+                            <b>
+                            NB_MODULES</b>
+                            <a href="#NB_MODULES"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+  NbLayoutModule,
+  NbMenuModule,
+  NbUserModule,
+  NbActionsModule,
+  NbSearchModule,
+  NbSidebarModule,
+  NbContextMenuModule,
+  NbButtonModule,
+  NbSelectModule,
+  NbIconModule,
+  NbEvaIconsModule,
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/test.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="context"></a>
+                        <span class="name">
+                            <b>
+                            context</b>
+                            <a href="#context"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>require.context(&#x27;./&#x27;, true, /\.spec\.ts$/)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="require"></a>
+                        <span class="name">
+                            <b>
+                            require</b>
+                            <a href="#require"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="environment"></a>
+                        <span class="name">
+                            <b>
+                            environment</b>
+                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  production: false
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/environments/environment.prod.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="environment"></a>
+                        <span class="name">
+                            <b>
+                            environment</b>
+                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  production: true
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/app/home/home.component.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="particlesJS"></a>
+                        <span class="name">
+                            <b>
+                            particlesJS</b>
+                            <a href="#particlesJS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

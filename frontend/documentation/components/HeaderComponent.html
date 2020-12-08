@@ -1,0 +1,936 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocde documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ocde documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>HeaderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/@theme/header/header.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ngx-header</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./header.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./header.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$">destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                            <li>
+                                <a href="#userMenu">userMenu</a>
+                            </li>
+                            <li>
+                                <a href="#userPictureOnly">userPictureOnly</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#gotoLink">gotoLink</a>
+                            </li>
+                            <li>
+                                <a href="#navigateHome">navigateHome</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#refreshUserDetails">refreshUserDetails</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(sidebarService: NbSidebarService, menuService: NbMenuService, _sd: <a href="../injectables/ApiService.html">ApiService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/@theme/header/header.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>sidebarService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NbSidebarService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>menuService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NbMenuService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_sd</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiService.html" target="_self" >ApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gotoLink"></a>
+                    <span class="name">
+                        <b>
+                            gotoLink
+                        </b>
+                        <a href="#gotoLink"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gotoLink(x)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/@theme/header/header.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>x</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateHome"></a>
+                    <span class="name">
+                        <b>
+                            navigateHome
+                        </b>
+                        <a href="#navigateHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateHome()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/@theme/header/header.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/@theme/header/header.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/@theme/header/header.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshUserDetails"></a>
+                    <span class="name">
+                        <b>
+                            refreshUserDetails
+                        </b>
+                        <a href="#refreshUserDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshUserDetails()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/@theme/header/header.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="destroy$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            destroy$</b>
+                            <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/@theme/header/header.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/@theme/header/header.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userMenu"></a>
+                        <span class="name">
+                            <b>
+                            userMenu</b>
+                            <a href="#userMenu"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[ { title: &#x27;Profile&#x27; }, { title: &#x27;Log out&#x27; } ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/@theme/header/header.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userPictureOnly"></a>
+                        <span class="name">
+                            <b>
+                            userPictureOnly</b>
+                            <a href="#userPictureOnly"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/@theme/header/header.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService, NbActionComponent } from &#x27;@nebular/theme&#x27;;
+
+import { map, takeUntil } from &#x27;rxjs/operators&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { ApiService } from &#x27;src/app/api.service&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { User } from &#x27;src/app/UserDetails&#x27;;
+
+
+@Component({
+  selector: &#x27;ngx-header&#x27;,
+  styleUrls: [&#x27;./header.component.scss&#x27;],
+  templateUrl: &#x27;./header.component.html&#x27;,
+})
+export class HeaderComponent implements OnInit, OnDestroy {
+
+  private destroy$: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+  userPictureOnly: boolean &#x3D; false;
+  user: User;
+
+  userMenu &#x3D; [ { title: &#x27;Profile&#x27; }, { title: &#x27;Log out&#x27; } ];
+
+
+  constructor(private sidebarService: NbSidebarService,
+              private menuService: NbMenuService,
+              private _sd: ApiService,
+              private router: Router) {
+  }
+
+  refreshUserDetails() {
+    this._sd.getDetails()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((userDetail: User) &#x3D;&gt; {
+          this.user &#x3D; userDetail;
+          this.userMenu &#x3D; [ { title: this.user.first_name + &#x27; &#x27; + this.user.last_name }, { title: &#x27;Log out&#x27; } ]
+    }, err &#x3D;&gt; {
+      console.log(&quot;error occurred&quot;);
+      this.user &#x3D; null;
+    });
+  }
+
+  ngOnInit() {
+    this.refreshUserDetails();
+
+    this.menuService.onItemClick().subscribe(( event ) &#x3D;&gt; {
+      if (event.item.title &#x3D;&#x3D;&#x3D; &#x27;Log out&#x27;) {
+          this._sd.logoutUser()
+              .pipe(takeUntil(this.destroy$))
+              .subscribe(() &#x3D;&gt; {
+                this.refreshUserDetails();
+                this.router.navigate([&#x27;home&#x27;]);
+          }, err &#x3D;&gt; this.refreshUserDetails());
+      }
+    });
+  }
+  gotoLink(x) {
+    this.router.navigate(x);
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  // toggleSidebar(): boolean {
+  //   this.sidebarService.toggle(true, &#x27;menu-sidebar&#x27;);
+  //   this.layoutService.changeLayoutSize();
+
+  //   return false;
+  // }
+
+  navigateHome() {
+    this.router.navigate([&#x27;home&#x27;]);
+    return false;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;header-container&quot;&gt;
+    &lt;div class&#x3D;&quot;logo-container&quot;&gt;
+        &lt;!-- &lt;a (click)&#x3D;&quot;toggleSidebar()&quot; href&#x3D;&quot;#&quot; class&#x3D;&quot;sidebar-toggle&quot;&gt;
+      &lt;nb-icon icon&#x3D;&quot;menu-2-outline&quot;&gt;&lt;/nb-icon&gt;
+    &lt;/a&gt; --&gt;
+        &lt;a class&#x3D;&quot;logo&quot; href&#x3D;&quot;#&quot; (click)&#x3D;&quot;navigateHome()&quot;&gt;OCDE&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- &lt;nb-actions size&#x3D;&quot;small&quot;&gt;
+        &lt;nb-action icon&#x3D;&quot;home-outline&quot; (click)&#x3D;&quot;gotoLink([&#x27;home&#x27;])&quot;&gt;Home&lt;/nb-action&gt;
+        &lt;nb-action icon&#x3D;&quot;code-outline&quot; (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;editor&#x27;])&quot;&gt;Editor&lt;/nb-action&gt;
+        &lt;nb-action icon&#x3D;&quot;browser-outline&quot; (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;main&#x27;])&quot;&gt;Dashboard&lt;/nb-action&gt;
+        &lt;nb-action icon&#x3D;&quot;bulb-outline&quot; (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;compete&#x27;])&quot;&gt;Compete&lt;/nb-action&gt;
+    &lt;/nb-actions&gt; --&gt;
+    &lt;nb-actions size&#x3D;&quot;small&quot;&gt;
+        &lt;nb-action (click)&#x3D;&quot;gotoLink([&#x27;home&#x27;])&quot;&gt;
+            &lt;nb-icon icon&#x3D;&quot;home-outline&quot; [options]&#x3D;&quot;{ animation: { type: &#x27;zoom&#x27; } }&quot;&gt;&lt;/nb-icon&gt; Home
+        &lt;/nb-action&gt;
+        &lt;nb-action (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;main&#x27;])&quot;&gt;
+            &lt;nb-icon icon&#x3D;&quot;browser-outline&quot; [options]&#x3D;&quot;{ animation: { type: &#x27;zoom&#x27; } }&quot;&gt;&lt;/nb-icon&gt; Dashboard&lt;/nb-action&gt;
+        &lt;nb-action (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;editor&#x27;])&quot;&gt;
+            &lt;nb-icon icon&#x3D;&quot;code-outline&quot; [options]&#x3D;&quot;{ animation: { type: &#x27;zoom&#x27; } }&quot;&gt;&lt;/nb-icon&gt; Editor&lt;/nb-action&gt;
+        &lt;nb-action (click)&#x3D;&quot;gotoLink([&#x27;dashboard&#x27;,&#x27;compete&#x27;])&quot;&gt;
+            &lt;nb-icon icon&#x3D;&quot;bulb-outline&quot; [options]&#x3D;&quot;{ animation: { type: &#x27;zoom&#x27; } }&quot;&gt;&lt;/nb-icon&gt; Compete&lt;/nb-action&gt;
+    &lt;/nb-actions&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;header-container&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;user&quot; class&#x3D;&quot;header-container&quot;&gt;
+        &lt;nb-actions size&#x3D;&quot;small&quot;&gt;
+
+            &lt;!-- &lt;nb-action class&#x3D;&quot;control-item&quot;&gt;
+      &lt;nb-search type&#x3D;&quot;rotate-layout&quot;&gt;&lt;/nb-search&gt;
+    &lt;/nb-action&gt;
+    &lt;nb-action class&#x3D;&quot;control-item&quot; icon&#x3D;&quot;email-outline&quot;&gt;&lt;/nb-action&gt;
+    &lt;nb-action class&#x3D;&quot;control-item&quot; icon&#x3D;&quot;bell-outline&quot;&gt;&lt;/nb-action&gt; --&gt;
+            &lt;nb-action class&#x3D;&quot;user-action&quot; *ngIf &#x3D; &quot;user?.loggedin; else elseBlock&quot;&gt;
+                &lt;nb-user [nbContextMenu]&#x3D;&quot;userMenu&quot; [onlyPicture]&#x3D;&quot;userPictureOnly&quot; [name]&#x3D;&quot;user?.username&quot; [picture]&#x3D;&quot;user?.ProfilePicture&quot;&gt;
+                &lt;/nb-user&gt;
+            &lt;/nb-action&gt;
+            &lt;ng-template #elseBlock&gt;&lt;button nbButton status&#x3D;&quot;basic&quot; (click)&#x3D;&quot;gotoLink([&#x27;auth&#x27;,&#x27;login&#x27;])&quot;&gt;Log in&lt;/button&gt;&lt;/ng-template&gt;
+        &lt;/nb-actions&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./header.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;~bootstrap/scss/mixins/breakpoints&#x27;;
+@import &#x27;~@nebular/theme/styles/global/breakpoints&#x27;;
+@import &#x27;../styles/themes&#x27;;
+@import url(&#x27;https://fonts.googleapis.com/css2?family&#x3D;Noto+Sans+JP&amp;family&#x3D;Audiowide&amp;display&#x3D;swap&#x27;);
+@include nb-install-component() {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .logo-container {
+        display: flex;
+        align-items: center;
+        // width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+    }
+    nb-action {
+        height: auto;
+        display: flex;
+        align-content: center;
+    }
+    nb-user {
+        cursor: pointer;
+    }
+     ::ng-deep nb-search button {
+        padding: 0!important;
+    }
+    .header-container {
+        display: flex;
+        align-items: center;
+        width: auto;
+        // .sidebar-toggle {
+        //   @include nb-ltr(padding-right, 1.25rem);
+        //   @include nb-rtl(padding-left, 1.25rem);
+        //   text-decoration: none;
+        //   color: nb-theme(text-hint-color);
+        //   nb-icon {
+        //     font-size: 1.75rem;
+        //   }
+        // }
+        .logo {
+            padding: 0 1.25rem;
+            font-size: 1.75rem;
+            font-family: Audiowide;
+            @include nb-ltr(border-left,
+            1px solid nb-theme(divider-color));
+            @include nb-rtl(border-right,
+            1px solid nb-theme(divider-color));
+            white-space: nowrap;
+            text-decoration: none;
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        .control-item {
+            display: none;
+        }
+        .user-action {
+            border: none;
+            padding: 0;
+        }
+    }
+    @include media-breakpoint-down(is) {
+        nb-select {
+            display: none;
+        }
+    }
+}
+
+nb-action {
+    cursor: pointer;
+}
+
+nb-icon {
+    margin-right: 5px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="header-container">    <div class="logo-container">        <!-- <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">      <nb-icon icon="menu-2-outline"></nb-icon>    </a> -->        <a class="logo" href="#" (click)="navigateHome()">OCDE</a>    </div>    <!-- <nb-actions size="small">        <nb-action icon="home-outline" (click)="gotoLink([\'home\'])">Home</nb-action>        <nb-action icon="code-outline" (click)="gotoLink([\'dashboard\',\'editor\'])">Editor</nb-action>        <nb-action icon="browser-outline" (click)="gotoLink([\'dashboard\',\'main\'])">Dashboard</nb-action>        <nb-action icon="bulb-outline" (click)="gotoLink([\'dashboard\',\'compete\'])">Compete</nb-action>    </nb-actions> -->    <nb-actions size="small">        <nb-action (click)="gotoLink([\'home\'])">            <nb-icon icon="home-outline" [options]="{ animation: { type: \'zoom\' } }"></nb-icon> Home        </nb-action>        <nb-action (click)="gotoLink([\'dashboard\',\'main\'])">            <nb-icon icon="browser-outline" [options]="{ animation: { type: \'zoom\' } }"></nb-icon> Dashboard</nb-action>        <nb-action (click)="gotoLink([\'dashboard\',\'editor\'])">            <nb-icon icon="code-outline" [options]="{ animation: { type: \'zoom\' } }"></nb-icon> Editor</nb-action>        <nb-action (click)="gotoLink([\'dashboard\',\'compete\'])">            <nb-icon icon="bulb-outline" [options]="{ animation: { type: \'zoom\' } }"></nb-icon> Compete</nb-action>    </nb-actions></div><div class="header-container">    <div *ngIf="user" class="header-container">        <nb-actions size="small">            <!-- <nb-action class="control-item">      <nb-search type="rotate-layout"></nb-search>    </nb-action>    <nb-action class="control-item" icon="email-outline"></nb-action>    <nb-action class="control-item" icon="bell-outline"></nb-action> -->            <nb-action class="user-action" *ngIf = "user?.loggedin; else elseBlock">                <nb-user [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly" [name]="user?.username" [picture]="user?.ProfilePicture">                </nb-user>            </nb-action>            <ng-template #elseBlock><button nbButton status="basic" (click)="gotoLink([\'auth\',\'login\'])">Log in</button></ng-template>        </nb-actions>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CompetingComponent', 'selector': 'app-competing'},{'name': 'ConfirmDialog', 'selector': 'ngx-dialog-confirm-prompt'},{'name': 'ContestlistComponent', 'selector': 'app-contestlist'},{'name': 'ContestsComponent', 'selector': 'app-contests'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'FilelistComponent', 'selector': 'app-filelist'},{'name': 'FsIconComponent', 'selector': 'nb-fs-icon'},{'name': 'FsIconComponent', 'selector': 'nb-fs-icon'},{'name': 'HeaderComponent', 'selector': 'ngx-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LeaderboardComponent', 'selector': 'app-leaderboard'},{'name': 'LoginComponent', 'selector': 'app-root'},{'name': 'MainComponent', 'selector': 'app-main-view'},{'name': 'NewfiledialogComponent', 'selector': 'ngx-dialog-name-prompt'},{'name': 'ProblemComponent', 'selector': 'app-problem'},{'name': 'ProblemlistComponent', 'selector': 'app-problemlist'},{'name': 'RegisterComponent', 'selector': 'app-root'},{'name': 'RenamefileDialog', 'selector': 'ngx-dialog-rename-prompt'},{'name': 'SubmissiontableComponent', 'selector': 'app-submissiontable'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HeaderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
