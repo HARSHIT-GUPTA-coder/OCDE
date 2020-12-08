@@ -4,6 +4,7 @@ import { LoginForm, User } from '../../UserDetails';
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { NbComponentStatus, NbToastrService } from '@nebular/theme';
+import { CodefetchService } from 'src/app/codefetch.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class LoginComponent extends NbLoginComponent {
   returndata: User;
 
   constructor(private api: ApiService, public router: Router, service: NbAuthService,
-    @Inject(NB_AUTH_OPTIONS) options: {}, cd: ChangeDetectorRef, rt: Router, private toastrService: NbToastrService) {
+    @Inject(NB_AUTH_OPTIONS) options: {}, cd: ChangeDetectorRef, rt: Router, private toastrService: NbToastrService, private _fileService: CodefetchService) {
       super(service, options, cd, router);
   }
 
@@ -24,6 +25,8 @@ export class LoginComponent extends NbLoginComponent {
         this.returndata = data;
         // console.log(data);
         if (this.returndata.success) {
+          this._fileService.openedFileDataChange.next("")
+          this._fileService.changeOpenedFile({name: 'Choose File', id: -1});
           this.router.navigate(['dashboard']);
         }
       },
