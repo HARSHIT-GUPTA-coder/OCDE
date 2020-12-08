@@ -79,7 +79,7 @@ export class CodefetchService {
   readfile(id: string): any{
     // this.router.navigate(['/dashboard/editor', {id: id}]);
     if (id == '-1') {
-      this.openedFileDataChange.next(" ");
+      this.openedFileDataChange.next("");
       return;
     }
     return this.readfiledata(id).subscribe(
@@ -91,7 +91,7 @@ export class CodefetchService {
           console.log(_data["data"]+"A")
           if(_data["data"]==""){
             console.log(_data["data"]+"A")
-            this.openedFileDataChange.next(" ");
+            this.openedFileDataChange.next("");
           }
           else
             this.openedFileDataChange.next(_data["data"]);
