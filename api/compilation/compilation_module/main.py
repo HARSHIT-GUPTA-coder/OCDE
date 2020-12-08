@@ -10,7 +10,7 @@ def get_random_string(length):
 
 def get_output(config):
 
-	ISOLATION = True
+	ISOLATION = False
 	input_data = config["input"] 
 	command_data = config["command"]
 	filename = config['filename']
