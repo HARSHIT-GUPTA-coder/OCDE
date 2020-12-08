@@ -22,7 +22,7 @@ export class CodefetchService {
   private filesURL = API.ServerURL + API.GetFiles;
 
   openedFile: fileInterface = {name: 'Choose File', id: -1};
-  openedFileData: string = '';
+  openedFileData: string = ' ';
   openedFileChange: Subject<fileInterface> = new Subject<fileInterface>()
   openedFileDataChange: Subject<string> = new Subject<string>();
 
@@ -79,7 +79,7 @@ export class CodefetchService {
   readfile(id: string): any{
     // this.router.navigate(['/dashboard/editor', {id: id}]);
     if (id == '-1') {
-      this.openedFileDataChange.next("");
+      this.openedFileDataChange.next(" ");
       return;
     }
     return this.readfiledata(id).subscribe(
@@ -88,7 +88,13 @@ export class CodefetchService {
           this.handleError(_data["message"], this.toastrService)
         }
         else {
-          this.openedFileDataChange.next(_data["data"]);
+          console.log(_data["data"]+"A")
+          if(_data["data"]==""){
+            console.log(_data["data"]+"A")
+            this.openedFileDataChange.next(" ");
+          }
+          else
+            this.openedFileDataChange.next(_data["data"]);
           // this._codestore.setcode(id, _data["data"]);
           // console.log(id);
         }
@@ -106,6 +112,9 @@ export class CodefetchService {
         }
         else {
         console.log(_data["message"]);
+        let status: NbComponentStatus ="success";
+        this.openedFileDataChange.next(data)
+        this.toastrService.show("Saved successfully", "Saved!", {status})
         }
     }
     )

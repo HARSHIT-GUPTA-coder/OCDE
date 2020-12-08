@@ -29,6 +29,8 @@ export class EditorComponent implements AfterViewInit {
     return ret;
   }
   get openedFileData(): string {
+    console.log("getting file data")
+    console.log(this._fileService.openedFileData)
     return this._fileService.openedFileData;
   }
 
