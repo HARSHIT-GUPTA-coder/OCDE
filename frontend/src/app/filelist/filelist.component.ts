@@ -101,11 +101,15 @@ export class FilelistComponent implements OnInit {
   }
 
   onSingleCick(s) {
-    if (s.data.is_file) {
-      this.activeFileID = s.data.id;
-      this.activeFileName = s.data.name;
-      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
-      this._fileService.readfile(s.data.id);
+    // console.log(this.activeFileID)
+    if(this.activeFileID==-1)
+    {
+      if (s.data.is_file) {
+        this.activeFileID = s.data.id;
+        this.activeFileName = s.data.name;
+        this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+        this._fileService.readfile(s.data.id);
+      } 
     }
   }
 
@@ -147,8 +151,21 @@ export class FilelistComponent implements OnInit {
     }
   }
 
-  onClick(s) {
-    this.onSingleCick(s);
+  onClick(s,dialog) {
+    if(s.data.is_file && s.data.id!=this.activeFileID) {
+      this._dialogService.open(dialog).onClose.subscribe(
+        _b => {
+          if(_b) {
+            if (s.data.is_file) {
+              this.activeFileID = s.data.id;
+              this.activeFileName = s.data.name;
+              this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+              this._fileService.readfile(s.data.id);
+            }     
+          }
+        }
+      )
+    }
   }
   getShowOn(index: number) {
       const minWithForMultipleColumns = 125;

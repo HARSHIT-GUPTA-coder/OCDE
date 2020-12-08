@@ -40,8 +40,11 @@ export class MainComponent implements OnInit{
   }
   async itemClicked(action) {
     action = action.substring(0, 3);
-    if (action == 'Ope')
+    if (action == 'Ope'){
       this._fileService.readfile(this.activeFileID.toString());
+      this._fileService.changeOpenedFile({name: this.activeFileName, id: this.activeFileID});
+      this.router.navigate(['dashboard', 'editor']);
+    }
     else if (action == 'Del') {
       if(await this._fileService.deletefile(this.activeFileID.toString()))
         this.refreshFileStructure();

@@ -29,12 +29,7 @@
                 <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
                     Your Files
                 </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row"
-                    (dblclick)="onClick(row)"
-                    (click)="onSingleCick(row)"
-                    [ngClass]="{'bar': row.data.id == activeFileID}"
-                    (contextmenu) = "onRightClick(row)"
-                    [shAttachMenu]="menu2">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row" (dblclick)="onClick(row,dialog)" (click)="onSingleCick(row)" [ngClass]="{'bar': row.data.id == activeFileID}" (contextmenu)="onRightClick(row)" [shAttachMenu]="menu2">
                     <nb-fs-icon [isFile]="row.data.is_file" [expanded]="row.expanded"></nb-fs-icon>
                     {{row.data[customColumn]}}
                 </td>
@@ -45,20 +40,35 @@
 </nb-card>
 
 <!-- Right click menu-->
-<sh-context-menu class = "no-pad" #menu2>
-    <ng-template class = "no-pad" shContextMenuItem>
-      <!-- <div>
+<sh-context-menu class="no-pad" #menu2>
+    <ng-template class="no-pad" shContextMenuItem>
+        <!-- <div>
         Menu Item - 1
       </div> -->
-      <nb-card class = "no-pad" style="border-radius: 10px;">
-        <nb-list style="border-radius: 10px;">
-            <nb-list-item *ngFor="let item of items" class = "menuItem" (click) = "itemClicked(item.title)">
-                <table class = "no-pad"><tr class = "no-pad">
-                <td class = "some-pad"><nb-icon [icon]="item.icon"></nb-icon></td>
-                <td class = "some-pad">{{ item.title }}</td>
-                </tr></table>
-            </nb-list-item>
-        </nb-list>
-      </nb-card>
+        <nb-card class="no-pad" style="border-radius: 10px;">
+            <nb-list style="border-radius: 10px;">
+                <nb-list-item *ngFor="let item of items" class="menuItem" (click)="itemClicked(item.title)">
+                    <table class="no-pad">
+                        <tr class="no-pad">
+                            <td class="some-pad">
+                                <nb-icon [icon]="item.icon"></nb-icon>
+                            </td>
+                            <td class="some-pad">{{ item.title }}</td>
+                        </tr>
+                    </table>
+                </nb-list-item>
+            </nb-list>
+        </nb-card>
     </ng-template>
-  </sh-context-menu>
+</sh-context-menu>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+        <nb-card-header>Change File?</nb-card-header>
+        <nb-card-body>Do you really want to open this file? Your updates to the current file will be lost</nb-card-body>
+        <nb-card-footer>
+            <button class="cancel" nbButton status="primary" (click)="ref.close(false)" style="float:left">Cancel</button>
+            <button nbButton status="danger" (click)="ref.close(true)" style="float:right">Yes. Change File</button>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>
